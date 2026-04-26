@@ -1,0 +1,1386 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+---
+
+<Layout
+    title="Planes | DespegaTuWeb"
+    description="Encuentra el nivel de despegue ideal para tu negocio."
+>
+    <Navbar />
+
+    <!-- CONTENEDOR ALPINE PARA EL MANEJO DE PESTAÑAS (TABS) -->
+    <div
+        class="flex-grow flex flex-col relative w-full"
+        x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'l1' }"
+        @hashchange.window="tab = window.location.hash ? window.location.hash.substring(1) : 'l1'"
+    >
+        <div
+            class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] blur-[150px] rounded-full pointer-events-none z-0 transition-colors duration-700"
+            :class="{
+                'bg-orange-600/10': tab === 'l1',
+                'bg-blue-600/10': tab === 'l2',
+                'bg-emerald-600/10': tab === 'l3'
+            }"
+        >
+        </div>
+
+        <div
+            class="relative z-20 flex justify-center px-4 mt-24 md:mt-28 mb-2 w-full max-w-xl mx-auto"
+        >
+            <div
+                class="bg-slate-900/80 backdrop-blur-md p-1.5 rounded-full border border-slate-800 flex w-full gap-1 shadow-xl"
+            >
+                <button
+                    @click="window.location.hash = 'l1'"
+                    class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
+                    :class="tab === 'l1' ? 'bg-orange-500/20 text-orange-400 border-orange-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
+                >
+                    <i class="fas fa-bolt mr-1.5 md:mr-2"></i> Nivel 1
+                </button>
+                <button
+                    @click="window.location.hash = 'l2'"
+                    class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
+                    :class="tab === 'l2' ? 'bg-blue-500/20 text-blue-400 border-blue-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
+                >
+                    <i class="fas fa-briefcase mr-1.5 md:mr-2"></i> Nivel 2
+                </button>
+                <button
+                    @click="window.location.hash = 'l3'"
+                    class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
+                    :class="tab === 'l3' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
+                >
+                    <i class="fas fa-store mr-1.5 md:mr-2"></i> Nivel 3
+                </button>
+            </div>
+        </div>
+
+        <main
+            class="flex-grow flex items-start justify-center p-4 md:p-6 relative z-10 w-full"
+        >
+            <div
+                class="w-full max-w-6xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] p-6 md:p-10 shadow-2xl min-h-[600px]"
+            >
+                <div class="grid w-full">
+                    <!-- CONTENIDO NIVEL 1 -->
+                    <div
+                        x-show="tab === 'l1'"
+                        style="display: none"
+                        class="col-start-1 row-start-1 w-full h-full"
+                        x-transition:enter="transition ease-out duration-500 delay-100"
+                        x-transition:enter-start="opacity-0 translate-y-4"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-300"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                    >
+                        <header
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6"
+                        >
+                            <div
+                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
+                            >
+                                <i class="fas fa-rocket text-orange-500"></i> Nivel
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
+                                    >UNO</span
+                                >
+                            </div>
+                            <div
+                                class="border border-orange-500/50 bg-orange-500/10 text-orange-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
+                            >
+                                <i class="fas fa-stopwatch"></i> ¡Web lista en 48
+                                horas!
+                            </div>
+                        </header>
+                        <div
+                            class="w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-8"
+                        >
+                        </div>
+                        <div class="mb-10">
+                            <h1
+                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+                            >
+                                Web Presencia <br class="hidden md:block" />
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500"
+                                    >Profesional</span
+                                >
+                            </h1>
+                            <p
+                                class="text-slate-400 font-medium text-lg max-w-2xl"
+                            >
+                                Impacta a tus clientes con una imagen digital
+                                impecable.
+                            </p>
+                        </div>
+                        <div
+                            class="flex flex-col lg:grid lg:grid-cols-12 gap-8 mb-8"
+                        >
+                            <div
+                                class="order-2 lg:order-1 lg:col-span-7 bg-slate-950/50 border border-slate-800/80 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-user-astronaut text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Identidad Digital
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Ideal para marcas personales y
+                                            perfiles profesionales.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-yellow-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-star text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Diseño Inteligente
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Estructura de una sola página
+                                            diseñada para que tus servicios y
+                                            trabajos se vean ordenados y
+                                            profesionales.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-photo-film text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Tu Mejor Vitrina
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Mostramos lo que haces con una
+                                            galería de hasta 15 fotos y 1 video
+                                            para atraer miradas.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-bolt text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Acceso Inmediato
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Optimizada para que cualquiera pueda
+                                            verte desde su teléfono de forma
+                                            fluida y sin demoras.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0 shadow-inner"
+                                    >
+                                        <i
+                                            class="fas fa-wand-magic-sparkles text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Toque Profesional
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Mejoramos la calidad de tu logo y
+                                            fotos con tecnología avanzada para
+                                            una imagen perfecta.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-gift text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Pack Base Incluido
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Dominio .com, Hosting, botón directo
+                                            a WhatsApp y diseño optimizado para
+                                            celulares.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-6 h-full"
+                            >
+                                <div
+                                    class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l1 flex items-center justify-center flex-1 w-full"
+                                >
+                                    <img
+                                        src="/imgs/diseno-landing-page-profesional-doctor-lima.webp"
+                                        alt="Mockup L1"
+                                        onerror="this.src = 'https://placehold.co/600x420/0f172a/f97316?text=Mockup+L1&font=montserrat'"
+                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                    />
+                                </div>
+                                <div
+                                    class="bg-gradient-to-b from-slate-900 to-slate-950 border border-orange-500/30 rounded-[2rem] p-8 text-center relative shadow-[0_10px_30px_rgba(249,115,22,0.1)] shrink-0"
+                                >
+                                    <div
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30"
+                                    >
+                                        OFERTA LIMITADA
+                                    </div>
+                                    <p
+                                        class="text-orange-400 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
+                                    >
+                                        Inversión Única
+                                    </p>
+                                    <h2
+                                        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-2"
+                                    >
+                                        S/ 450
+                                    </h2>
+                                    <p
+                                        class="text-slate-400 text-xs font-medium"
+                                    >
+                                        Sin mensualidades ni costos ocultos
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
+                        >
+                            <div
+                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-300"
+                            >
+                                <span class="flex items-center gap-2"
+                                    ><i
+                                        class="fa-solid fa-shield-alt text-green-500 text-lg"
+                                    ></i> PROPIEDAD TOTAL</span
+                                >
+                                <span class="hidden md:inline text-slate-700"
+                                    >|</span
+                                >
+                                <span class="flex items-center gap-2"
+                                    ><i
+                                        class="fa-solid fa-file-invoice-dollar text-green-500 text-lg"
+                                    ></i> EMITIMOS BOLETA</span
+                                >
+                            </div>
+                            <a
+                                href="https://wa.me/51963896469?text=Hola,%20deseo%20adquirir%20el%20Nivel%201%20por%20S/450."
+                                target="_blank"
+                                class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-900/50"
+                            >
+                                <i class="fas fa-hourglass-half text-lg"></i> Entrega:
+                                2 días hábiles
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CONTENIDO NIVEL 2 -->
+                    <div
+                        x-show="tab === 'l2'"
+                        style="display: none"
+                        class="col-start-1 row-start-1 w-full h-full"
+                        x-transition:enter="transition ease-out duration-500 delay-100"
+                        x-transition:enter-start="opacity-0 translate-y-4"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-300"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                    >
+                        <header
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6"
+                        >
+                            <div
+                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
+                            >
+                                <i class="fas fa-rocket text-blue-500"></i> Nivel
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600"
+                                    >DOS</span
+                                >
+                            </div>
+                            <div
+                                class="border border-blue-500/50 bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
+                            >
+                                <i class="fas fa-calendar-check"></i> ¡Lista en 7
+                                a 10 días!
+                            </div>
+                        </header>
+                        <div
+                            class="w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-8"
+                        >
+                        </div>
+                        <div class="mb-10">
+                            <h1
+                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+                            >
+                                Web Autoridad <br class="hidden md:block" />
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-500"
+                                    >Corporativa</span
+                                >
+                            </h1>
+                            <p
+                                class="text-slate-400 font-medium text-lg max-w-2xl"
+                            >
+                                Tu local digital con estatus y autonomía.
+                                Proyecta solidez corporativa con una estructura
+                                robusta y un panel administrativo propio.
+                            </p>
+                        </div>
+                        <div
+                            class="flex flex-col lg:grid lg:grid-cols-12 gap-8 mb-8"
+                        >
+                            <div
+                                class="order-2 lg:order-1 lg:col-span-7 bg-slate-950/50 border border-slate-800/80 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-briefcase text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Estatus Corporativo
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Diseñado para pymes y empresas que
+                                            buscan proyectar máxima solidez y
+                                            confianza en su sector.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-layer-group text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Arquitectura Robusta
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Hasta 5 páginas/secciones
+                                            independientes para detallar a fondo
+                                            tu trayectoria, equipo y servicios.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-sliders-h text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Control Total (CMS)
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Autonomía para actualizar tus
+                                            precios y galería sin depender de
+                                            terceros.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
+                                    >
+                                        <i
+                                            class="fas fa-envelope-open-text text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Confianza Oficial
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Correos corporativos para cerrar
+                                            contratos y negocios grandes.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-chart-line text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Posicionamiento SEO
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Creada con tecnología de punta
+                                            (Next.js) que supera a la
+                                            competencia en rendimiento.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
+                                    >
+                                        <i
+                                            class="fas fa-wand-magic-sparkles text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Impresión Premium
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Logos e imágenes optimizadas con
+                                            tratamiento técnico para una
+                                            visualización de alto nivel.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-gift text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Pack Base Incluido
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Dominio .com, Hosting, botón directo
+                                            a WhatsApp y diseño optimizado para
+                                            celulares.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-6 h-full"
+                            >
+                                <div
+                                    class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l2 flex items-center justify-center flex-1 w-full"
+                                >
+                                    <img
+                                        src="/imgs/pagina-web-corporativa-empresa-negocios.webp"
+                                        alt="Mockup L2"
+                                        onerror="this.src = 'https://placehold.co/600x420/0f172a/3b82f6?text=Mockup+L2&font=montserrat'"
+                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                    />
+                                </div>
+                                <div
+                                    class="bg-gradient-to-b from-slate-900 to-slate-950 border border-blue-500/30 rounded-[2rem] p-8 text-center relative shadow-[0_10px_30px_rgba(59,130,246,0.1)] shrink-0"
+                                >
+                                    <div
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30"
+                                    >
+                                        OFERTA LIMITADA
+                                    </div>
+                                    <p
+                                        class="text-blue-400 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
+                                    >
+                                        Inversión Única
+                                    </p>
+                                    <h2
+                                        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-2"
+                                    >
+                                        S/ 1,000
+                                    </h2>
+                                    <p
+                                        class="text-slate-400 text-xs font-medium"
+                                    >
+                                        Sin mensualidades ni costos ocultos
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
+                        >
+                            <div
+                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-300"
+                            >
+                                <span class="flex items-center gap-2"
+                                    ><i
+                                        class="fa-solid fa-shield-alt text-green-500 text-lg"
+                                    ></i> PROPIEDAD TOTAL</span
+                                >
+                                <span class="hidden md:inline text-slate-700"
+                                    >|</span
+                                >
+                                <span class="flex items-center gap-2"
+                                    ><i
+                                        class="fa-solid fa-file-invoice-dollar text-green-500 text-lg"
+                                    ></i> EMITIMOS BOLETA</span
+                                >
+                            </div>
+                            <a
+                                href="https://wa.me/51963896469?text=Hola,%20deseo%20adquirir%20el%20Nivel%202%20por%20S/1,000."
+                                target="_blank"
+                                class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-900/50"
+                            >
+                                <i class="fas fa-truck-fast text-lg"></i> Entrega:
+                                7 a 10 días hábiles
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CONTENIDO NIVEL 3 -->
+                    <div
+                        x-show="tab === 'l3'"
+                        style="display: none"
+                        class="col-start-1 row-start-1 w-full h-full"
+                        x-transition:enter="transition ease-out duration-500 delay-100"
+                        x-transition:enter-start="opacity-0 translate-y-4"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-300"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                    >
+                        <header
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6"
+                        >
+                            <div
+                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
+                            >
+                                <i class="fas fa-rocket text-emerald-500"></i> Nivel
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600"
+                                    >TRES</span
+                                >
+                            </div>
+                            <div
+                                class="border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
+                            >
+                                <i class="fas fa-store"></i> ¡Ventas en Automático!
+                            </div>
+                        </header>
+                        <div
+                            class="w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-8"
+                        >
+                        </div>
+                        <div class="mb-10">
+                            <h1
+                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+                            >
+                                Tienda Online <br class="hidden md:block" />
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400"
+                                    >Automatizada</span
+                                >
+                            </h1>
+                            <p
+                                class="text-slate-400 font-medium text-lg max-w-2xl"
+                            >
+                                Tu sucursal digital trabajando 24/7. Recibe
+                                pagos, controla el stock y gestiona pedidos
+                                automáticamente mientras tú duermes.
+                            </p>
+                        </div>
+                        <div
+                            class="flex flex-col lg:grid lg:grid-cols-12 gap-8 mb-8"
+                        >
+                            <div
+                                class="order-2 lg:order-1 lg:col-span-7 bg-slate-950/50 border border-slate-800/80 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start"
+                            >
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-building text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Sucursal Escalable
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Para negocios de retail y marcas
+                                            listas para vender en piloto
+                                            automático a todo el Perú.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-robot text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Vendedor 24/7
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Tu catálogo completo y carrito
+                                            intuitivo siempre disponible,
+                                            recibiendo pedidos mientras tú
+                                            duermes.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-credit-card text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Caja Digital Multi-Pagos
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Cobra de forma fácil y segura
+                                            integrando tarjetas, Yape y
+                                            transferencias.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-desktop text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Centro de Comando
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Administra tu stock, procesa pedidos
+                                            y gestiona a tus clientes desde un
+                                            panel profesional.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
+                                    >
+                                        <i
+                                            class="fas fa-envelope-open-text text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Confianza Oficial
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Correos corporativos para gestionar
+                                            la atención al cliente de tu tienda.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-chart-line text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Posicionamiento SEO
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Arquitectura Next.js optimizada para
+                                            que tus productos resalten en las
+                                            búsquedas de Google.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-shield-alt text-xl"
+                                        ></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Bóveda de Seguridad
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Blindaje de datos para transacciones
+                                            seguras y que tus clientes operen
+                                            con 100% de tranquilidad.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                    >
+                                        <i class="fas fa-gift text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                        >
+                                            Pack Base Incluido
+                                        </h3><p
+                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                        >
+                                            Dominio .com, Hosting, botón directo
+                                            a WhatsApp y diseño optimizado para
+                                            celulares.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-6 h-full"
+                            >
+                                <div
+                                    class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l3 flex items-center justify-center flex-1 w-full"
+                                >
+                                    <img
+                                        src="/imgs/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp"
+                                        alt="Mockup L3"
+                                        onerror="this.src = 'https://placehold.co/600x420/0f172a/10b981?text=Mockup+L3&font=montserrat'"
+                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                    />
+                                </div>
+                                <div
+                                    class="bg-gradient-to-b from-slate-900 to-slate-950 border border-emerald-500/30 rounded-[2rem] p-8 text-center relative shadow-[0_10px_30px_rgba(16,185,129,0.1)] shrink-0"
+                                >
+                                    <div
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30"
+                                    >
+                                        OFERTA LIMITADA
+                                    </div>
+                                    <p
+                                        class="text-emerald-400 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
+                                    >
+                                        Inversión Única
+                                    </p>
+                                    <h2
+                                        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-2"
+                                    >
+                                        S/ 3,500
+                                    </h2>
+                                    <p
+                                        class="text-slate-400 text-xs font-medium"
+                                    >
+                                        Sin mensualidades ni costos ocultos
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
+                        >
+                            <div
+                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-300"
+                            >
+                                <span class="flex items-center gap-2"
+                                    ><i
+                                        class="fa-solid fa-shield-alt text-green-500 text-lg"
+                                    ></i> PROPIEDAD TOTAL</span
+                                >
+                                <span class="hidden md:inline text-slate-700"
+                                    >|</span
+                                >
+                                <span class="flex items-center gap-2"
+                                    ><i
+                                        class="fa-solid fa-file-invoice-dollar text-green-500 text-lg"
+                                    ></i> EMITIMOS BOLETA</span
+                                >
+                            </div>
+                            <a
+                                href="https://wa.me/51963896469?text=Hola,%20deseo%20adquirir%20el%20Nivel%203%20por%20S/3,500."
+                                target="_blank"
+                                class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-900/50"
+                            >
+                                <i class="fab fa-whatsapp text-lg"></i> Iniciar Mi
+                                Despegue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section
+            class="w-full max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10"
+        >
+            <div class="text-center mb-10 md:mb-12">
+                <h2
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500 mb-4 drop-shadow-sm"
+                >
+                    Comparativa de Niveles
+                </h2>
+                <p
+                    class="text-slate-400 font-bold uppercase tracking-[0.15em] text-xs max-w-2xl mx-auto leading-relaxed"
+                >
+                    Descubre qué plan se adapta mejor a la etapa actual de tu
+                    negocio.
+                </p>
+            </div>
+
+            <div
+                class="hidden md:block w-full bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[2rem] p-8 shadow-2xl overflow-hidden"
+            >
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th
+                                class="p-6 border-b border-slate-800 text-slate-300 font-black uppercase tracking-widest text-sm w-1/4"
+                                >Características</th
+                            >
+                            <th
+                                class="p-6 border-b border-orange-500/30 bg-orange-500/5 text-center w-1/4 rounded-tl-2xl"
+                            >
+                                <div
+                                    class="text-orange-500 font-black text-xl italic uppercase tracking-tighter mb-1"
+                                >
+                                    Nivel 1
+                                </div>
+                                <div
+                                    class="text-orange-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                >
+                                    Presencia
+                                </div>
+                            </th>
+                            <th
+                                class="p-6 border-b border-blue-500/30 bg-blue-500/5 text-center w-1/4"
+                            >
+                                <div
+                                    class="text-blue-500 font-black text-xl italic uppercase tracking-tighter mb-1"
+                                >
+                                    Nivel 2
+                                </div>
+                                <div
+                                    class="text-blue-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                >
+                                    Corporativa
+                                </div>
+                            </th>
+                            <th
+                                class="p-6 border-b border-emerald-500/30 bg-emerald-500/5 text-center w-1/4 rounded-tr-2xl"
+                            >
+                                <div
+                                    class="text-emerald-500 font-black text-xl italic uppercase tracking-tighter mb-1"
+                                >
+                                    Nivel 3
+                                </div>
+                                <div
+                                    class="text-emerald-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                >
+                                    Tienda Online
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm font-medium text-slate-400">
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Estructura Web</td
+                            >
+                            <td class="p-6 text-center bg-orange-500/5"
+                                >1 Página (Landing)</td
+                            >
+                            <td class="p-6 text-center bg-blue-500/5"
+                                >Hasta 5 Secciones</td
+                            >
+                            <td class="p-6 text-center bg-emerald-500/5"
+                                >Catálogo Escalable</td
+                            >
+                        </tr>
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Tiempo de Entrega</td
+                            >
+                            <td
+                                class="p-6 text-center bg-orange-500/5 font-bold text-orange-400"
+                                >48 Horas</td
+                            >
+                            <td
+                                class="p-6 text-center bg-blue-500/5 font-bold text-blue-400"
+                                >7 a 10 Días</td
+                            >
+                            <td
+                                class="p-6 text-center bg-emerald-500/5 font-bold text-emerald-400"
+                                >Según Proyecto</td
+                            >
+                        </tr>
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Panel Administrable (CMS)</td
+                            >
+                            <td class="p-6 text-center bg-orange-500/5"
+                                ><i class="fas fa-minus text-slate-600"></i></td
+                            >
+                            <td
+                                class="p-6 text-center bg-blue-500/5 text-blue-400 font-bold"
+                                ><i class="fas fa-check mr-1"></i> Precios / Galería</td
+                            >
+                            <td
+                                class="p-6 text-center bg-emerald-500/5 text-emerald-400 font-bold"
+                                ><i class="fas fa-check mr-1"></i> Control Total</td
+                            >
+                        </tr>
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Carrito y Pagos Online</td
+                            >
+                            <td class="p-6 text-center bg-orange-500/5"
+                                ><i class="fas fa-minus text-slate-600"></i></td
+                            >
+                            <td class="p-6 text-center bg-blue-500/5"
+                                ><i class="fas fa-minus text-slate-600"></i></td
+                            >
+                            <td
+                                class="p-6 text-center bg-emerald-500/5 text-emerald-400 font-bold"
+                                ><i class="fas fa-check mr-1"></i> Yape, Plin, Tarjetas</td
+                            >
+                        </tr>
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Correos Corporativos</td
+                            >
+                            <td class="p-6 text-center bg-orange-500/5"
+                                ><i class="fas fa-minus text-slate-600"></i></td
+                            >
+                            <td class="p-6 text-center bg-blue-500/5"
+                                ><i class="fas fa-check text-blue-400 text-lg"
+                                ></i></td
+                            >
+                            <td class="p-6 text-center bg-emerald-500/5"
+                                ><i
+                                    class="fas fa-check text-emerald-400 text-lg"
+                                ></i></td
+                            >
+                        </tr>
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Ajustes Post-Entrega</td
+                            >
+                            <td class="p-6 text-center bg-orange-500/5"
+                                >2 Rondas de revisión</td
+                            >
+                            <td class="p-6 text-center bg-blue-500/5"
+                                >3 Rondas de revisión</td
+                            >
+                            <td class="p-6 text-center bg-emerald-500/5"
+                                >5 Rondas de revisión</td
+                            >
+                        </tr>
+                        <tr
+                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                        >
+                            <td class="p-6 text-slate-300 font-bold"
+                                >Dominio y Hosting (1 Año)</td
+                            >
+                            <td class="p-6 text-center bg-orange-500/5"
+                                ><i class="fas fa-check text-green-500 text-lg"
+                                ></i></td
+                            >
+                            <td class="p-6 text-center bg-blue-500/5"
+                                ><i class="fas fa-check text-green-500 text-lg"
+                                ></i></td
+                            >
+                            <td class="p-6 text-center bg-emerald-500/5"
+                                ><i class="fas fa-check text-green-500 text-lg"
+                                ></i></td
+                            >
+                        </tr>
+                        <tr class="transition-colors">
+                            <td
+                                class="p-6 text-white font-black text-base uppercase tracking-widest"
+                                >Inversión Única</td
+                            >
+                            <td
+                                class="p-6 text-center bg-orange-500/10 rounded-bl-2xl border-t-2 border-orange-500/50"
+                                ><span
+                                    class="text-3xl font-black text-orange-400"
+                                    >S/ 450</span
+                                ></td
+                            >
+                            <td
+                                class="p-6 text-center bg-blue-500/10 border-t-2 border-blue-500/50"
+                                ><span class="text-3xl font-black text-blue-400"
+                                    >S/ 1,000</span
+                                ></td
+                            >
+                            <td
+                                class="p-6 text-center bg-emerald-500/10 rounded-br-2xl border-t-2 border-emerald-500/50"
+                                ><span
+                                    class="text-3xl font-black text-emerald-400"
+                                    >S/ 3,500</span
+                                ></td
+                            >
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="md:hidden flex flex-col gap-6">
+                <!-- Mobile Nivel 1 -->
+                <div
+                    class="bg-slate-900/80 border border-orange-500/30 rounded-[2rem] p-6 relative shadow-lg shadow-orange-500/5"
+                >
+                    <div
+                        class="flex justify-between items-end mb-6 border-b border-slate-800 pb-4"
+                    >
+                        <div>
+                            <div
+                                class="text-orange-500 font-black text-2xl italic uppercase tracking-tighter"
+                            >
+                                Nivel 1
+                            </div>
+                            <div
+                                class="text-orange-400/80 text-[10px] uppercase tracking-widest font-bold"
+                            >
+                                Presencia Profesional
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div
+                                class="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1"
+                            >
+                                Inversión
+                            </div>
+                            <div class="text-3xl font-black text-white">
+                                S/ 450
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Estructura</span><span
+                                >1 Página (Landing)</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Entrega</span><span
+                                class="font-bold text-orange-400">48 Horas</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">CMS / Panel</span><span
+                                class="text-slate-600">-</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Pagos Online</span
+                            ><span class="text-slate-600">-</span>
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Ajustes</span><span
+                                >2 Rondas</span
+                            >
+                        </li>
+                        <li class="flex justify-between items-center pt-2">
+                            <span
+                                class="text-slate-500 font-bold text-xs uppercase"
+                                >Dominio y Hosting</span
+                            ><i class="fas fa-check text-green-500 text-lg"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Nivel 2 -->
+                <div
+                    class="bg-slate-900/80 border border-blue-500/30 rounded-[2rem] p-6 relative shadow-lg shadow-blue-500/5"
+                >
+                    <div
+                        class="flex justify-between items-end mb-6 border-b border-slate-800 pb-4"
+                    >
+                        <div>
+                            <div
+                                class="text-blue-500 font-black text-2xl italic uppercase tracking-tighter"
+                            >
+                                Nivel 2
+                            </div>
+                            <div
+                                class="text-blue-400/80 text-[10px] uppercase tracking-widest font-bold"
+                            >
+                                Autoridad Corporativa
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div
+                                class="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1"
+                            >
+                                Inversión
+                            </div>
+                            <div class="text-3xl font-black text-white">
+                                S/ 1,000
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Estructura</span><span
+                                >Hasta 5 Secciones</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Entrega</span><span
+                                class="font-bold text-blue-400"
+                                >7 a 10 Días</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">CMS / Panel</span><span
+                                class="text-blue-400 font-bold"
+                                ><i class="fas fa-check mr-1"></i> Precios / Galería</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Correos Corp.</span><i
+                                class="fas fa-check text-blue-400 text-base"
+                            ></i>
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Ajustes</span><span
+                                >3 Rondas</span
+                            >
+                        </li>
+                        <li class="flex justify-between items-center pt-2">
+                            <span
+                                class="text-slate-500 font-bold text-xs uppercase"
+                                >Dominio y Hosting</span
+                            ><i class="fas fa-check text-green-500 text-lg"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Nivel 3 -->
+                <div
+                    class="bg-slate-900/80 border border-emerald-500/30 rounded-[2rem] p-6 relative shadow-lg shadow-emerald-500/5"
+                >
+                    <div
+                        class="flex justify-between items-end mb-6 border-b border-slate-800 pb-4"
+                    >
+                        <div>
+                            <div
+                                class="text-emerald-500 font-black text-2xl italic uppercase tracking-tighter"
+                            >
+                                Nivel 3
+                            </div>
+                            <div
+                                class="text-emerald-400/80 text-[10px] uppercase tracking-widest font-bold"
+                            >
+                                Tienda Online
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div
+                                class="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1"
+                            >
+                                Inversión
+                            </div>
+                            <div class="text-3xl font-black text-white">
+                                S/ 3,500
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Estructura</span><span
+                                >Catálogo Escalable</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Entrega</span><span
+                                class="font-bold text-emerald-400"
+                                >Según Proyecto</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">CMS / Panel</span><span
+                                class="text-emerald-400 font-bold"
+                                ><i class="fas fa-check mr-1"></i> Control Total</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Pagos Online</span
+                            ><span class="text-emerald-400 font-bold"
+                                ><i class="fas fa-check mr-1"></i> Yape/Tarjetas</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                        >
+                            <span class="text-slate-500">Ajustes</span><span
+                                >5 Rondas</span
+                            >
+                        </li>
+                        <li class="flex justify-between items-center pt-2">
+                            <span
+                                class="text-slate-500 font-bold text-xs uppercase"
+                                >Dominio y Hosting</span
+                            ><i class="fas fa-check text-green-500 text-lg"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center relative z-20">
+                <a
+                    href="https://wa.me/51963896469?text=Hola,%20tengo%20una%20duda%20sobre%20cuál%20nivel%20elegir."
+                    target="_blank"
+                    class="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-slate-950 hover:bg-slate-800 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all border border-slate-800 hover:border-slate-600 shadow-lg"
+                >
+                    <i class="fab fa-whatsapp text-green-400 text-xl"></i> ¿Necesitas
+                    asesoría para elegir?
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <Footer />
+    <FloatingWhatsApp />
+</Layout>
+
+<style>
+    /* Efecto Glow para los Mockups específico de esta página */
+    .mockup-glow-l1 {
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 0 1px rgba(0, 0, 0, 0.5),
+            0 20px 50px rgba(249, 115, 22, 0.15);
+    }
+    .mockup-glow-l2 {
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 0 1px rgba(0, 0, 0, 0.5),
+            0 20px 50px rgba(59, 130, 246, 0.15);
+    }
+    .mockup-glow-l3 {
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 0 1px rgba(0, 0, 0, 0.5),
+            0 20px 50px rgba(16, 185, 129, 0.15);
+    }
+</style>

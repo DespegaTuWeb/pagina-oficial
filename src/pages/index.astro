@@ -1,11 +1,1359 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+    title="DespegaTuWeb | Webs Voladoras en 48 Horas"
+    description="Desarrollo web con herramientas actuales 2026. Tu marca profesional al mejor precio del mercado."
+>
+    <Navbar />
+
+    <section
+        class="relative w-full md:min-h-[100svh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-slate-950 border-b border-slate-800"
+        x-data="{ showWelcome: false, showExtra: false, isUp: false, activeCard: 0 }"
+        x-init="setTimeout(() => showWelcome = true, 200); setTimeout(() => isUp = true, 2800); setTimeout(() => showExtra = true, 4500);"
+    >
+        <div
+            class="absolute left-0 w-full z-0 overflow-hidden pointer-events-none transition-all duration-500 top-20 aspect-video md:top-0 md:aspect-auto md:h-full"
+        >
+            <video
+                id="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                poster="/imgs/hero-fallback.webp"
+                class="w-full h-full object-cover md:object-contain md:object-center opacity-100 md:opacity-40 transition-opacity"
+            >
+                <source src="/imgs/hero-fallback.webp" type="video/webm" />
+                <source src="/imgs/hero.mp4" type="video/mp4" />
+            </video>
+            <div
+                class="hidden md:block absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-[1]"
+            >
+            </div>
+        </div>
+
+        <div
+            class="relative z-10 w-full md:min-h-[100svh] max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12 gap-6 md:gap-12 md:justify-center"
+        >
+            <div
+                class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto"
+                x-show="showWelcome"
+                style="display: none"
+                x-transition:enter="transition ease-out duration-800"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+            >
+                <div
+                    class="w-full h-full flex md:hidden flex-col items-center justify-start pt-6 sm:pt-8 px-1"
+                    x-data="{ baseText: '¡HOLA! BIENVENIDO A LA AGENCIA #1 DE LIMA', baseTyped: '', baseChar: 0, phrases:['EN DESARROLLO WEB', 'EN LANDING PAGES', 'EN PÁGINAS CORPORATIVAS', 'EN TIENDAS ONLINE'], phraseIdx: 0, loopTyped: '', loopChar: 0, isDeleting: false, startLoop() { let current = this.phrases[this.phraseIdx]; if(this.isDeleting) { this.loopTyped = current.substring(0, this.loopChar - 1); this.loopChar--; } else { this.loopTyped = current.substring(0, this.loopChar + 1); this.loopChar++; } let speed = this.isDeleting ? 30 : 60; if(!this.isDeleting && this.loopChar === current.length) { speed = 2000; this.isDeleting = true; } else if(this.isDeleting && this.loopChar === 0) { this.isDeleting = false; this.phraseIdx = (this.phraseIdx + 1) % this.phrases.length; speed = 500; } setTimeout(() => { this.startLoop() }, speed); }, typeBase() { if(this.baseChar < this.baseText.length) { this.baseTyped += this.baseText.charAt(this.baseChar); this.baseChar++; setTimeout(() => { this.typeBase() }, 35); } else { setTimeout(() => { this.startLoop() }, 500); } } }"
+                    x-init="setTimeout(() => { typeBase() }, 800)"
+                >
+                    <h2
+                        class="font-black uppercase italic tracking-wide text-[9px] min-[380px]:text-[10px] sm:text-xs text-center leading-relaxed"
+                    >
+                        <span
+                            class="text-white drop-shadow-lg"
+                            x-text="baseTyped"></span>
+                        <br />
+                        <div class="mt-1 h-4 flex items-center justify-center">
+                            <span
+                                class="text-blue-500 drop-shadow-lg"
+                                x-show="baseChar >= baseText.length"
+                            >
+                                <span x-text="loopTyped"></span><span
+                                    class="animate-pulse text-white">|</span
+                                >
+                            </span>
+                        </div>
+                    </h2>
+                </div>
+
+                <div
+                    class="hidden md:block w-full text-center transition-all duration-[3000ms] ease-in-out transform origin-center px-4"
+                    :class="isUp ? 'scale-[0.80] translate-y-0' : 'scale-100 translate-y-[15vh]'"
+                >
+                    <h2
+                        class="font-black uppercase italic tracking-tighter drop-shadow-2xl leading-none transition-all duration-[3000ms]"
+                        x-data="{ fill: false, glow: false }"
+                        x-init="setTimeout(() => fill = true, 600); setTimeout(() => glow = true, 1800);"
+                    >
+                        <span
+                            class="block transition-all duration-[3000ms] text-lg md:text-2xl text-white"
+                            :class="isUp ? 'opacity-50 mb-1' : 'opacity-80 mb-2'"
+                        >
+                            ¡Hola! Bienvenido a
+                        </span>
+                        <span
+                            class="relative inline-block my-2 transition-all duration-[3000ms] ease-in-out text-3xl sm:text-5xl md:text-7xl"
+                        >
+                            <span
+                                class="relative inline-block transition-all duration-[1000ms]"
+                                :class="glow ? 'drop-shadow-[0_0_35px_rgba(59,130,246,1)] brightness-125' : ''"
+                            >
+                                <span
+                                    class="block text-transparent pointer-events-none"
+                                    style="-webkit-text-stroke: 1px rgba(59, 130, 246, 0.5);"
+                                >
+                                    la agencia #1 de Lima
+                                </span>
+                                <span
+                                    class="absolute inset-0 text-blue-500 pointer-events-none"
+                                    style="transition: clip-path 1200ms ease-out;"
+                                    :style="fill ? 'clip-path: inset(0 0 0 0);' : 'clip-path: inset(0 100% 0 0);'"
+                                >
+                                    la agencia #1 de Lima
+                                </span>
+                            </span>
+                        </span>
+                        <span
+                            class="block transition-all duration-[3000ms] text-lg md:text-2xl text-white"
+                            :class="isUp ? 'opacity-50 mt-1' : 'opacity-80 mt-2'"
+                        >
+                            en desarrollo web
+                        </span>
+                    </h2>
+                </div>
+            </div>
+
+            <div
+                class="w-full flex flex-col items-center gap-3 md:gap-12 z-10 mt-2 md:mt-0"
+            >
+                <div
+                    class="w-full flex justify-center opacity-100 translate-y-0 md:opacity-0 md:translate-y-8 md:pointer-events-none md:transition-all md:ease-out md:duration-1000 md:delay-[200ms]"
+                    :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                >
+                    <div
+                        x-data="{ x: 0, y: 0 }"
+                        @mousemove="x = $event.offsetX; y = $event.offsetY"
+                        class="relative backdrop-blur-xl bg-white/5 border border-white/20 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2.5rem] shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] max-w-2xl w-full text-left md:text-center group overflow-hidden"
+                    >
+                        <div
+                            class="absolute -top-24 -left-24 w-48 md:w-64 h-48 md:h-64 bg-blue-600/20 rounded-full blur-[60px] md:blur-[80px] animate-pulse pointer-events-none"
+                        >
+                        </div>
+                        <div
+                            class="absolute -bottom-24 -right-24 w-48 md:w-64 h-48 md:h-64 bg-purple-600/15 rounded-full blur-[60px] md:blur-[80px] animate-pulse delay-700 pointer-events-none"
+                        >
+                        </div>
+
+                        <div
+                            class="absolute inset-0 opacity-[0.05] pointer-events-none"
+                            style="background-image: url('https://grainy-gradients.vercel.app/noise.svg'); filter: contrast(150%) brightness(100%);"
+                        >
+                        </div>
+                        <div
+                            class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                            :style="`background: radial-gradient(600px circle at ${x}px ${y}px, rgba(59,130,246,0.12), transparent 40%);`"
+                        >
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"
+                        >
+                        </div>
+
+                        <div
+                            class="relative z-10 flex flex-col md:items-center"
+                        >
+                            <div
+                                class="bg-blue-600 text-white text-[9px] md:text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-2 md:mb-4 inline-block shadow-lg shadow-blue-900/50 w-max"
+                            >
+                                Tu marca en todo el mundo
+                            </div>
+                            <h3
+                                class="text-white text-lg md:text-3xl font-black italic uppercase leading-tight mb-1 md:mb-3 drop-shadow-md"
+                            >
+                                Tu negocio siempre activo
+                            </h3>
+                            <p
+                                class="text-slate-300 text-xs md:text-base font-medium leading-relaxed max-w-lg md:mx-auto"
+                            >
+                                Desarrollamos páginas web para marcas
+                                personales, negocios, empresas y comercios
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 w-full max-w-4xl px-2"
+                >
+                    <div
+                        class="h-full opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:pointer-events-none md:transition-all md:ease-out md:duration-700 md:delay-[600ms]"
+                        :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                    >
+                        <div
+                            @click="activeCard = 1"
+                            class="flex flex-row md:flex-col items-center md:justify-center text-left md:text-center gap-3 md:gap-4 backdrop-blur-md bg-black/40 border p-3 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 cursor-pointer h-auto md:h-[210px] group border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.15)] w-full"
+                            :class="activeCard === 1 ? 'border-purple-400 shadow-[0_0_40px_rgba(168,85,247,0.5)] brightness-125 scale-[1.02]' : ''"
+                        >
+                            <div
+                                class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-indigo-500/30 shadow-inner"
+                            >
+                                <i
+                                    class="fas fa-file-signature text-base md:text-2xl"
+                                ></i>
+                            </div>
+                            <div class="flex flex-col mt-0 md:mt-2">
+                                <span
+                                    class="text-white text-sm md:text-base font-black uppercase tracking-wider mb-0 md:mb-2"
+                                    >Emitimos Boleta</span
+                                >
+                                <span
+                                    class="text-slate-400 text-[10px] md:text-xs leading-snug md:px-2"
+                                    >Formalidad legal garantizada para tu
+                                    inversión</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="h-full opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:pointer-events-none md:transition-all md:ease-out md:duration-700 md:delay-[800ms]"
+                        :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                    >
+                        <div
+                            @click="activeCard = 2"
+                            class="flex flex-row md:flex-col items-center md:justify-center text-left md:text-center gap-3 md:gap-4 backdrop-blur-md bg-blue-600/20 border p-3 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 cursor-pointer h-auto md:h-[210px] group border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.2)] w-full"
+                            :class="activeCard === 2 ? 'border-blue-400 shadow-[0_0_40px_rgba(59,130,246,0.6)] brightness-125 scale-[1.02]' : ''"
+                        >
+                            <div
+                                class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-blue-600 flex items-center justify-center text-white shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                            >
+                                <i
+                                    class="fas fa-bolt-lightning text-base md:text-2xl"
+                                ></i>
+                            </div>
+                            <div class="flex flex-col mt-0 md:mt-2">
+                                <span
+                                    class="text-white text-sm md:text-base font-black uppercase tracking-wider mb-0 md:mb-2"
+                                    >Desde S/ 450</span
+                                >
+                                <span
+                                    class="text-blue-100 text-[10px] md:text-xs leading-snug md:px-2"
+                                    >Tu marca profesional al mejor precio del
+                                    mercado</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="h-full opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:pointer-events-none md:transition-all md:ease-out md:duration-700 md:delay-[1000ms]"
+                        :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                    >
+                        <div
+                            @click="activeCard = 3"
+                            class="flex flex-row md:flex-col items-center md:justify-center text-left md:text-center gap-3 md:gap-4 backdrop-blur-md bg-black/40 border p-3 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 cursor-pointer h-auto md:h-[210px] group border-emerald-500/40 shadow-[0_0_20px_rgba(16,185,129,0.15)] w-full"
+                            :class="activeCard === 3 ? 'border-emerald-400 shadow-[0_0_40px_rgba(16,185,129,0.5)] brightness-125 scale-[1.02]' : ''"
+                        >
+                            <div
+                                class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-emerald-500/30 shadow-inner"
+                            >
+                                <i
+                                    class="fas fa-check-double text-base md:text-2xl"
+                                ></i>
+                            </div>
+                            <div class="flex flex-col mt-0 md:mt-2">
+                                <span
+                                    class="text-white text-sm md:text-base font-black uppercase tracking-wider mb-0 md:mb-2"
+                                    >Cero Costos</span
+                                >
+                                <span
+                                    class="text-slate-400 text-[10px] md:text-xs leading-snug md:px-2"
+                                    >Sin mensualidades trampa. La web es 100%
+                                    tuya</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPOS DE WEB -->
+    <section
+        id="tipos-de-web"
+        class="py-10 md:py-24 px-6 bg-slate-950 border-b border-slate-800"
+    >
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8 md:mb-16">
+                <h2
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-white mb-6"
+                >
+                    Encuentra tu nivel de
+                    <span class="text-blue-500">despegue</span>
+                </h2>
+                <p
+                    class="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs"
+                >
+                    Selecciona la etapa actual de tu negocio en el mercado
+                    digital
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Nivel 1 -->
+                <div
+                    class="flex flex-col h-full bg-slate-900/50 rounded-[2.5rem] p-6 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                >
+                    <div class="mb-6 px-2">
+                        <span
+                            class="text-blue-500 font-black text-xs uppercase tracking-[0.2em]"
+                            >Nivel 1</span
+                        >
+                        <h3
+                            class="text-xl font-black text-white uppercase italic mt-1"
+                        >
+                            Identidad Digital
+                        </h3>
+                    </div>
+                    <div
+                        class="w-full h-44 bg-slate-800 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-white/5"
+                    >
+                        <img
+                            src="/imgs/diseno-landing-page-profesional-doctor-lima.webp"
+                            alt="Mockup L1"
+                            class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                        />
+                    </div>
+                    <div class="space-y-4 mb-4 grow flex flex-col px-2">
+                        <div
+                            class="bg-slate-800/40 p-4 rounded-2xl border border-slate-700/50 min-h-[115px]"
+                        >
+                            <p
+                                class="text-[10px] font-black text-blue-400 uppercase mb-2"
+                            >
+                                ¿Es para mí?
+                            </p>
+                            <p class="text-sm text-slate-300 leading-snug">
+                                Si eres un <strong
+                                    >profesional independiente o emprendedor</strong
+                                > que desea una <strong
+                                    >presencia oficial</strong
+                                > para que sus clientes potenciales lo encuentren
+                                rápido en Google.
+                            </p>
+                        </div>
+                        <div
+                            class="bg-slate-800/20 p-4 rounded-2xl border border-dashed border-slate-700/50"
+                        >
+                            <p
+                                class="text-[10px] font-black text-slate-500 uppercase mb-2"
+                            >
+                                ¿Qué ofrece?
+                            </p>
+                            <ul class="text-xs text-slate-400 space-y-2">
+                                <li>
+                                    <i class="fas fa-check text-blue-500 mr-2"
+                                    ></i>1 Sección (Landing Page)
+                                </li>
+                                <li>
+                                    <i class="fas fa-check text-blue-500 mr-2"
+                                    ></i>Entrega en 48 Horas
+                                </li>
+                                <li>
+                                    <i class="fas fa-check text-blue-500 mr-2"
+                                    ></i>Botón Directo WhatsApp
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-auto shrink-0 flex flex-col gap-4">
+                        <div
+                            class="flex justify-between items-center bg-slate-950 px-5 py-4 rounded-2xl border border-slate-800"
+                        >
+                            <span
+                                class="text-slate-400 font-bold text-[10px] uppercase tracking-widest"
+                                >Plan 1</span
+                            >
+                            <span class="text-white font-black text-xl italic"
+                                >S/ 450</span
+                            >
+                        </div>
+                        <a
+                            href="/planes#l1"
+                            class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-blue-500 transition-all"
+                        >
+                            Ver detalles del Nivel 1
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nivel 2 -->
+                <div
+                    class="flex flex-col h-full bg-slate-900/50 rounded-[2.5rem] p-6 border border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.1)] hover:border-blue-500/50 transition-all group relative"
+                >
+                    <div
+                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-black uppercase px-4 py-1 rounded-full tracking-widest"
+                    >
+                        MÁS SOLICITADO
+                    </div>
+                    <div class="mb-6 px-2">
+                        <span
+                            class="text-blue-500 font-black text-xs uppercase tracking-[0.2em]"
+                            >Nivel 2</span
+                        >
+                        <h3
+                            class="text-xl font-black text-white uppercase italic mt-1"
+                        >
+                            Poder Corporativo
+                        </h3>
+                    </div>
+                    <div
+                        class="w-full h-44 bg-slate-800 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-white/5"
+                    >
+                        <img
+                            src="/imgs/pagina-web-corporativa-empresa-negocios.webp"
+                            alt="Mockup L2"
+                            class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                        />
+                    </div>
+                    <div class="space-y-4 mb-4 grow flex flex-col px-2">
+                        <div
+                            class="bg-blue-900/20 p-4 rounded-2xl border border-blue-500/20 min-h-[115px]"
+                        >
+                            <p
+                                class="text-[10px] font-black text-blue-400 uppercase mb-2"
+                            >
+                                ¿Es para mí?
+                            </p>
+                            <p class="text-sm text-slate-300 leading-snug">
+                                Si tienes una <strong
+                                    >empresa de servicios</strong
+                                > que busca proyectar <strong
+                                    >estatus de élite</strong
+                                > y necesitas autonomía para gestionar tus propios
+                                contenidos.
+                            </p>
+                        </div>
+                        <div
+                            class="bg-slate-800/20 p-4 rounded-2xl border border-dashed border-slate-700/50"
+                        >
+                            <p
+                                class="text-[10px] font-black text-slate-500 uppercase mb-2"
+                            >
+                                ¿Qué ofrece?
+                            </p>
+                            <ul class="text-xs text-slate-400 space-y-2">
+                                <li>
+                                    <i class="fas fa-check text-blue-400 mr-2"
+                                    ></i>Hasta 5 Secciones Pro
+                                </li>
+                                <li>
+                                    <i class="fas fa-check text-blue-400 mr-2"
+                                    ></i>Panel de Control (CMS)
+                                </li>
+                                <li>
+                                    <i class="fas fa-check text-blue-400 mr-2"
+                                    ></i>Correos Corporativos
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-auto shrink-0 flex flex-col gap-4">
+                        <div
+                            class="flex justify-between items-center bg-slate-950 px-5 py-4 rounded-2xl border border-slate-800"
+                        >
+                            <span
+                                class="text-slate-400 font-bold text-[10px] uppercase tracking-widest"
+                                >Plan 2</span
+                            >
+                            <span class="text-white font-black text-xl italic"
+                                >S/ 1,000</span
+                            >
+                        </div>
+                        <a
+                            href="/planes#l2"
+                            class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-blue-500 transition-all"
+                        >
+                            Ver detalles del Nivel 2
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nivel 3 -->
+                <div
+                    class="flex flex-col h-full bg-slate-900/50 rounded-[2.5rem] p-6 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+                >
+                    <div class="mb-6 px-2">
+                        <span
+                            class="text-emerald-500 font-black text-xs uppercase tracking-[0.2em]"
+                            >Nivel 3</span
+                        >
+                        <h3
+                            class="text-xl font-black text-white uppercase italic mt-1"
+                        >
+                            Ventas 24/7
+                        </h3>
+                    </div>
+                    <div
+                        class="w-full h-44 bg-slate-800 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-white/5"
+                    >
+                        <img
+                            src="/imgs/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp"
+                            alt="Mockup L3"
+                            class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                        />
+                    </div>
+                    <div class="space-y-4 mb-4 grow flex flex-col px-2">
+                        <div
+                            class="bg-emerald-900/20 p-4 rounded-2xl border border-emerald-500/20 min-h-[115px]"
+                        >
+                            <p
+                                class="text-[10px] font-black text-emerald-400 uppercase mb-2"
+                            >
+                                ¿Es para mí?
+                            </p>
+                            <p class="text-sm text-slate-300 leading-snug">
+                                Si vendes <strong>productos físicos</strong> y quieres
+                                una <strong>tienda profesional</strong> que reciba
+                                pagos y gestione inventario de forma automática siempre.
+                            </p>
+                        </div>
+                        <div
+                            class="bg-slate-800/20 p-4 rounded-2xl border border-dashed border-slate-700/50"
+                        >
+                            <p
+                                class="text-[10px] font-black text-slate-500 uppercase mb-2"
+                            >
+                                ¿Qué ofrece?
+                            </p>
+                            <ul class="text-xs text-slate-400 space-y-2">
+                                <li>
+                                    <i
+                                        class="fas fa-check text-emerald-500 mr-2"
+                                    ></i>Tienda Online Completa
+                                </li>
+                                <li>
+                                    <i
+                                        class="fas fa-check text-emerald-500 mr-2"
+                                    ></i>Pagos (Yape/Visa/Plin)
+                                </li>
+                                <li>
+                                    <i
+                                        class="fas fa-check text-emerald-500 mr-2"
+                                    ></i>Control de Stock Real
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-auto shrink-0 flex flex-col gap-4">
+                        <div
+                            class="flex justify-between items-center bg-slate-950 px-5 py-4 rounded-2xl border border-slate-800"
+                        >
+                            <span
+                                class="text-slate-400 font-bold text-[10px] uppercase tracking-widest"
+                                >Plan 3</span
+                            >
+                            <span class="text-white font-black text-xl italic"
+                                >S/ 3,500</span
+                            >
+                        </div>
+                        <a
+                            href="/planes#l3"
+                            class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-emerald-500 transition-all"
+                        >
+                            Ver detalles del Nivel 3
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="max-w-4xl mx-auto text-center border-t border-slate-800 pt-10"
+            >
+                <p
+                    class="text-slate-400 font-black uppercase tracking-[0.15em] text-[10px] leading-relaxed"
+                >
+                    🚀 Todos los planes incluyen:
+                    <span class="text-slate-200"
+                        >Dominio, Hosting, Optimización de Logo y Fotos, Botón
+                        de WhatsApp y Mapa Interactivo.</span
+                    >
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO MINI -->
+    <section
+        id="portafolio"
+        class="py-10 md:py-24 px-6 bg-slate-950 border-b border-slate-800"
+    >
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 space-y-4">
+                <h2
+                    class="text-4xl font-black tracking-tighter uppercase italic text-white tracking-wider"
+                >
+                    Proyectos Entregados
+                </h2>
+                <p class="text-slate-400 font-medium max-w-2xl mx-auto">
+                    No prometemos velocidad, la demostramos. Proyectos
+                    entregados, optimizados al máximo y vendiendo en automático.
+                </p>
+                <div class="h-1.5 w-16 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-slate-900/50 rounded-3xl overflow-hidden shadow-sm border border-slate-800 group flex flex-col relative hover:border-blue-500/50 transition-colors"
+                >
+                    <div
+                        class="h-64 sm:h-72 bg-slate-800 overflow-hidden shrink-0"
+                    >
+                        <img
+                            src="/imgs/agencia-digital-diseno-web-doctor.avif"
+                            alt="Proyecto 1"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        />
+                    </div>
+                    <div class="p-6 grow flex justify-between items-end">
+                        <div>
+                            <h3 class="font-bold text-white uppercase text-sm">
+                                Clínica Dra. Selene
+                            </h3>
+                            <p
+                                class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1"
+                            >
+                                Sector Salud
+                            </p>
+                        </div>
+                        <div
+                            class="text-emerald-400 font-bold text-xs flex items-center gap-1"
+                        >
+                            <i class="fas fa-bolt"></i> 100/100
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-slate-900/50 rounded-3xl overflow-hidden shadow-sm border border-slate-800 group flex flex-col relative hover:border-blue-500/50 transition-colors"
+                >
+                    <div
+                        class="h-64 sm:h-72 bg-slate-800 overflow-hidden shrink-0"
+                    >
+                        <img
+                            src="/imgs/marketing-digital-gamarra-paginas-web.avif"
+                            alt="Proyecto 2"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        />
+                    </div>
+                    <div class="p-6 grow flex justify-between items-end">
+                        <div>
+                            <h3 class="font-bold text-white uppercase text-sm">
+                                Puro Fierro Gym
+                            </h3>
+                            <p
+                                class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1"
+                            >
+                                Sector Fitness
+                            </p>
+                        </div>
+                        <div
+                            class="text-emerald-400 font-bold text-xs flex items-center gap-1"
+                        >
+                            <i class="fas fa-bolt"></i> 100/100
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-slate-900/50 rounded-3xl overflow-hidden shadow-sm border border-slate-800 group flex flex-col relative hover:border-blue-500/50 transition-colors"
+                >
+                    <div
+                        class="h-64 sm:h-72 bg-slate-800 overflow-hidden shrink-0"
+                    >
+                        <img
+                            src="/imgs/servicio-pagina-web-peru-barato.avif"
+                            alt="Proyecto 3"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        />
+                    </div>
+                    <div class="p-6 grow flex justify-between items-end">
+                        <div>
+                            <h3 class="font-bold text-white uppercase text-sm">
+                                Perforaciones Magnus
+                            </h3>
+                            <p
+                                class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1"
+                            >
+                                Ingeniería
+                            </p>
+                        </div>
+                        <div
+                            class="text-emerald-400 font-bold text-xs flex items-center gap-1"
+                        >
+                            <i class="fas fa-bolt"></i> 100/100
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section
+        id="por-que-elegirnos"
+        class="scroll-mt-12 md:scroll-mt-6 pt-12 pb-10 md:pt-24 md:pb-24 px-6 bg-slate-950 border-b border-slate-800"
+    >
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-14">
+                <h2
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-white mb-6"
+                >
+                    ¿Por qué elegirnos?
+                </h2>
+                <p
+                    class="text-slate-400 max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed"
+                >
+                    Construimos tu activo digital con tecnología 2026
+                    entregándote sitios web
+                    <strong class="text-white"
+                        >premium, seguros y 100% de tu propiedad</strong
+                    >. A diferencia de otras agencias que te ofrecen plantillas
+                    defectuosas de WordPress y código genérico.
+                </p>
+            </div>
+
+            <div
+                class="max-w-4xl mx-auto bg-slate-900/50 rounded-3xl border border-slate-800 overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] mb-14 md:mb-20"
+            >
+                <div
+                    class="grid grid-cols-3 bg-slate-950 text-white font-black max-[415px]:text-[8px] text-[10px] md:text-sm uppercase tracking-widest border-b border-slate-800"
+                >
+                    <div
+                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center flex items-center justify-center text-slate-300"
+                    >
+                        Características
+                    </div>
+                    <div
+                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center bg-blue-600 flex items-center justify-center relative shadow-inner text-white"
+                    >
+                        <span>Despega Tu Web</span>
+                        <i
+                            class="fas fa-rocket text-white max-[415px]:text-xs text-sm md:text-lg absolute min-[490px]:relative top-1/2 min-[490px]:top-auto translate-y-3 min-[490px]:translate-y-0 min-[490px]:ml-2"
+                        ></i>
+                    </div>
+                    <div
+                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center bg-slate-900 flex items-center justify-center relative text-slate-300"
+                    >
+                        <span>Otras agencias</span>
+                        <span
+                            class="absolute top-1/2 translate-y-3 md:translate-y-4 left-0 w-full max-[415px]:text-[6.5px] text-[8px] md:text-[10px] text-slate-500 normal-case font-medium tracking-normal"
+                            >(WordPress / Genéricas)</span
+                        >
+                    </div>
+                </div>
+
+                <div
+                    class="grid grid-cols-3 border-b border-slate-800 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                >
+                    <div
+                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                    >
+                        Velocidad
+                    </div>
+                    <div
+                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col md:flex-row items-center justify-center gap-1"
+                    >
+                        <span>Carga Instantánea</span><i
+                            class="fas fa-bolt text-yellow-500 hidden md:inline"
+                        ></i>
+                    </div>
+                    <div
+                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                    >
+                        Lenta (Plantillas pesadas)
+                    </div>
+                </div>
+                <div
+                    class="grid grid-cols-3 border-b border-slate-800 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                >
+                    <div
+                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                    >
+                        Seguridad
+                    </div>
+                    <div
+                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col justify-center items-center"
+                    >
+                        Blindaje Cloudflare
+                    </div>
+                    <div
+                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                    >
+                        Vulnerable a hackeos
+                    </div>
+                </div>
+                <div
+                    class="grid grid-cols-3 border-b border-slate-800 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                >
+                    <div
+                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                    >
+                        Costos Ocultos
+                    </div>
+                    <div
+                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col justify-center items-center"
+                    >
+                        Cero (Pago único)
+                    </div>
+                    <div
+                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                    >
+                        Mensualidades constantes
+                    </div>
+                </div>
+                <div
+                    class="grid grid-cols-3 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                >
+                    <div
+                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                    >
+                        Propiedad
+                    </div>
+                    <div
+                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col justify-center items-center"
+                    >
+                        100% Tuya + Boleta oficial
+                    </div>
+                    <div
+                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                    >
+                        Te "alquilan" el sitio
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-4 gap-2 md:gap-12 items-start md:items-center text-center max-w-4xl mx-auto px-1 md:px-0"
+            >
+                <div
+                    class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
+                >
+                    <div
+                        class="w-12 h-12 md:w-20 md:h-20 bg-orange-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-orange-400 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-orange-900/50"
+                    >
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <span
+                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        >Astro & Next.js</span
+                    >
+                </div>
+                <div
+                    class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
+                >
+                    <div
+                        class="w-12 h-12 md:w-20 md:h-20 bg-cyan-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-cyan-400 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-cyan-900/50"
+                    >
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <span
+                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        >Tailwind CSS</span
+                    >
+                </div>
+                <div
+                    class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
+                >
+                    <div
+                        class="w-12 h-12 md:w-20 md:h-20 bg-emerald-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-emerald-400 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-emerald-900/50"
+                    >
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <span
+                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        >Supabase CMS</span
+                    >
+                </div>
+                <div
+                    class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
+                >
+                    <div
+                        class="w-12 h-12 md:w-20 md:h-20 bg-blue-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-blue-500 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-blue-900/50"
+                    >
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span
+                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        >Edge Computing</span
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section
+        id="beneficios-comunes"
+        class="relative py-12 md:py-24 px-4 md:px-6 bg-slate-950 border-y border-slate-800/50 overflow-hidden"
+    >
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full bg-blue-900/10 blur-[120px] rounded-full pointer-events-none"
+        >
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-10 md:mb-20">
+                <h2
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic mb-4 tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500 drop-shadow-sm"
+                >
+                    Beneficios de trabajar con nosotros
+                </h2>
+                <p
+                    class="text-slate-400 max-w-2xl mx-auto text-sm md:text-lg font-medium leading-relaxed px-2"
+                >
+                    Sin importar el nivel que elijas, tu ecosistema digital
+                    incluye todas las herramientas de <span
+                        class="text-white font-bold">élite</span
+                    > para operar con seguridad y estatus.
+                </p>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+            >
+                <!-- Beneficios (1 a 6) -->
+                <div
+                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-indigo-500 hover:to-slate-800 transition-all duration-500"
+                >
+                    <div
+                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                    >
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300"
+                        >
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-indigo-300 transition-colors"
+                            >
+                                Dominio y Hosting
+                            </h3><p
+                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                            >
+                                Incluimos tu dirección <strong
+                                    class="text-indigo-400 group-hover:text-indigo-300"
+                                    >.com</strong
+                                > y alojamiento profesional por el primer año.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-emerald-500 hover:to-slate-800 transition-all duration-500"
+                >
+                    <div
+                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                    >
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-300"
+                        >
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-emerald-300 transition-colors"
+                            >
+                                Blindaje Antihackeos
+                            </h3><p
+                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                            >
+                                Protegemos tu sitio con tecnología 2026 para que
+                                nunca se caiga y evada ataques cibernéticos
+                                24/7.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-amber-500 hover:to-slate-800 transition-all duration-500"
+                >
+                    <div
+                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                    >
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-all duration-300"
+                        >
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-amber-300 transition-colors"
+                            >
+                                Propiedad 100% Tuya
+                            </h3><p
+                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                            >
+                                No te "alquilamos" el sitio. Eres el dueño
+                                absoluto de todo el código y activos desde el
+                                primer día.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-rose-500 hover:to-slate-800 transition-all duration-500"
+                >
+                    <div
+                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                    >
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(244,63,94,0.4)] transition-all duration-300"
+                        >
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-rose-300 transition-colors"
+                            >
+                                Boleta de Venta
+                            </h3><p
+                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                            >
+                                Somos una empresa formal. Emitimos comprobante
+                                legal para sustentar tu inversión y darte
+                                respaldo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-cyan-500 hover:to-slate-800 transition-all duration-500"
+                >
+                    <div
+                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                    >
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300"
+                        >
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-cyan-300 transition-colors"
+                            >
+                                Diseño Inteligente
+                            </h3><p
+                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                            >
+                                Tu web cargará instantáneamente en celulares.
+                                Optimizamos cada imagen para no perder ni un
+                                segundo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-green-500 hover:to-slate-800 transition-all duration-500"
+                >
+                    <div
+                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                    >
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-green-500/10 text-green-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-green-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all duration-300"
+                        >
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-green-300 transition-colors"
+                            >
+                                Contacto Directo
+                            </h3><p
+                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                            >
+                                Integramos botones inteligentes que llevan al
+                                cliente a tu WhatsApp. Convertimos visitas en
+                                clientes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section
+        class="py-16 md:py-32 px-4 md:px-6 bg-slate-950 relative overflow-hidden"
+    >
+        <div
+            class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-blue-900/10 blur-[150px] rounded-full pointer-events-none"
+        >
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-12 md:mb-20">
+                <h2
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500 mb-4 drop-shadow-sm"
+                >
+                    Despejemos tus dudas
+                </h2>
+                <p
+                    class="text-slate-400 font-bold uppercase tracking-[0.15em] text-xs max-w-2xl mx-auto leading-relaxed"
+                >
+                    Transparencia total. Conoce por qué somos la inversión más
+                    inteligente para el futuro de tu negocio.
+                </p>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start"
+            >
+                <details
+                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 shadow-lg[&_summary::-webkit-details-marker]:hidden"
+                >
+                    <summary
+                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                    >
+                        <div
+                            class="w-12 h-12 shrink-0 bg-blue-900/30 text-blue-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-blue-600 group-open:text-white transition-colors duration-300"
+                        >
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3
+                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
+                        >
+                            ¿Hay mensualidades o costos ocultos?
+                        </h3>
+                        <div
+                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
+                        >
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
+                    >
+                        <p>
+                            <strong>Cero sorpresas.</strong> El pago por el desarrollo
+                            de tu web es único, este incluye el primer año de Hosting
+                            y Dominio (.com).
+                        </p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
+                >
+                    <summary
+                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                    >
+                        <div
+                            class="w-12 h-12 shrink-0 bg-emerald-900/30 text-emerald-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-emerald-500 group-open:text-white transition-colors duration-300"
+                        >
+                            <i class="fas fa-fighter-jet"></i>
+                        </div>
+                        <h3
+                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
+                        >
+                            He visto webs de S/ 100, ¿por qué elegirnos?
+                        </h3>
+                        <div
+                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
+                        >
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
+                    >
+                        <p>
+                            Porque lo barato en digital sale carísimo y se
+                            asocia a plantillas defectuosas de WordPress y
+                            miedos a estafas. Nosotros construimos "Webs
+                            Inteligentes" con carga instantánea y optimización
+                            total. Utilizamos un stack moderno con Astro y
+                            Next.js que supera a la competencia en rendimiento y
+                            SEO.
+                        </p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
+                >
+                    <summary
+                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                    >
+                        <div
+                            class="w-12 h-12 shrink-0 bg-orange-900/30 text-orange-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-orange-500 group-open:text-white transition-colors duration-300"
+                        >
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <h3
+                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
+                        >
+                            ¿Realmente me entregan la web en 48 horas?
+                        </h3>
+                        <div
+                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
+                        >
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
+                    >
+                        <p>
+                            ¡Sí, el tiempo es oro! Para nuestro Nivel 1 (Web
+                            Presencia Profesional), garantizamos la entrega en
+                            48 horas (2 días hábiles). El reloj inicia su cuenta
+                            regresiva en el momento exacto en que el cliente
+                            completa la carga de sus 15 fotos y logo en la nube.
+                        </p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
+                >
+                    <summary
+                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                    >
+                        <div
+                            class="w-12 h-12 shrink-0 bg-cyan-900/30 text-cyan-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-cyan-500 group-open:text-white transition-colors duration-300"
+                        >
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <h3
+                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
+                        >
+                            ¿Cómo aseguro mi inversión? ¿Entregan boleta?
+                        </h3>
+                        <div
+                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
+                        >
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
+                    >
+                        <p>
+                            Tu tranquilidad es nuestra prioridad. Operamos con
+                            total formalidad y emitimos boletas de venta para
+                            generar confianza. Además, contamos con un Acuerdo
+                            de Servicio que detalla las pautas, como el máximo
+                            de 2 rondas de ajustes tras la entrega inicial,
+                            garantizando que el proceso sea transparente.
+                        </p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
+                >
+                    <summary
+                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                    >
+                        <div
+                            class="w-12 h-12 shrink-0 bg-purple-900/30 text-purple-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-purple-500 group-open:text-white transition-colors duration-300"
+                        >
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3
+                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
+                        >
+                            Si inicio con el Nivel 1, ¿puedo escalarlo después?
+                        </h3>
+                        <div
+                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
+                        >
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
+                    >
+                        <p>
+                            Totalmente. Si hoy requieres identidad digital
+                            rápida, mañana puedes escalar al Nivel 2, el cual
+                            cuenta con un panel administrativo para actualizar
+                            precios y galería sin depender de terceros. O saltar
+                            al Nivel 3, una tienda online automatizada que
+                            funciona como un vendedor 24/7 con carrito intuitivo
+                            y pasarela de pagos.
+                        </p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-rose-500/30 transition-all duration-300 shadow-lg[&_summary::-webkit-details-marker]:hidden"
+                >
+                    <summary
+                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                    >
+                        <div
+                            class="w-12 h-12 shrink-0 bg-rose-900/30 text-rose-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-rose-500 group-open:text-white transition-colors duration-300"
+                        >
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3
+                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
+                        >
+                            No sé nada de tecnología, ¿es complicado para mí?
+                        </h3>
+                        <div
+                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
+                        >
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
+                    >
+                        <p>
+                            ¡Cero estrés! Nosotros nos encargamos de todo.
+                            Nuestro servicio incluye la optimización de tu logo
+                            y la conversión de imágenes al formato ultra rápido
+                            WebP. Además, en planes como el L1, integramos un
+                            botón directo a WhatsApp para facilitar el contacto
+                            con tus clientes.
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="mt-12 md:mt-20 text-center">
+                <p class="text-slate-500 font-medium text-sm mb-6">
+                    ¿Aún tienes alguna duda específica sobre tu proyecto?
+                </p>
+                <a
+                    href="https://wa.me/51963896469?text=Hola%20DespegaTuWeb,%20tengo%20una%20duda%20específica%20sobre%20mi%20proyecto%20web."
+                    target="_blank"
+                    class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all border border-slate-700 hover:border-slate-500 shadow-lg"
+                >
+                    <i class="fab fa-whatsapp text-green-400 text-lg"></i> Hablemos
+                    por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+    <FloatingWhatsApp />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var video = document.getElementById(
+                "hero-video",
+            ) as HTMLVideoElement;
+            if (video) {
+                var playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(function (error) {
+                        console.log(
+                            "El ahorro de batería bloqueó el video. Mostrando imagen poster.",
+                        );
+                    });
+                }
+            }
+        });
+    </script>
 </Layout>

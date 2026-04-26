@@ -1,0 +1,206 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+---
+
+<Layout
+    title="Política de Privacidad | DespegaTuWeb"
+    description="Política de privacidad y tratamiento de datos de DespegaTuWeb."
+>
+    <Navbar />
+
+    <div
+        class="fixed top-0 right-0 w-[600px] h-[600px] bg-teal-600/10 blur-[150px] rounded-full pointer-events-none z-0"
+    >
+    </div>
+
+    <header
+        class="w-full pt-32 pb-12 px-6 relative z-10 text-center border-b border-slate-800/50 bg-slate-900/20"
+    >
+        <div class="max-w-4xl mx-auto">
+            <div
+                class="inline-flex items-center gap-2 bg-slate-800/50 border border-slate-700 text-slate-300 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6"
+            >
+                <i class="fas fa-shield-alt text-teal-400"></i> Tus Datos Protegidos
+            </div>
+            <h1
+                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+            >
+                Política de
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400"
+                    >Privacidad</span
+                >
+            </h1>
+            <p
+                class="text-slate-400 font-medium text-sm md:text-base max-w-2xl mx-auto"
+            >
+                En DespegaTuWeb nos tomamos muy en serio la seguridad de tu
+                información. A continuación te explicamos con total
+                transparencia cómo recopilamos, usamos y protegemos tus datos y
+                activos digitales.
+            </p>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-6 py-12 relative z-10">
+        <div class="space-y-8">
+            <div
+                class="bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-3xl p-6 md:p-8 shadow-lg"
+            >
+                <div
+                    class="flex items-center gap-4 mb-4 border-b border-slate-800/50 pb-4"
+                >
+                    <div
+                        class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-xl shrink-0"
+                    >
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h2
+                        class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
+                    >
+                        1. Recopilación de Información
+                    </h2>
+                </div>
+                <div class="text-slate-400 text-sm leading-relaxed space-y-4">
+                    <p>
+                        Para poder brindarte un servicio de calidad, recopilamos
+                        únicamente la información estrictamente necesaria para
+                        el desarrollo de tu proyecto y la facturación del mismo.
+                        Esto incluye:
+                    </p>
+                    <ul class="list-disc list-inside pl-2 space-y-2">
+                        <li>Nombres y Apellidos / Razón Social.</li>
+                        <li>
+                            Número de contacto (WhatsApp) y Correo electrónico.
+                        </li>
+                        <li>Datos de facturación (DNI o RUC).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-3xl p-6 md:p-8 shadow-lg"
+            >
+                <div
+                    class="flex items-center gap-4 mb-4 border-b border-slate-800/50 pb-4"
+                >
+                    <div
+                        class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl shrink-0"
+                    >
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h2
+                        class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
+                    >
+                        2. Uso de tu Información
+                    </h2>
+                </div>
+                <div class="text-slate-400 text-sm leading-relaxed space-y-4">
+                    <p>
+                        Tus datos de contacto serán utilizados de forma
+                        exclusiva para:
+                    </p>
+                    <ul class="list-disc list-inside pl-2 space-y-2">
+                        <li>
+                            Comunicarnos contigo sobre los avances de tu página
+                            web.
+                        </li>
+                        <li>
+                            Enviarte los accesos, contraseñas y enlaces de tu
+                            proyecto finalizado.
+                        </li>
+                        <li>
+                            Enviarte los comprobantes de pago
+                            (Boletas/Facturas).
+                        </li>
+                        <li>
+                            Notificarte sobre las renovaciones anuales de
+                            Dominio y Hosting.
+                        </li>
+                    </ul>
+                    <p class="text-white font-medium mt-2">
+                        Cero Spam: <span class="text-slate-400 font-normal"
+                            >DespegaTuWeb NO vende, alquila ni cede tu
+                            información a terceros bajo ninguna circunstancia.</span
+                        >
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-3xl p-6 md:p-8 shadow-lg"
+            >
+                <div
+                    class="flex items-center gap-4 mb-4 border-b border-slate-800/50 pb-4"
+                >
+                    <div
+                        class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl shrink-0"
+                    >
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h2
+                        class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
+                    >
+                        3. Activos Digitales (Google Drive)
+                    </h2>
+                </div>
+                <div class="text-slate-400 text-sm leading-relaxed space-y-4">
+                    <p>
+                        Como parte de nuestro flujo de trabajo, te
+                        proporcionaremos un enlace seguro a una carpeta de
+                        Google Drive para que subas tus logotipos, fotografías y
+                        textos.
+                    </p>
+                    <p>
+                        <strong>Propiedad Intelectual:</strong> Todos los archivos
+                        multimedia y textos que compartas con nosotros son y seguirán
+                        siendo de tu total propiedad. Nuestro equipo técnico solo
+                        accederá a esta carpeta con el único fin de extraer, optimizar
+                        (ej. convertir a formato WebP) y maquetar los recursos en
+                        tu nueva página web.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-3xl p-6 md:p-8 shadow-lg mb-8"
+            >
+                <div
+                    class="flex items-center gap-4 mb-4 border-b border-slate-800/50 pb-4"
+                >
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl shrink-0"
+                    >
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h2
+                        class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
+                    >
+                        4. Marco Legal y Derechos
+                    </h2>
+                </div>
+                <div class="text-slate-400 text-sm leading-relaxed space-y-4">
+                    <p>
+                        En cumplimiento con la normativa vigente en Perú (Ley N°
+                        29733, Ley de Protección de Datos Personales),
+                        garantizamos que tus datos se almacenan en un entorno
+                        seguro y encriptado.
+                    </p>
+                    <p>
+                        En cualquier momento tienes el derecho de solicitarnos
+                        la actualización, rectificación o eliminación de tus
+                        datos de contacto de nuestra base de datos,
+                        comunicándote directamente a nuestro canal oficial de
+                        WhatsApp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+    <FloatingWhatsApp />
+</Layout>
