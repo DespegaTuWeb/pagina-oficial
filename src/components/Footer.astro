@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import Icon from './Icon.astro';
-import yape from '../assets/yape.webp';
-import plin from '../assets/plin.webp';
-import visa from '../assets/visa.webp';
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import yape from "../assets/yape.webp";
+import plin from "../assets/plin.webp";
+import visa from "../assets/visa.webp";
 ---
 
 <footer
@@ -58,42 +58,51 @@ import visa from '../assets/visa.webp';
                 class="flex items-center justify-center gap-4 md:gap-12 flex-nowrap w-full"
             >
                 <div
-                    class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(147,51,234,0.8)] transition-all duration-300"
+                    class="w-[70px] md:w-[100px] h-[45px] md:h-[60px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(147,51,234,0.8)] transition-all duration-300"
                 >
                     <Image
                         src={yape}
                         alt="Yape"
                         class="max-w-full max-h-full object-contain block"
-                        width={70}
+                        width={100}
+                        height={100}
                         loading="lazy"
                     />
                 </div>
+
                 <div
-                    class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-300"
+                    class="w-[70px] md:w-[100px] h-[45px] md:h-[60px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-300"
                 >
                     <Image
                         src={plin}
                         alt="Plin"
                         class="max-w-full max-h-full object-contain block"
-                        width={70}
+                        width={100}
+                        height={100}
                         loading="lazy"
                     />
                 </div>
+
                 <div
-                    class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] transition-all duration-300"
+                    class="w-[70px] md:w-[100px] h-[45px] md:h-[60px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] transition-all duration-300"
                 >
                     <Image
                         src={visa}
                         alt="Visa"
                         class="max-w-full max-h-full object-contain block"
-                        width={70}
+                        width={100}
+                        height={100}
                         loading="lazy"
                     />
                 </div>
+
                 <div
-                    class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center text-[28px] md:text-[40px] text-slate-300 hover:text-white hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] transition-all duration-300"
+                    class="w-[70px] md:w-[100px] h-[45px] md:h-[60px] shrink-0 flex items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] transition-all duration-300"
                 >
-                    <Icon name="fa6-solid:building-columns" class="w-8 h-8 md:w-10 md:h-10" />
+                    <Icon
+                        name="fa6-solid:building-columns"
+                        class="w-[40px] h-[40px] md:w-[55px] md:h-[55px]"
+                    />
                 </div>
             </div>
         </div>

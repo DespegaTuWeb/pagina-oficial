@@ -5,9 +5,10 @@ interface Props {
     title: string;
     description: string;
     image?: string;
+    heroPosterSrc?: string;
 }
 
-const { title, description, image = "/imgs/hero-fallback.webp" } = Astro.props;
+const { title, description, image = "/imgs/hero-fallback.webp", heroPosterSrc } = Astro.props;
 ---
 
 <!doctype html>
@@ -43,6 +44,16 @@ const { title, description, image = "/imgs/hero-fallback.webp" } = Astro.props;
             href="/favicon-48x48.png"
         />
         <link rel="shortcut icon" href="/favicon.ico" />
+
+        <!-- Hero poster preload — máxima prioridad para el LCP -->
+        {heroPosterSrc && (
+            <link
+                rel="preload"
+                as="image"
+                href={heroPosterSrc}
+                fetchpriority="high"
+            />
+        )}
 
 
 

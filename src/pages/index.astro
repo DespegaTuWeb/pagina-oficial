@@ -3,21 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
-import { Image, Picture, getImage } from 'astro:assets';
-import Icon from '../components/Icon.astro';
-import imgDoctor from '../assets/agencia-digital-diseno-web-doctor.webp';
-import imgGym from '../assets/marketing-digital-gamarra-paginas-web.webp';
-import imgMagnus from '../assets/servicio-pagina-web-peru-barato.webp';
-import imgMockupL1 from '../assets/diseno-landing-page-profesional-doctor-lima.webp';
-import imgMockupL2 from '../assets/pagina-web-corporativa-empresa-negocios.webp';
-import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp';
-import imgHeroFallback from '../assets/hero-fallback.webp';
+import { Image, Picture, getImage } from "astro:assets";
+import Icon from "../components/Icon.astro";
+import imgDoctor from "../assets/agencia-digital-diseno-web-doctor.webp";
+import imgGym from "../assets/marketing-digital-gamarra-paginas-web.webp";
+import imgMagnus from "../assets/servicio-pagina-web-peru-barato.webp";
+import imgMockupL1 from "../assets/diseno-landing-page-profesional-doctor-lima.webp";
+import imgMockupL2 from "../assets/pagina-web-corporativa-empresa-negocios.webp";
+import imgMockupL3 from "../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp";
+import imgHeroFallback from "../assets/hero-fallback.webp";
 
 // Optimiza hero-fallback a 640px para el poster del video (móvil) y OG image
 const optimizedPoster = await getImage({
     src: imgHeroFallback,
     width: 640,
-    format: 'webp',
+    format: "webp",
     quality: 82,
 });
 ---
@@ -26,6 +26,7 @@ const optimizedPoster = await getImage({
     title="DespegaTuWeb | Creación de Páginas Web para Emprendedores, Negocios y Empresas"
     description="Creamos la página web de tu negocio para que tus clientes te encuentren rápido. Páginas modernas, seguras y profesionales para vender más."
     image={optimizedPoster.src}
+    heroPosterSrc={optimizedPoster.src}
 >
     <Navbar />
 
@@ -46,6 +47,7 @@ const optimizedPoster = await getImage({
                 preload="auto"
                 poster={optimizedPoster.src}
                 class="w-full h-full object-cover md:object-contain md:object-center opacity-100 md:opacity-40 transition-opacity"
+                style="contain: strict"
             >
                 <source src="/imgs/hero.webm" type="video/webm" />
                 <source src="/imgs/hero.mp4" type="video/mp4" />
@@ -213,7 +215,10 @@ const optimizedPoster = await getImage({
                             <div
                                 class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-indigo-500/30 shadow-inner"
                             >
-                                <Icon name="fa6-solid:file-signature" class="text-base md:text-2xl" />
+                                <Icon
+                                    name="fa6-solid:file-signature"
+                                    class="text-base md:text-2xl"
+                                />
                             </div>
                             <div class="flex flex-col mt-0 md:mt-2">
                                 <span
@@ -241,7 +246,10 @@ const optimizedPoster = await getImage({
                             <div
                                 class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-blue-600 flex items-center justify-center text-white shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
                             >
-                                <Icon name="fa6-solid:bolt-lightning" class="text-base md:text-2xl" />
+                                <Icon
+                                    name="fa6-solid:bolt-lightning"
+                                    class="text-base md:text-2xl"
+                                />
                             </div>
                             <div class="flex flex-col mt-0 md:mt-2">
                                 <span
@@ -269,7 +277,10 @@ const optimizedPoster = await getImage({
                             <div
                                 class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-emerald-500/30 shadow-inner"
                             >
-                                <Icon name="fa6-solid:check-double" class="text-base md:text-2xl" />
+                                <Icon
+                                    name="fa6-solid:check-double"
+                                    class="text-base md:text-2xl"
+                                />
                             </div>
                             <div class="flex flex-col mt-0 md:mt-2">
                                 <span
@@ -333,8 +344,10 @@ const optimizedPoster = await getImage({
                             src={imgMockupL1}
                             alt="Mockup L1"
                             widths={[300, 500]}
-                            formats={['avif', 'webp']}
+                            formats={["avif", "webp"]}
                             sizes="(max-width: 768px) calc(100vw - 48px), 280px"
+                            width={500}
+                            height={333}
                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                             loading="lazy"
                         />
@@ -366,11 +379,23 @@ const optimizedPoster = await getImage({
                                 ¿Qué ofrece?
                             </p>
                             <ul class="text-xs text-slate-400 space-y-2">
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-500 mr-2" />1 Sección (Landing Page)
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-blue-500 mr-2"
+                                    />1 Sección (Landing Page)
                                 </li>
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-500 mr-2" />Entrega en 48 Horas
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-blue-500 mr-2"
+                                    />Entrega en 48 Horas
                                 </li>
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-500 mr-2" />Botón Directo WhatsApp
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-blue-500 mr-2"
+                                    />Botón Directo WhatsApp
                                 </li>
                             </ul>
                         </div>
@@ -423,8 +448,10 @@ const optimizedPoster = await getImage({
                             src={imgMockupL2}
                             alt="Mockup L2"
                             widths={[300, 500]}
-                            formats={['avif', 'webp']}
+                            formats={["avif", "webp"]}
                             sizes="(max-width: 768px) calc(100vw - 48px), 280px"
+                            width={500}
+                            height={333}
                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                             loading="lazy"
                         />
@@ -456,11 +483,23 @@ const optimizedPoster = await getImage({
                                 ¿Qué ofrece?
                             </p>
                             <ul class="text-xs text-slate-400 space-y-2">
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Hasta 5 Secciones Pro
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-blue-400 mr-2"
+                                    />Hasta 5 Secciones Pro
                                 </li>
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Panel de Control (CMS)
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-blue-400 mr-2"
+                                    />Panel de Control (CMS)
                                 </li>
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Correos Corporativos
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-blue-400 mr-2"
+                                    />Correos Corporativos
                                 </li>
                             </ul>
                         </div>
@@ -508,8 +547,10 @@ const optimizedPoster = await getImage({
                             src={imgMockupL3}
                             alt="Mockup L3"
                             widths={[300, 500]}
-                            formats={['avif', 'webp']}
+                            formats={["avif", "webp"]}
                             sizes="(max-width: 768px) calc(100vw - 48px), 280px"
+                            width={500}
+                            height={333}
                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                             loading="lazy"
                         />
@@ -538,11 +579,23 @@ const optimizedPoster = await getImage({
                                 ¿Qué ofrece?
                             </p>
                             <ul class="text-xs text-slate-400 space-y-2">
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Tienda Online Completa
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-emerald-500 mr-2"
+                                    />Tienda Online Completa
                                 </li>
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Pagos (Yape/Visa/Plin)
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-emerald-500 mr-2"
+                                    />Pagos (Yape/Visa/Plin)
                                 </li>
-                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Control de Stock Real
+                                <li class="flex items-center">
+                                    <Icon
+                                        name="fa6-solid:check"
+                                        class="text-emerald-500 mr-2"
+                                    />Control de Stock Real
                                 </li>
                             </ul>
                         </div>
@@ -615,8 +668,10 @@ const optimizedPoster = await getImage({
                             src={imgDoctor}
                             alt="Proyecto 1"
                             widths={[400, 700]}
-                            formats={['avif', 'webp']}
+                            formats={["avif", "webp"]}
                             sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
+                            width={700}
+                            height={467}
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                             loading="lazy"
                         />
@@ -650,8 +705,10 @@ const optimizedPoster = await getImage({
                             src={imgGym}
                             alt="Proyecto 2"
                             widths={[400, 700]}
-                            formats={['avif', 'webp']}
+                            formats={["avif", "webp"]}
                             sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
+                            width={700}
+                            height={467}
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                             loading="lazy"
                         />
@@ -685,8 +742,10 @@ const optimizedPoster = await getImage({
                             src={imgMagnus}
                             alt="Proyecto 3"
                             widths={[400, 700]}
-                            formats={['avif', 'webp']}
+                            formats={["avif", "webp"]}
                             sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
+                            width={700}
+                            height={467}
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                             loading="lazy"
                         />
@@ -752,7 +811,10 @@ const optimizedPoster = await getImage({
                         class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center bg-blue-600 flex items-center justify-center relative shadow-inner text-white"
                     >
                         <span>Despega Tu Web</span>
-                        <Icon name="fa6-solid:rocket" class="text-white max-[415px]:text-xs text-sm md:text-lg absolute min-[490px]:relative top-1/2 min-[490px]:top-auto translate-y-3 min-[490px]:translate-y-0 min-[490px]:ml-2" />
+                        <Icon
+                            name="fa6-solid:rocket"
+                            class="text-white max-[415px]:text-xs text-sm md:text-lg absolute min-[490px]:relative top-1/2 min-[490px]:top-auto translate-y-3 min-[490px]:translate-y-0 min-[490px]:ml-2"
+                        />
                     </div>
                     <div
                         class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center bg-slate-900 flex items-center justify-center relative text-slate-300"
@@ -776,7 +838,10 @@ const optimizedPoster = await getImage({
                     <div
                         class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col md:flex-row items-center justify-center gap-1"
                     >
-                        <span>Carga Instantánea</span><Icon name="fa6-solid:bolt" class="text-yellow-500 hidden md:inline" />
+                        <span>Carga Instantánea</span><Icon
+                            name="fa6-solid:bolt"
+                            class="text-yellow-500 hidden md:inline"
+                        />
                     </div>
                     <div
                         class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
@@ -1340,8 +1405,10 @@ const optimizedPoster = await getImage({
                     target="_blank"
                     class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all border border-slate-700 hover:border-slate-500 shadow-lg"
                 >
-                    <Icon name="fa6-brands:whatsapp" class="text-green-400 text-lg" /> Hablemos
-                    por WhatsApp
+                    <Icon
+                        name="fa6-brands:whatsapp"
+                        class="text-green-400 text-lg"
+                    /> Hablemos por WhatsApp
                 </a>
             </div>
         </div>
