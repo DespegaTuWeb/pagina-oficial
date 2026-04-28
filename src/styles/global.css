@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Fuentes autoalojadas — sin CDN, sin FOUT */
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+@import "@fontsource/plus-jakarta-sans/400-italic.css";
+@import "@fontsource/plus-jakarta-sans/800-italic.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
 /* Alineación base de todos los íconos SVG (astro-icon) */
 [data-icon] {
   display: inline-block;
