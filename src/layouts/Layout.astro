@@ -73,8 +73,12 @@ const { title, description, image = "/imgs/hero-fallback.webp", heroPosterSrc } 
             />
         </noscript>
 
-        <!-- Alpine.js -->
-        <script defer src="//unpkg.com/alpinejs"></script>
+        <!-- Alpine.js — local, sin CDN externo -->
+        <script>
+            import Alpine from 'alpinejs';
+            window.Alpine = Alpine;
+            Alpine.start();
+        </script>
 
         <style is:global>
             /* Estilos globales y estandarización */
