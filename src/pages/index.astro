@@ -31,12 +31,12 @@ const optimizedPoster = await getImage({
     <Navbar />
 
     <section
-        class="relative w-full md:min-h-[100svh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-slate-950 border-b border-slate-800"
+        class="relative w-full min-h-[600px] md:min-h-[100svh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-slate-950 border-b border-slate-800"
         x-data="{ showWelcome: false, showExtra: false, isUp: false, activeCard: 0 }"
-        x-init="setTimeout(() => showWelcome = true, 200); setTimeout(() => isUp = true, 2800); setTimeout(() => showExtra = true, 4500);"
+        x-init="setTimeout(() => showWelcome = true, 50); setTimeout(() => isUp = true, 2800); setTimeout(() => showExtra = true, 4500);"
     >
         <div
-            class="absolute left-0 w-full z-0 overflow-hidden pointer-events-none transition-all duration-500 top-20 aspect-video md:top-0 md:aspect-auto md:h-full"
+            class="absolute left-0 w-full z-0 overflow-hidden pointer-events-none top-0 aspect-video md:aspect-auto md:h-full"
         >
             <video
                 id="hero-video"
@@ -62,12 +62,8 @@ const optimizedPoster = await getImage({
             class="relative z-10 w-full md:min-h-[100svh] max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12 gap-6 md:gap-12 md:justify-center"
         >
             <div
-                class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto"
-                x-show="showWelcome"
-                style="display: none"
-                x-transition:enter="transition ease-out duration-800"
-                x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100"
+                class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto transition-opacity duration-[800ms]"
+                :class="showWelcome ? 'opacity-100' : 'opacity-0'"
             >
                 <div
                     class="w-full h-full flex md:hidden flex-col items-center justify-start pt-6 sm:pt-8 px-1"
@@ -145,8 +141,8 @@ const optimizedPoster = await getImage({
                 class="w-full flex flex-col items-center gap-3 md:gap-12 z-10 mt-2 md:mt-0"
             >
                 <div
-                    class="w-full flex justify-center opacity-100 translate-y-0 md:opacity-0 md:translate-y-8 md:pointer-events-none md:transition-all md:ease-out md:duration-1000 md:delay-[200ms]"
-                    :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                    class="w-full flex justify-center transition-all ease-out duration-1000 delay-[200ms]"
+                    :class="showExtra ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
                 >
                     <div
                         x-data="{ x: 0, y: 0 }"
@@ -204,8 +200,8 @@ const optimizedPoster = await getImage({
                     class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 w-full max-w-4xl px-2"
                 >
                     <div
-                        class="h-full opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:pointer-events-none md:transition-all md:ease-out md:duration-700 md:delay-[600ms]"
-                        :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                        class="h-full transition-all ease-out duration-700 delay-[600ms]"
+                        :class="showExtra ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
                     >
                         <div
                             @click="activeCard = 1"
@@ -235,8 +231,8 @@ const optimizedPoster = await getImage({
                     </div>
 
                     <div
-                        class="h-full opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:pointer-events-none md:transition-all md:ease-out md:duration-700 md:delay-[800ms]"
-                        :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                        class="h-full transition-all ease-out duration-700 delay-[800ms]"
+                        :class="showExtra ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
                     >
                         <div
                             @click="activeCard = 2"
@@ -266,8 +262,8 @@ const optimizedPoster = await getImage({
                     </div>
 
                     <div
-                        class="h-full opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:pointer-events-none md:transition-all md:ease-out md:duration-700 md:delay-[1000ms]"
-                        :class="showExtra ? 'md:opacity-100 md:translate-y-0 md:pointer-events-auto' : ''"
+                        class="h-full transition-all ease-out duration-700 delay-[1000ms]"
+                        :class="showExtra ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
                     >
                         <div
                             @click="activeCard = 3"
