@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
-import { Image, Picture } from 'astro:assets';
+import { Image, Picture, getImage } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import imgDoctor from '../assets/agencia-digital-diseno-web-doctor.webp';
 import imgGym from '../assets/marketing-digital-gamarra-paginas-web.webp';
@@ -11,11 +11,21 @@ import imgMagnus from '../assets/servicio-pagina-web-peru-barato.webp';
 import imgMockupL1 from '../assets/diseno-landing-page-profesional-doctor-lima.webp';
 import imgMockupL2 from '../assets/pagina-web-corporativa-empresa-negocios.webp';
 import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp';
+import imgHeroFallback from '../assets/hero-fallback.webp';
+
+// Optimiza hero-fallback a 640px para el poster del video (móvil) y OG image
+const optimizedPoster = await getImage({
+    src: imgHeroFallback,
+    width: 640,
+    format: 'webp',
+    quality: 82,
+});
 ---
 
 <Layout
     title="DespegaTuWeb | Creación de Páginas Web para Emprendedores, Negocios y Empresas"
     description="Creamos la página web de tu negocio para que tus clientes te encuentren rápido. Páginas modernas, seguras y profesionales para vender más."
+    image={optimizedPoster.src}
 >
     <Navbar />
 
@@ -34,7 +44,7 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                 loop
                 playsinline
                 preload="auto"
-                poster="/imgs/hero-fallback.webp"
+                poster={optimizedPoster.src}
                 class="w-full h-full object-cover md:object-contain md:object-center opacity-100 md:opacity-40 transition-opacity"
             >
                 <source src="/imgs/hero.webm" type="video/webm" />
@@ -322,8 +332,9 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                         <Picture
                             src={imgMockupL1}
                             alt="Mockup L1"
-                            widths={[400, 700]}
+                            widths={[300, 500]}
                             formats={['avif', 'webp']}
+                            sizes="(max-width: 768px) calc(100vw - 48px), 280px"
                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                             loading="lazy"
                         />
@@ -355,14 +366,11 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                                 ¿Qué ofrece?
                             </p>
                             <ul class="text-xs text-slate-400 space-y-2">
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-blue-500 mr-2" />1 Sección (Landing Page)
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-500 mr-2" />1 Sección (Landing Page)
                                 </li>
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-blue-500 mr-2" />Entrega en 48 Horas
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-500 mr-2" />Entrega en 48 Horas
                                 </li>
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-blue-500 mr-2" />Botón Directo WhatsApp
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-500 mr-2" />Botón Directo WhatsApp
                                 </li>
                             </ul>
                         </div>
@@ -414,8 +422,9 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                         <Picture
                             src={imgMockupL2}
                             alt="Mockup L2"
-                            widths={[400, 700]}
+                            widths={[300, 500]}
                             formats={['avif', 'webp']}
+                            sizes="(max-width: 768px) calc(100vw - 48px), 280px"
                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                             loading="lazy"
                         />
@@ -447,14 +456,11 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                                 ¿Qué ofrece?
                             </p>
                             <ul class="text-xs text-slate-400 space-y-2">
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Hasta 5 Secciones Pro
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Hasta 5 Secciones Pro
                                 </li>
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Panel de Control (CMS)
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Panel de Control (CMS)
                                 </li>
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Correos Corporativos
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-blue-400 mr-2" />Correos Corporativos
                                 </li>
                             </ul>
                         </div>
@@ -501,8 +507,9 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                         <Picture
                             src={imgMockupL3}
                             alt="Mockup L3"
-                            widths={[400, 700]}
+                            widths={[300, 500]}
                             formats={['avif', 'webp']}
+                            sizes="(max-width: 768px) calc(100vw - 48px), 280px"
                             class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                             loading="lazy"
                         />
@@ -531,14 +538,11 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                                 ¿Qué ofrece?
                             </p>
                             <ul class="text-xs text-slate-400 space-y-2">
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Tienda Online Completa
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Tienda Online Completa
                                 </li>
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Pagos (Yape/Visa/Plin)
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Pagos (Yape/Visa/Plin)
                                 </li>
-                                <li>
-                                    <Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Control de Stock Real
+                                <li class="flex items-center"><Icon name="fa6-solid:check" class="text-emerald-500 mr-2" />Control de Stock Real
                                 </li>
                             </ul>
                         </div>
@@ -610,8 +614,9 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                         <Picture
                             src={imgDoctor}
                             alt="Proyecto 1"
-                            widths={[400, 800]}
+                            widths={[400, 700]}
                             formats={['avif', 'webp']}
+                            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                             loading="lazy"
                         />
@@ -644,8 +649,9 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                         <Picture
                             src={imgGym}
                             alt="Proyecto 2"
-                            widths={[400, 800]}
+                            widths={[400, 700]}
                             formats={['avif', 'webp']}
+                            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                             loading="lazy"
                         />
@@ -678,8 +684,9 @@ import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-co
                         <Picture
                             src={imgMagnus}
                             alt="Proyecto 3"
-                            widths={[400, 800]}
+                            widths={[400, 700]}
                             formats={['avif', 'webp']}
+                            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                             loading="lazy"
                         />

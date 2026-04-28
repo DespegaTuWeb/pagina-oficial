@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
@@ -106,8 +106,9 @@ import Icon from '../components/Icon.astro';
                             <Picture
                                 src={imgDoctor}
                                 alt="Web Clínica Dra. Selene"
-                                widths={[400, 800]}
+                                widths={[400, 700]}
                                 formats={['avif', 'webp']}
+                                sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1024px) 50vw, 400px"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
                                 loading="lazy"
                             />
@@ -116,9 +117,7 @@ import Icon from '../components/Icon.astro';
                             >
                                 <span
                                     class="bg-orange-600 text-white font-black text-xs uppercase tracking-widest px-6 py-3 rounded-full flex items-center gap-2"
-                                    >Ver Web en Vivo <i
-                                        class="fas fa-external-link-alt"
-                                    ></i></span
+                                    >Ver Web en Vivo <Icon name="fa6-solid:arrow-up-right-from-square" /></span
                                 >
                             </div>
                         </div>
@@ -169,8 +168,9 @@ import Icon from '../components/Icon.astro';
                             <Picture
                                 src={imgGym}
                                 alt="Web Puro Fierro Gym"
-                                widths={[400, 800]}
+                                widths={[400, 700]}
                                 formats={['avif', 'webp']}
+                                sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1024px) 50vw, 400px"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
                                 loading="lazy"
                             />
@@ -179,9 +179,7 @@ import Icon from '../components/Icon.astro';
                             >
                                 <span
                                     class="bg-orange-600 text-white font-black text-xs uppercase tracking-widest px-6 py-3 rounded-full flex items-center gap-2"
-                                    >Ver Web en Vivo <i
-                                        class="fas fa-external-link-alt"
-                                    ></i></span
+                                    >Ver Web en Vivo <Icon name="fa6-solid:arrow-up-right-from-square" /></span
                                 >
                             </div>
                         </div>
@@ -232,8 +230,9 @@ import Icon from '../components/Icon.astro';
                             <Picture
                                 src={imgMagnus}
                                 alt="Web Perforaciones Magnus"
-                                widths={[400, 800]}
+                                widths={[400, 700]}
                                 formats={['avif', 'webp']}
+                                sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1024px) 50vw, 400px"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
                                 loading="lazy"
                             />
@@ -242,9 +241,7 @@ import Icon from '../components/Icon.astro';
                             >
                                 <span
                                     class="bg-orange-600 text-white font-black text-xs uppercase tracking-widest px-6 py-3 rounded-full flex items-center gap-2"
-                                    >Ver Web en Vivo <i
-                                        class="fas fa-external-link-alt"
-                                    ></i></span
+                                    >Ver Web en Vivo <Icon name="fa6-solid:arrow-up-right-from-square" /></span
                                 >
                             </div>
                         </div>

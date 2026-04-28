@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+/* Alineación base de todos los íconos SVG (astro-icon) */
+[data-icon] {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}

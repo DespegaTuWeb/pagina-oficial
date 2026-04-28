@@ -9,5 +9,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [sitemap(), icon()]
+  integrations: [sitemap(), icon()],
+  build: {
+    // Inyecta TODO el CSS inline en el HTML → elimina solicitudes CSS bloqueantes
+    inlineStylesheets: 'always'
+  }
 });
