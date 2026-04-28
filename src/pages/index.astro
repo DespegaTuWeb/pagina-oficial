@@ -33,7 +33,7 @@ const optimizedPoster = await getImage({
     <section
         class="relative w-full min-h-[600px] md:min-h-[100svh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-slate-950 border-b border-slate-800"
         x-data="{ showWelcome: false, showExtra: false, isUp: false, activeCard: 0 }"
-        x-init="setTimeout(() => showWelcome = true, 50); setTimeout(() => isUp = true, 2800); setTimeout(() => showExtra = true, 4500);"
+        x-init="setTimeout(() => showWelcome = true, 50); setTimeout(() => isUp = true, 700); setTimeout(() => showExtra = true, 1125);"
     >
         <div
             class="absolute left-0 w-full z-0 overflow-hidden pointer-events-none top-16 aspect-video md:top-0 md:aspect-auto md:h-full"
@@ -61,13 +61,12 @@ const optimizedPoster = await getImage({
             class="relative z-10 w-full md:min-h-[100svh] max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12 gap-6 md:gap-12 md:justify-center"
         >
             <div
-                class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto transition-opacity duration-[800ms] opacity-0"
-                :class="showWelcome ? 'opacity-100' : 'opacity-0'"
+                class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto"
             >
                 <div
                     class="w-full h-full flex md:hidden flex-col items-center justify-start pt-6 sm:pt-8 px-1"
-                    x-data="{ baseText: '¡HOLA! BIENVENIDO A LA AGENCIA #1 DE LIMA', baseTyped: '', baseChar: 0, phrases:['EN DESARROLLO WEB', 'EN LANDING PAGES', 'EN PÁGINAS CORPORATIVAS', 'EN TIENDAS ONLINE'], phraseIdx: 0, loopTyped: '', loopChar: 0, isDeleting: false, startLoop() { let current = this.phrases[this.phraseIdx]; if(this.isDeleting) { this.loopTyped = current.substring(0, this.loopChar - 1); this.loopChar--; } else { this.loopTyped = current.substring(0, this.loopChar + 1); this.loopChar++; } let speed = this.isDeleting ? 30 : 60; if(!this.isDeleting && this.loopChar === current.length) { speed = 2000; this.isDeleting = true; } else if(this.isDeleting && this.loopChar === 0) { this.isDeleting = false; this.phraseIdx = (this.phraseIdx + 1) % this.phrases.length; speed = 500; } setTimeout(() => { this.startLoop() }, speed); }, typeBase() { if(this.baseChar < this.baseText.length) { this.baseTyped += this.baseText.charAt(this.baseChar); this.baseChar++; setTimeout(() => { this.typeBase() }, 35); } else { setTimeout(() => { this.startLoop() }, 500); } } }"
-                    x-init="setTimeout(() => { typeBase() }, 800)"
+                    x-data="{ baseText: '¡HOLA! BIENVENIDO A LA AGENCIA #1 DE LIMA', baseTyped: '', baseChar: 0, phrases:['EN DESARROLLO WEB', 'EN LANDING PAGES', 'EN PÁGINAS CORPORATIVAS', 'EN TIENDAS ONLINE'], phraseIdx: 0, loopTyped: '', loopChar: 0, isDeleting: false, startLoop() { let current = this.phrases[this.phraseIdx]; if(this.isDeleting) { this.loopTyped = current.substring(0, this.loopChar - 1); this.loopChar--; } else { this.loopTyped = current.substring(0, this.loopChar + 1); this.loopChar++; } let speed = this.isDeleting ? 15 : 30; if(!this.isDeleting && this.loopChar === current.length) { speed = 1000; this.isDeleting = true; } else if(this.isDeleting && this.loopChar === 0) { this.isDeleting = false; this.phraseIdx = (this.phraseIdx + 1) % this.phrases.length; speed = 250; } setTimeout(() => { this.startLoop() }, speed); }, typeBase() { if(this.baseChar < this.baseText.length) { this.baseTyped += this.baseText.charAt(this.baseChar); this.baseChar++; setTimeout(() => { this.typeBase() }, 18); } else { setTimeout(() => { this.startLoop() }, 250); } } }"
+                    x-init="setTimeout(() => { typeBase() }, 400)"
                 >
                     <h2
                         class="font-black uppercase italic tracking-wide text-[9px] min-[380px]:text-[10px] sm:text-xs text-center leading-relaxed"
@@ -90,44 +89,35 @@ const optimizedPoster = await getImage({
                 </div>
 
                 <div
-                    class="hidden md:block w-full text-center transition-all duration-[3000ms] ease-in-out transform origin-center px-4"
-                    :class="isUp ? 'scale-[0.80] translate-y-0' : 'scale-100 translate-y-[15vh]'"
+                    class="hidden md:block w-full text-center origin-center px-4"
+                    style="transform: translateY(15vh); transition: transform 750ms ease-in-out;"
+                    :style="{ transform: isUp ? 'scale(0.80) translateY(0)' : 'translateY(15vh)' }"
                 >
                     <h2
-                        class="font-black uppercase italic tracking-tighter drop-shadow-2xl leading-none transition-all duration-[3000ms]"
-                        x-data="{ fill: false, glow: false }"
-                        x-init="setTimeout(() => fill = true, 600); setTimeout(() => glow = true, 1800);"
+                        class="font-black uppercase italic tracking-tighter drop-shadow-2xl leading-none transition-all duration-[750ms]"
+                        x-data="{ glow: false }"
+                        x-init="setTimeout(() => glow = true, 450);"
                     >
                         <span
-                            class="block transition-all duration-[3000ms] text-lg md:text-2xl text-white"
+                            class="block transition-all duration-[750ms] text-lg md:text-2xl text-white opacity-80 mb-2"
                             :class="isUp ? 'opacity-50 mb-1' : 'opacity-80 mb-2'"
                         >
                             ¡Hola! Bienvenido a
                         </span>
                         <span
-                            class="relative inline-block my-2 transition-all duration-[3000ms] ease-in-out text-3xl sm:text-5xl md:text-7xl"
+                            class="relative inline-block my-2 transition-all duration-[750ms] ease-in-out text-3xl sm:text-5xl md:text-7xl"
                         >
                             <span
-                                class="relative inline-block transition-all duration-[1000ms]"
+                                class="relative inline-block transition-all duration-[300ms]"
                                 :class="glow ? 'drop-shadow-[0_0_35px_rgba(59,130,246,1)] brightness-125' : ''"
                             >
-                                <span
-                                    class="block text-transparent pointer-events-none"
-                                    style="-webkit-text-stroke: 1px rgba(59, 130, 246, 0.5);"
-                                >
-                                    la agencia #1 de Lima
-                                </span>
-                                <span
-                                    class="absolute inset-0 text-blue-500 pointer-events-none"
-                                    style="transition: clip-path 1200ms ease-out;"
-                                    :style="fill ? 'clip-path: inset(0 0 0 0);' : 'clip-path: inset(0 100% 0 0);'"
-                                >
+                                <span class="text-blue-500">
                                     la agencia #1 de Lima
                                 </span>
                             </span>
                         </span>
                         <span
-                            class="block transition-all duration-[3000ms] text-lg md:text-2xl text-white"
+                            class="block transition-all duration-[750ms] text-lg md:text-2xl text-white opacity-80 mt-2"
                             :class="isUp ? 'opacity-50 mt-1' : 'opacity-80 mt-2'"
                         >
                             en desarrollo web
@@ -140,7 +130,7 @@ const optimizedPoster = await getImage({
                 class="w-full flex flex-col items-center gap-3 md:gap-12 z-10 mt-2 md:mt-0"
             >
                 <div
-                    class="w-full flex justify-center md:opacity-0 md:translate-y-8 md:transition-all md:ease-out md:duration-1000 md:delay-[200ms]"
+                    class="w-full flex justify-center md:opacity-0 md:translate-y-8 md:transition-all md:ease-out md:duration-[250ms] md:delay-[50ms]"
                     :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-8'"
                 >
                     <div
@@ -199,7 +189,7 @@ const optimizedPoster = await getImage({
                     class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 w-full max-w-4xl px-2"
                 >
                     <div
-                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-700 md:delay-[600ms]"
+                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-[175ms] md:delay-[150ms]"
                         :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-6'"
                     >
                         <div
@@ -230,7 +220,7 @@ const optimizedPoster = await getImage({
                     </div>
 
                     <div
-                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-700 md:delay-[800ms]"
+                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-[175ms] md:delay-[200ms]"
                         :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-6'"
                     >
                         <div
@@ -261,7 +251,7 @@ const optimizedPoster = await getImage({
                     </div>
 
                     <div
-                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-700 md:delay-[1000ms]"
+                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-[175ms] md:delay-[250ms]"
                         :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-6'"
                     >
                         <div
