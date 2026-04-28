@@ -1,8 +1,13 @@
----
+﻿---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { Picture } from 'astro:assets';
+import imgMockupL1 from '../assets/diseno-landing-page-profesional-doctor-lima.webp';
+import imgMockupL2 from '../assets/pagina-web-corporativa-empresa-negocios.webp';
+import imgMockupL3 from '../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -38,21 +43,21 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                     class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
                     :class="tab === 'l1' ? 'bg-orange-500/20 text-orange-400 border-orange-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
                 >
-                    <i class="fas fa-bolt mr-1.5 md:mr-2"></i> Nivel 1
+                    <Icon name="fa6-solid:bolt" class="mr-1.5 md:mr-2" /> Nivel 1
                 </button>
                 <button
                     @click="window.location.hash = 'l2'"
                     class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
                     :class="tab === 'l2' ? 'bg-blue-500/20 text-blue-400 border-blue-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
                 >
-                    <i class="fas fa-briefcase mr-1.5 md:mr-2"></i> Nivel 2
+                    <Icon name="fa6-solid:briefcase" class="mr-1.5 md:mr-2" /> Nivel 2
                 </button>
                 <button
                     @click="window.location.hash = 'l3'"
                     class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
                     :class="tab === 'l3' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
                 >
-                    <i class="fas fa-store mr-1.5 md:mr-2"></i> Nivel 3
+                    <Icon name="fa6-solid:store" class="mr-1.5 md:mr-2" /> Nivel 3
                 </button>
             </div>
         </div>
@@ -82,7 +87,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
                             >
-                                <i class="fas fa-rocket text-orange-500"></i> Nivel
+                                <Icon name="fa6-solid:rocket" class="text-orange-500" /> Nivel
                                 <span
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
                                     >UNO</span
@@ -91,7 +96,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="border border-orange-500/50 bg-orange-500/10 text-orange-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
                             >
-                                <i class="fas fa-stopwatch"></i> ¡Web lista en 48
+                                <Icon name="fa6-solid:stopwatch" /> ¡Web lista en 48
                                 horas!
                             </div>
                         </header>
@@ -126,8 +131,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-user-astronaut text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:user-astronaut" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -146,7 +150,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-yellow-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-star text-xl"></i>
+                                        <Icon name="fa6-solid:star" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -167,8 +171,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-photo-film text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:photo-film" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -188,7 +191,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-bolt text-xl"></i>
+                                        <Icon name="fa6-solid:bolt" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -208,9 +211,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0 shadow-inner"
                                     >
-                                        <i
-                                            class="fas fa-wand-magic-sparkles text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:wand-magic-sparkles" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -230,7 +231,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-gift text-xl"></i>
+                                        <Icon name="fa6-solid:gift" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -253,11 +254,14 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 <div
                                     class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l1 flex items-center justify-center flex-1 w-full"
                                 >
-                                    <img
-                                        src="/imgs/diseno-landing-page-profesional-doctor-lima.webp"
+                                    <Picture
+                                        src={imgMockupL1}
                                         alt="Mockup L1"
+                                        widths={[400, 700]}
+                                        formats={['avif', 'webp']}
                                         onerror="this.src = 'https://placehold.co/600x420/0f172a/f97316?text=Mockup+L1&font=montserrat'"
                                         class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                        loading="lazy"
                                     />
                                 </div>
                                 <div
@@ -311,7 +315,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 target="_blank"
                                 class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-900/50"
                             >
-                                <i class="fas fa-hourglass-half text-lg"></i> Entrega:
+                                <Icon name="fa6-solid:hourglass-half" class="text-lg" /> Entrega:
                                 2 días hábiles
                             </a>
                         </div>
@@ -335,7 +339,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
                             >
-                                <i class="fas fa-rocket text-blue-500"></i> Nivel
+                                <Icon name="fa6-solid:rocket" class="text-blue-500" /> Nivel
                                 <span
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600"
                                     >DOS</span
@@ -344,7 +348,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="border border-blue-500/50 bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
                             >
-                                <i class="fas fa-calendar-check"></i> ¡Lista en 7
+                                <Icon name="fa6-solid:calendar-check" /> ¡Lista en 7
                                 a 10 días!
                             </div>
                         </header>
@@ -380,7 +384,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-briefcase text-xl"></i>
+                                        <Icon name="fa6-solid:briefcase" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -400,8 +404,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-layer-group text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:layer-group" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -421,7 +424,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-sliders-h text-xl"></i>
+                                        <Icon name="fa6-solid:sliders" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -441,9 +444,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
                                     >
-                                        <i
-                                            class="fas fa-envelope-open-text text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:envelope-open-text" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -462,8 +463,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-chart-line text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:chart-line" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -483,9 +483,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
                                     >
-                                        <i
-                                            class="fas fa-wand-magic-sparkles text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:wand-magic-sparkles" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -505,7 +503,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-gift text-xl"></i>
+                                        <Icon name="fa6-solid:gift" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -528,11 +526,14 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 <div
                                     class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l2 flex items-center justify-center flex-1 w-full"
                                 >
-                                    <img
-                                        src="/imgs/pagina-web-corporativa-empresa-negocios.webp"
+                                    <Picture
+                                        src={imgMockupL2}
                                         alt="Mockup L2"
+                                        widths={[400, 700]}
+                                        formats={['avif', 'webp']}
                                         onerror="this.src = 'https://placehold.co/600x420/0f172a/3b82f6?text=Mockup+L2&font=montserrat'"
                                         class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                        loading="lazy"
                                     />
                                 </div>
                                 <div
@@ -586,7 +587,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 target="_blank"
                                 class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-900/50"
                             >
-                                <i class="fas fa-truck-fast text-lg"></i> Entrega:
+                                <Icon name="fa6-solid:truck-fast" class="text-lg" /> Entrega:
                                 7 a 10 días hábiles
                             </a>
                         </div>
@@ -610,7 +611,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
                             >
-                                <i class="fas fa-rocket text-emerald-500"></i> Nivel
+                                <Icon name="fa6-solid:rocket" class="text-emerald-500" /> Nivel
                                 <span
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600"
                                     >TRES</span
@@ -619,7 +620,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
                             >
-                                <i class="fas fa-store"></i> ¡Ventas en Automático!
+                                <Icon name="fa6-solid:store" /> ¡Ventas en Automático!
                             </div>
                         </header>
                         <div
@@ -654,7 +655,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-building text-xl"></i>
+                                        <Icon name="fa6-solid:building" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -674,7 +675,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-robot text-xl"></i>
+                                        <Icon name="fa6-solid:robot" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -695,8 +696,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-credit-card text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:credit-card" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -716,7 +716,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-desktop text-xl"></i>
+                                        <Icon name="fa6-solid:desktop" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -736,9 +736,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
                                     >
-                                        <i
-                                            class="fas fa-envelope-open-text text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:envelope-open-text" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -757,8 +755,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-chart-line text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:chart-line" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -778,8 +775,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-shield-alt text-xl"
-                                        ></i>
+                                        <Icon name="fa6-solid:shield-halved" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -799,7 +795,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                     <div
                                         class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
                                     >
-                                        <i class="fas fa-gift text-xl"></i>
+                                        <Icon name="fa6-solid:gift" class="text-xl" />
                                     </div>
                                     <div>
                                         <h3
@@ -822,11 +818,14 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 <div
                                     class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l3 flex items-center justify-center flex-1 w-full"
                                 >
-                                    <img
-                                        src="/imgs/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp"
+                                    <Picture
+                                        src={imgMockupL3}
                                         alt="Mockup L3"
+                                        widths={[400, 700]}
+                                        formats={['avif', 'webp']}
                                         onerror="this.src = 'https://placehold.co/600x420/0f172a/10b981?text=Mockup+L3&font=montserrat'"
                                         class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                        loading="lazy"
                                     />
                                 </div>
                                 <div
@@ -880,7 +879,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 target="_blank"
                                 class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg shadow-green-900/50"
                             >
-                                <i class="fab fa-whatsapp text-lg"></i> Iniciar Mi
+                                <Icon name="fa6-brands:whatsapp" class="text-lg" /> Iniciar Mi
                                 Despegue
                             </a>
                         </div>
@@ -1003,15 +1002,15 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 >Panel Administrable (CMS)</td
                             >
                             <td class="p-6 text-center bg-orange-500/5"
-                                ><i class="fas fa-minus text-slate-600"></i></td
+                                ><Icon name="fa6-solid:minus" class="text-slate-600" /></td
                             >
                             <td
                                 class="p-6 text-center bg-blue-500/5 text-blue-400 font-bold"
-                                ><i class="fas fa-check mr-1"></i> Precios / Galería</td
+                                ><Icon name="fa6-solid:check" class="mr-1" /> Precios / Galería</td
                             >
                             <td
                                 class="p-6 text-center bg-emerald-500/5 text-emerald-400 font-bold"
-                                ><i class="fas fa-check mr-1"></i> Control Total</td
+                                ><Icon name="fa6-solid:check" class="mr-1" /> Control Total</td
                             >
                         </tr>
                         <tr
@@ -1021,14 +1020,14 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 >Carrito y Pagos Online</td
                             >
                             <td class="p-6 text-center bg-orange-500/5"
-                                ><i class="fas fa-minus text-slate-600"></i></td
+                                ><Icon name="fa6-solid:minus" class="text-slate-600" /></td
                             >
                             <td class="p-6 text-center bg-blue-500/5"
-                                ><i class="fas fa-minus text-slate-600"></i></td
+                                ><Icon name="fa6-solid:minus" class="text-slate-600" /></td
                             >
                             <td
                                 class="p-6 text-center bg-emerald-500/5 text-emerald-400 font-bold"
-                                ><i class="fas fa-check mr-1"></i> Yape, Plin, Tarjetas</td
+                                ><Icon name="fa6-solid:check" class="mr-1" /> Yape, Plin, Tarjetas</td
                             >
                         </tr>
                         <tr
@@ -1038,16 +1037,13 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 >Correos Corporativos</td
                             >
                             <td class="p-6 text-center bg-orange-500/5"
-                                ><i class="fas fa-minus text-slate-600"></i></td
+                                ><Icon name="fa6-solid:minus" class="text-slate-600" /></td
                             >
                             <td class="p-6 text-center bg-blue-500/5"
-                                ><i class="fas fa-check text-blue-400 text-lg"
-                                ></i></td
+                                ><Icon name="fa6-solid:check" class="text-blue-400 text-lg" /></td
                             >
                             <td class="p-6 text-center bg-emerald-500/5"
-                                ><i
-                                    class="fas fa-check text-emerald-400 text-lg"
-                                ></i></td
+                                ><Icon name="fa6-solid:check" class="text-emerald-400 text-lg" /></td
                             >
                         </tr>
                         <tr
@@ -1073,16 +1069,13 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                                 >Dominio y Hosting (1 Año)</td
                             >
                             <td class="p-6 text-center bg-orange-500/5"
-                                ><i class="fas fa-check text-green-500 text-lg"
-                                ></i></td
+                                ><Icon name="fa6-solid:check" class="text-green-500 text-lg" /></td
                             >
                             <td class="p-6 text-center bg-blue-500/5"
-                                ><i class="fas fa-check text-green-500 text-lg"
-                                ></i></td
+                                ><Icon name="fa6-solid:check" class="text-green-500 text-lg" /></td
                             >
                             <td class="p-6 text-center bg-emerald-500/5"
-                                ><i class="fas fa-check text-green-500 text-lg"
-                                ></i></td
+                                ><Icon name="fa6-solid:check" class="text-green-500 text-lg" /></td
                             >
                         </tr>
                         <tr class="transition-colors">
@@ -1185,7 +1178,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <span
                                 class="text-slate-500 font-bold text-xs uppercase"
                                 >Dominio y Hosting</span
-                            ><i class="fas fa-check text-green-500 text-lg"></i>
+                            ><Icon name="fa6-solid:check" class="text-green-500 text-lg" /></li>
                         </li>
                     </ul>
                 </div>
@@ -1241,7 +1234,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                         >
                             <span class="text-slate-500">CMS / Panel</span><span
                                 class="text-blue-400 font-bold"
-                                ><i class="fas fa-check mr-1"></i> Precios / Galería</span
+                                ><Icon name="fa6-solid:check" class="mr-1" /> Precios / Galería</span
                             >
                         </li>
                         <li
@@ -1262,7 +1255,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <span
                                 class="text-slate-500 font-bold text-xs uppercase"
                                 >Dominio y Hosting</span
-                            ><i class="fas fa-check text-green-500 text-lg"></i>
+                            ><Icon name="fa6-solid:check" class="text-green-500 text-lg" /></li>
                         </li>
                     </ul>
                 </div>
@@ -1318,7 +1311,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                         >
                             <span class="text-slate-500">CMS / Panel</span><span
                                 class="text-emerald-400 font-bold"
-                                ><i class="fas fa-check mr-1"></i> Control Total</span
+                                ><Icon name="fa6-solid:check" class="mr-1" /> Control Total</span
                             >
                         </li>
                         <li
@@ -1326,7 +1319,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                         >
                             <span class="text-slate-500">Pagos Online</span
                             ><span class="text-emerald-400 font-bold"
-                                ><i class="fas fa-check mr-1"></i> Yape/Tarjetas</span
+                                ><Icon name="fa6-solid:check" class="mr-1" /> Yape/Tarjetas</span
                             >
                         </li>
                         <li
@@ -1340,7 +1333,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <span
                                 class="text-slate-500 font-bold text-xs uppercase"
                                 >Dominio y Hosting</span
-                            ><i class="fas fa-check text-green-500 text-lg"></i>
+                            ><Icon name="fa6-solid:check" class="text-green-500 text-lg" /></li>
                         </li>
                     </ul>
                 </div>
@@ -1352,7 +1345,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                     target="_blank"
                     class="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-slate-950 hover:bg-slate-800 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all border border-slate-800 hover:border-slate-600 shadow-lg"
                 >
-                    <i class="fab fa-whatsapp text-green-400 text-xl"></i> ¿Necesitas
+                    <Icon name="fa6-brands:whatsapp" class="text-green-400 text-xl" /> ¿Necesitas
                     asesoría para elegir?
                 </a>
             </div>

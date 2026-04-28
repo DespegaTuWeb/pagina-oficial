@@ -3,6 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { Picture } from 'astro:assets';
+import imgDoctor from '../assets/agencia-digital-diseno-web-doctor.webp';
+import imgGym from '../assets/marketing-digital-gamarra-paginas-web.webp';
+import imgMagnus from '../assets/servicio-pagina-web-peru-barato.webp';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -27,7 +32,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                 <div
                     class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6"
                 >
-                    <i class="fas fa-medal"></i> Casos de Éxito Reales
+                    <Icon name="fa6-solid:medal" /> Casos de Éxito Reales
                 </div>
                 <h1
                     class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-6 leading-tight text-white"
@@ -98,10 +103,13 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                         <div
                             class="w-full h-56 bg-slate-800 overflow-hidden relative"
                         >
-                            <img
-                                src="/imgs/agencia-digital-diseno-web-doctor.avif"
+                            <Picture
+                                src={imgDoctor}
                                 alt="Web Clínica Dra. Selene"
+                                widths={[400, 800]}
+                                formats={['avif', 'webp']}
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                                loading="lazy"
                             />
                             <div
                                 class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
@@ -137,7 +145,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="flex items-center gap-2 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg w-max mt-auto uppercase tracking-wider"
                             >
-                                <i class="fas fa-bolt"></i> Carga Instantánea
+                                <Icon name="fa6-solid:bolt" /> Carga Instantánea
                             </div>
                         </div>
                     </a>
@@ -158,10 +166,13 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                         <div
                             class="w-full h-56 bg-slate-800 overflow-hidden relative"
                         >
-                            <img
-                                src="/imgs/marketing-digital-gamarra-paginas-web.avif"
+                            <Picture
+                                src={imgGym}
                                 alt="Web Puro Fierro Gym"
+                                widths={[400, 800]}
+                                formats={['avif', 'webp']}
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                                loading="lazy"
                             />
                             <div
                                 class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
@@ -197,7 +208,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="flex items-center gap-2 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg w-max mt-auto uppercase tracking-wider"
                             >
-                                <i class="fas fa-bolt"></i> Carga Instantánea
+                                <Icon name="fa6-solid:bolt" /> Carga Instantánea
                             </div>
                         </div>
                     </a>
@@ -218,10 +229,13 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                         <div
                             class="w-full h-56 bg-slate-800 overflow-hidden relative"
                         >
-                            <img
-                                src="/imgs/servicio-pagina-web-peru-barato.avif"
+                            <Picture
+                                src={imgMagnus}
                                 alt="Web Perforaciones Magnus"
+                                widths={[400, 800]}
+                                formats={['avif', 'webp']}
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                                loading="lazy"
                             />
                             <div
                                 class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
@@ -257,7 +271,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                             <div
                                 class="flex items-center gap-2 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg w-max mt-auto uppercase tracking-wider"
                             >
-                                <i class="fas fa-check-double"></i> SEO Optimizado
+                                <Icon name="fa6-solid:check-double" /> SEO Optimizado
                             </div>
                         </div>
                     </a>
@@ -273,7 +287,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                 <div
                     class="w-20 h-20 bg-blue-900/20 text-blue-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6"
                 >
-                    <i class="fas fa-briefcase"></i>
+                    <Icon name="fa6-solid:briefcase" />
                 </div>
                 <h3
                     class="text-2xl font-black text-white italic uppercase tracking-tighter mb-3"
@@ -299,7 +313,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                 <div
                     class="w-20 h-20 bg-emerald-900/20 text-emerald-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6"
                 >
-                    <i class="fas fa-store"></i>
+                    <Icon name="fa6-solid:store" />
                 </div>
                 <h3
                     class="text-2xl font-black text-white italic uppercase tracking-tighter mb-3"
@@ -335,7 +349,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                 href="/planes"
                 class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-lg shadow-blue-900/50"
             >
-                Ver Planes y Precios <i class="fas fa-arrow-right"></i>
+                Ver Planes y Precios <Icon name="fa6-solid:arrow-right" />
             </a>
         </section>
     </div>

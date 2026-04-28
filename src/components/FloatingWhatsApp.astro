@@ -1,5 +1,5 @@
 ---
-
+import Icon from './Icon.astro';
 ---
 
 <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] group">
@@ -11,6 +11,7 @@
     <a
         href="https://wa.me/51963896469?text=Hola%20DespegaTuWeb,%20quiero%20iniciar%20mi%20despegue%20digital%20🚀"
         target="_blank"
+        rel="noopener noreferrer"
         class="hidden md:flex relative items-center gap-3 bg-slate-950 border border-slate-800 px-3.5 py-2 rounded-full hover:border-blue-500/50 transition-all duration-300 shadow-2xl"
     >
         <div class="relative flex shrink-0">
@@ -19,9 +20,9 @@
             >
             </div>
             <div
-                class="w-9 h-9 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center text-lg"
+                class="w-9 h-9 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center"
             >
-                <i class="fab fa-whatsapp"></i>
+                <Icon name="fa6-brands:whatsapp" class="w-5 h-5" />
             </div>
         </div>
 
@@ -40,12 +41,13 @@
     <a
         href="https://wa.me/51963896469?text=Hola%20DespegaTuWeb,%20quiero%20iniciar%20mi%20despegue%20digital%20🚀"
         target="_blank"
+        rel="noopener noreferrer"
         class="flex md:hidden items-center gap-2 bg-slate-950/80 backdrop-blur-md border border-slate-800/50 p-1.5 pr-3 rounded-xl shadow-lg"
     >
         <div
-            class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-base text-green-500"
+            class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-green-500"
         >
-            <i class="fab fa-whatsapp"></i>
+            <Icon name="fa6-brands:whatsapp" class="w-5 h-5" />
         </div>
         <span class="text-white font-bold text-[11px] tracking-tight"
             >WhatsApp</span

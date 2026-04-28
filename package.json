@@ -13,8 +13,12 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@iconify-json/fa6-brands": "^1.2.6",
+    "@iconify-json/fa6-solid": "^1.2.4",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.9",
+    "astro-icon": "^1.1.5",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.2.4"
   }
 }

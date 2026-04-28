@@ -1,5 +1,6 @@
 ---
-
+import Icon from './Icon.astro';
+import logo from '../assets/logo.svg';
 ---
 
 <nav
@@ -14,10 +15,14 @@
             class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter shrink-0 transition-colors duration-300 text-white"
         >
             <img
-                src="/imgs/logo.png"
+                src={logo.src}
                 alt="Logo DespegaTuWeb"
                 class="w-auto h-8 md:h-10 transition-all duration-500"
                 :class="scrolled ? '!h-6 md:!h-8' : ''"
+                width="160"
+                height="40"
+                loading="eager"
+                fetchpriority="high"
             />
             <span class="text-blue-500 uppercase">Despega</span><span
                 class="uppercase text-white">TuWeb</span
@@ -37,9 +42,11 @@
                     class="hover:text-blue-400 transition flex items-center gap-2 tracking-widest uppercase px-2 outline-none"
                 >
                     TIPOS DE WEB
-                    <i
-                        class="fas fa-chevron-down text-[10px] ml-0.5 transition-transform duration-200"
-                        :class="dropdownOpen ? 'rotate-180' : ''"></i>
+                    <Icon
+                        name="fa6-solid:chevron-down"
+                        class="text-[10px] ml-0.5 transition-transform duration-200 w-[10px] h-[10px]"
+                        :class="dropdownOpen ? 'rotate-180' : ''"
+                    />
                 </button>
 
                 <div
@@ -69,7 +76,7 @@
                             <div
                                 class="w-11 h-11 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
                             >
-                                <i class="fas fa-bolt"></i>
+                                <Icon name="fa6-solid:bolt" class="w-5 h-5" />
                             </div>
                             <div class="grow">
                                 <div
@@ -99,7 +106,7 @@
                             <div
                                 class="w-11 h-11 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
                             >
-                                <i class="fas fa-building"></i>
+                                <Icon name="fa6-solid:building" class="w-5 h-5" />
                             </div>
                             <div class="grow">
                                 <div
@@ -129,7 +136,7 @@
                             <div
                                 class="w-11 h-11 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
                             >
-                                <i class="fas fa-shopping-cart"></i>
+                                <Icon name="fa6-solid:cart-shopping" class="w-5 h-5" />
                             </div>
                             <div class="grow">
                                 <div
@@ -171,11 +178,14 @@
             <button
                 @click="mobileMenuOpen = !mobileMenuOpen"
                 class="text-white p-2 transition-colors hover:text-blue-400 outline-none relative z-[1001]"
+                aria-label="Abrir menú"
             >
-                <i
-                    class="fas transition-all duration-300 text-2xl"
-                    :class="mobileMenuOpen ? 'fa-times rotate-90' : 'fa-bars'"
-                ></i>
+                <span x-show="!mobileMenuOpen">
+                    <Icon name="fa6-solid:bars" class="w-6 h-6 transition-all duration-300" />
+                </span>
+                <span x-show="mobileMenuOpen" class="rotate-90 inline-block transition-all duration-300">
+                    <Icon name="fa6-solid:xmark" class="w-6 h-6" />
+                </span>
             </button>
         </div>
     </div>
@@ -200,10 +210,11 @@
                     class="w-full flex justify-between items-center py-3 text-left hover:text-blue-400 transition-colors outline-none"
                 >
                     TIPOS DE WEB
-                    <i
-                        class="fas fa-chevron-down transition-transform duration-300"
+                    <Icon
+                        name="fa6-solid:chevron-down"
+                        class="w-4 h-4 transition-transform duration-300"
                         :class="mobileDropdownOpen ? 'rotate-180 text-blue-500' : ''"
-                    ></i>
+                    />
                 </button>
 
                 <div
@@ -216,27 +227,24 @@
                         href="/planes#l1"
                         class="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
                     >
-                        <i
-                            class="fas fa-bolt text-orange-400 text-lg w-5 text-center"
-                        ></i> IDENTIDAD DIGITAL
+                        <Icon name="fa6-solid:bolt" class="text-orange-400 w-5 h-5" />
+                        IDENTIDAD DIGITAL
                     </a>
                     <a
                         @click="mobileMenuOpen = false"
                         href="/planes#l2"
                         class="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
                     >
-                        <i
-                            class="fas fa-building text-blue-400 text-lg w-5 text-center"
-                        ></i> PODER CORPORATIVO
+                        <Icon name="fa6-solid:building" class="text-blue-400 w-5 h-5" />
+                        PODER CORPORATIVO
                     </a>
                     <a
                         @click="mobileMenuOpen = false"
                         href="/planes#l3"
                         class="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
                     >
-                        <i
-                            class="fas fa-shopping-cart text-emerald-400 text-lg w-5 text-center"
-                        ></i> VENTAS 24/7
+                        <Icon name="fa6-solid:cart-shopping" class="text-emerald-400 w-5 h-5" />
+                        VENTAS 24/7
                     </a>
                 </div>
             </div>

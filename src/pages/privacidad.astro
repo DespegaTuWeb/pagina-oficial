@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -23,7 +24,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
             <div
                 class="inline-flex items-center gap-2 bg-slate-800/50 border border-slate-700 text-slate-300 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6"
             >
-                <i class="fas fa-shield-alt text-teal-400"></i> Tus Datos Protegidos
+                <Icon name="fa6-solid:shield-halved" class="text-teal-400" /> Tus Datos Protegidos
             </div>
             <h1
                 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
@@ -56,7 +57,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                     <div
                         class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-xl shrink-0"
                     >
-                        <i class="fas fa-user-shield"></i>
+                        <Icon name="fa6-solid:user-shield" />
                     </div>
                     <h2
                         class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
@@ -90,7 +91,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                     <div
                         class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl shrink-0"
                     >
-                        <i class="fas fa-envelope-open-text"></i>
+                        <Icon name="fa6-solid:envelope-open-text" />
                     </div>
                     <h2
                         class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
@@ -139,7 +140,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                     <div
                         class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl shrink-0"
                     >
-                        <i class="fas fa-folder-open"></i>
+                        <Icon name="fa6-solid:folder-open" />
                     </div>
                     <h2
                         class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"
@@ -174,7 +175,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
                     <div
                         class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl shrink-0"
                     >
-                        <i class="fas fa-balance-scale"></i>
+                        <Icon name="fa6-solid:scale-balanced" />
                     </div>
                     <h2
                         class="text-xl md:text-2xl font-bold text-white uppercase tracking-tight"

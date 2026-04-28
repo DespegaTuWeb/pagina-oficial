@@ -1,5 +1,9 @@
 ---
-
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import yape from '../assets/yape.webp';
+import plin from '../assets/plin.webp';
+import visa from '../assets/visa.webp';
 ---
 
 <footer
@@ -19,9 +23,10 @@
             <div
                 class="font-black text-3xl md:text-4xl italic mb-6 tracking-tighter drop-shadow-lg"
             >
-                <i
-                    class="fas fa-rocket text-blue-500 mr-2 hover:-translate-y-1 transition-transform duration-300"
-                ></i>
+                <Icon
+                    name="fa6-solid:rocket"
+                    class="text-blue-500 mr-2 hover:-translate-y-1 transition-transform duration-300 w-8 h-8 inline-block align-middle"
+                />
                 <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase"
                     >Despega
@@ -55,34 +60,40 @@
                 <div
                     class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(147,51,234,0.8)] transition-all duration-300"
                 >
-                    <img
-                        src="/imgs/yape.webp"
+                    <Image
+                        src={yape}
                         alt="Yape"
-                        class="max-w-full max-h-full object-contain"
+                        class="max-w-full max-h-full object-contain block"
+                        width={70}
+                        loading="lazy"
                     />
                 </div>
                 <div
                     class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-300"
                 >
-                    <img
-                        src="/imgs/plin.webp"
+                    <Image
+                        src={plin}
                         alt="Plin"
-                        class="max-w-full max-h-full object-contain"
+                        class="max-w-full max-h-full object-contain block"
+                        width={70}
+                        loading="lazy"
                     />
                 </div>
                 <div
                     class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] transition-all duration-300"
                 >
-                    <img
-                        src="/imgs/visa.webp"
+                    <Image
+                        src={visa}
                         alt="Visa"
-                        class="max-w-full max-h-full object-contain"
+                        class="max-w-full max-h-full object-contain block"
+                        width={70}
+                        loading="lazy"
                     />
                 </div>
                 <div
                     class="w-[50px] md:w-[70px] h-[30px] md:h-[40px] shrink-0 flex items-center justify-center text-[28px] md:text-[40px] text-slate-300 hover:text-white hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] transition-all duration-300"
                 >
-                    <i class="fas fa-university"></i>
+                    <Icon name="fa6-solid:building-columns" class="w-8 h-8 md:w-10 md:h-10" />
                 </div>
             </div>
         </div>
