@@ -23,8 +23,8 @@ const optimizedPoster = await getImage({
 ---
 
 <Layout
-    title="DespegaTuWeb | Creación de Páginas Web para Emprendedores, Negocios y Empresas"
-    description="Creamos la página web de tu negocio para que tus clientes te encuentren rápido. Páginas modernas, seguras y profesionales para vender más."
+    title="Despega Tu Web | Páginas Web desde S/ 450"
+    description="Creamos tu página web en de 48 horas. Páginas seguras, modernas  y profesionales para todo tipo de negocios y marcas personales."
     image={optimizedPoster.src}
     heroPosterSrc={optimizedPoster.src}
 >
@@ -48,6 +48,7 @@ const optimizedPoster = await getImage({
                 poster={optimizedPoster.src}
                 class="w-full h-full object-cover md:object-contain md:object-center opacity-100 md:opacity-40 transition-opacity"
                 style="contain: strict"
+                aria-hidden="true"
             >
                 <source src="/imgs/hero.mp4" type="video/mp4" />
             </video>

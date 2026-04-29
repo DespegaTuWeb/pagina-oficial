@@ -8,7 +8,12 @@ interface Props {
     heroPosterSrc?: string;
 }
 
-const { title, description, image = "/imgs/hero-fallback.webp", heroPosterSrc } = Astro.props;
+const {
+    title,
+    description,
+    image = "/imgs/hero-fallback.webp",
+    heroPosterSrc,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -37,33 +42,28 @@ const { title, description, image = "/imgs/hero-fallback.webp", heroPosterSrc } 
         <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
         <!-- Favicons -->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="48x48"
-            href="/favicon-48x48.png"
-        />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="alternate icon" href="/favicon.ico" />
 
         <!-- Hero poster preload — máxima prioridad para el LCP -->
-        {heroPosterSrc && (
-            <link
-                rel="preload"
-                as="image"
-                href={heroPosterSrc}
-                fetchpriority="high"
-            />
-        )}
-
-
+        {
+            heroPosterSrc && (
+                <link
+                    rel="preload"
+                    as="image"
+                    href={heroPosterSrc}
+                    fetchpriority="high"
+                />
+            )
+        }
 
         <!-- Fuentes autoalojadas via @fontsource en global.css -->
 
         <!-- Alpine.js — local, diferido, sin bloquear LCP -->
         <script>
-            import Alpine from 'alpinejs';
+            import Alpine from "alpinejs";
             window.Alpine = Alpine;
-            document.addEventListener('DOMContentLoaded', () => Alpine.start());
+            document.addEventListener("DOMContentLoaded", () => Alpine.start());
         </script>
 
         <style is:global>
@@ -104,6 +104,8 @@ const { title, description, image = "/imgs/hero-fallback.webp", heroPosterSrc } 
     <body
         class="bg-slate-950 text-slate-50 selection:bg-blue-500/30 scroll-smooth min-h-screen flex flex-col relative overflow-x-hidden"
     >
-        <slot />
+        <main class="flex-grow">
+            <slot />
+        </main>
     </body>
 </html>
