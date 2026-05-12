@@ -12,6 +12,7 @@ import imgMockupL1 from "../assets/diseno-landing-page-profesional-doctor-lima.w
 import imgMockupL2 from "../assets/pagina-web-corporativa-empresa-negocios.webp";
 import imgMockupL3 from "../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp";
 import imgHeroFallback from "../assets/hero-fallback.webp";
+import imgHeroFallbackLarge from "../assets/hero-fallback-large.webp";
 
 // Optimiza hero-fallback a 640px para el poster del video (móvil) y OG image
 const optimizedPoster = await getImage({
@@ -46,20 +47,25 @@ const optimizedPoster = await getImage({
                 playsinline
                 preload="auto"
                 poster={optimizedPoster.src}
-                class="w-full h-full object-cover md:object-contain md:object-center opacity-100 md:opacity-40 transition-opacity"
+                class="md:hidden w-full h-full object-cover opacity-100 transition-opacity"
                 style="contain: strict"
                 aria-hidden="true"
             >
                 <source src="/imgs/hero.mp4" type="video/mp4" />
             </video>
-            <div
-                class="hidden md:block absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-[1]"
-            >
-            </div>
+
+            <!-- Imagen para desktop (reemplaza al video) -->
+            <Image
+                src={imgHeroFallbackLarge}
+                alt="Hero Background"
+                class="hidden md:block w-full h-full object-cover"
+                loading="eager"
+                fetchpriority="high"
+            />
         </div>
 
         <div
-            class="relative z-10 w-full md:min-h-[100svh] max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12 gap-6 md:gap-12 md:justify-center"
+            class="relative z-10 w-full md:min-h-[100svh] max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12 gap-6 md:gap-0 md:justify-center"
         >
             <div
                 class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto"
@@ -177,7 +183,7 @@ const optimizedPoster = await getImage({
                                 Tu negocio siempre activo
                             </h3>
                             <p
-                                class="text-slate-300 text-xs md:text-base font-medium leading-relaxed max-w-lg md:mx-auto"
+                                class="text-white text-xs md:text-base font-medium leading-relaxed max-w-lg md:mx-auto"
                             >
                                 Desarrollamos páginas web para marcas
                                 personales, negocios, empresas y comercios
@@ -212,7 +218,7 @@ const optimizedPoster = await getImage({
                                     >Emitimos Boleta</span
                                 >
                                 <span
-                                    class="text-slate-400 text-[10px] md:text-xs leading-snug md:px-2"
+                                    class="text-white text-[10px] md:text-xs leading-snug md:px-2"
                                     >Formalidad legal garantizada para tu
                                     inversión</span
                                 >
@@ -243,7 +249,7 @@ const optimizedPoster = await getImage({
                                     >Desde S/ 450</span
                                 >
                                 <span
-                                    class="text-blue-100 text-[10px] md:text-xs leading-snug md:px-2"
+                                    class="text-white text-[10px] md:text-xs leading-snug md:px-2"
                                     >Tu marca profesional al mejor precio del
                                     mercado</span
                                 >
@@ -274,7 +280,7 @@ const optimizedPoster = await getImage({
                                     >Cero Costos</span
                                 >
                                 <span
-                                    class="text-slate-400 text-[10px] md:text-xs leading-snug md:px-2"
+                                    class="text-white text-[10px] md:text-xs leading-snug md:px-2"
                                     >Sin mensualidades trampa. La web es 100%
                                     tuya</span
                                 >
