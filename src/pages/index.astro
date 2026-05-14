@@ -60,8 +60,24 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                 transform: translateY(0px);
             }
         }
+        @keyframes float-mobile {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
         .float-anim {
-            animation: float 6s ease-in-out infinite;
+            animation: float-mobile 6s ease-in-out infinite;
+        }
+        @media (min-width: 1024px) {
+            .float-anim {
+                animation: float 6s ease-in-out infinite;
+            }
         }
 
         .glass-card {
@@ -102,10 +118,10 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
         class="hero-mesh relative w-full pt-24 pb-4 sm:pt-24 sm:pb-8 overflow-hidden border-b border-slate-100"
     >
         <main
-            class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10"
+            class="max-w-7xl mx-auto px-6 flex flex-col items-start lg:grid lg:grid-cols-2 gap-3 lg:gap-12 lg:items-center relative z-10"
         >
-            <!-- Bloque de Texto -->
-            <div class="animate-in fade-in slide-in-from-left duration-1000">
+            <!-- Parte 1: Texto (H1 y P) -->
+            <div class="order-1 animate-in fade-in slide-in-from-left duration-1000 w-full">
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4 sm:mb-8 shadow-sm"
                 >
@@ -130,44 +146,16 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                 </h1>
 
                 <p
-                    class="text-xl text-slate-700 leading-relaxed mb-6 sm:mb-10 max-w-lg font-medium"
+                    class="text-xl text-slate-700 leading-relaxed mb-1 sm:mb-10 max-w-lg font-medium"
                 >
                     Creamos tu página web profesional. Rápida, segura y
                     optimizada para conseguir más clientes y contactos reales.
                 </p>
-
-                <div
-                    class="flex flex-col sm:flex-row gap-5 items-start sm:items-center"
-                >
-                    <a
-                        href="https://wa.me/51963896469"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w-full sm:w-auto px-8 py-5 bg-blue-600 text-white rounded-2xl font-black text-sm md:text-base uppercase tracking-widest shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:-translate-y-1 transition-all text-center flex items-center justify-center gap-2"
-                    >
-                        <Icon name="fa6-brands:whatsapp" class="text-xl" />
-                        Quiero mi Web — S/ 450
-                    </a>
-
-                    <div class="flex items-center gap-3 px-2 py-2">
-                        <div class="flex gap-0.5 text-yellow-400 text-lg">
-                            ★<span class="hidden sm:inline">★</span>★<span
-                                class="hidden sm:inline">★</span
-                            >★
-                        </div>
-                        <p
-                            class="text-[11px] font-bold text-slate-500 leading-tight uppercase tracking-tighter border-l border-slate-300 pl-3"
-                        >
-                            Respaldado por <br />
-                            negocios locales.
-                        </p>
-                    </div>
-                </div>
             </div>
 
-            <!-- Bloque Visual -->
+            <!-- Parte 2: Bloque Visual (Carrusel) - Aparece después del texto en móvil -->
             <div
-                class="relative animate-in fade-in slide-in-from-right duration-1000 delay-200"
+                class="order-2 relative animate-in fade-in slide-in-from-right duration-1000 delay-200 lg:row-span-2 w-full mb-10 lg:mb-0"
             >
                 <div
                     class="glass-card p-4 rounded-[2.5rem] shadow-2xl float-anim"
@@ -304,6 +292,37 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                         class="text-[10px] font-black uppercase tracking-widest text-slate-700"
                     >
                         99.9% Speed Score
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parte 3: CTA (Botón y Estrellas) - Aparece al final en móvil -->
+            <div class="order-3 animate-in fade-in slide-in-from-left duration-1000 delay-100">
+                <div
+                    class="flex flex-col sm:flex-row gap-5 items-start sm:items-center"
+                >
+                    <a
+                        href="https://wa.me/51963896469"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full sm:w-auto px-8 py-5 bg-blue-600 text-white rounded-2xl font-black text-sm md:text-base uppercase tracking-widest shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:-translate-y-1 transition-all text-center flex items-center justify-center gap-2"
+                    >
+                        <Icon name="fa6-brands:whatsapp" class="text-xl" />
+                        Quiero mi Web — S/ 450
+                    </a>
+
+                    <div class="flex items-center gap-3 px-2 py-2">
+                        <div class="flex gap-0.5 text-yellow-400 text-lg">
+                            ★<span class="hidden sm:inline">★</span>★<span
+                                class="hidden sm:inline">★</span
+                            >★
+                        </div>
+                        <p
+                            class="text-[11px] font-bold text-slate-500 leading-tight uppercase tracking-tighter border-l border-slate-300 pl-3"
+                        >
+                            Respaldado por <br />
+                            negocios locales.
+                        </p>
                     </div>
                 </div>
             </div>
