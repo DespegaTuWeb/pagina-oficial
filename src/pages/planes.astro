@@ -18,10 +18,13 @@ import Icon from "../components/Icon.astro";
 
     <!-- CONTENEDOR ALPINE PARA EL MANEJO DE PESTAÑAS (TABS) -->
     <div
-        class="flex-grow flex flex-col relative w-full"
+        class="flex-grow flex flex-col relative w-full bg-slate-50"
         x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'l1' }"
         @hashchange.window="tab = window.location.hash ? window.location.hash.substring(1) : 'l1'"
     >
+        <!-- Soft Radial Glow -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
         <div
             class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] blur-[150px] rounded-full pointer-events-none z-0 transition-colors duration-700"
             :class="{
@@ -36,19 +39,19 @@ import Icon from "../components/Icon.astro";
             class="relative z-20 flex justify-center px-4 mt-24 md:mt-28 mb-2 w-full max-w-xl mx-auto"
         >
             <div
-                class="bg-slate-900/80 backdrop-blur-md p-1.5 rounded-full border border-slate-800 flex w-full gap-1 shadow-xl"
+                class="bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-slate-200 flex w-full gap-1 shadow-sm"
             >
                 <button
                     @click="window.location.hash = 'l1'"
                     class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
-                    :class="tab === 'l1' ? 'bg-orange-500/20 text-orange-400 border-orange-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
+                    :class="tab === 'l1' ? 'bg-orange-50 text-orange-600 border-orange-200' : 'text-slate-500 hover:text-slate-900 border-transparent'"
                 >
                     <Icon name="fa6-solid:bolt" class="mr-1.5 md:mr-2" /> Nivel 1
                 </button>
                 <button
                     @click="window.location.hash = 'l2'"
                     class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
-                    :class="tab === 'l2' ? 'bg-blue-500/20 text-blue-400 border-blue-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
+                    :class="tab === 'l2' ? 'bg-blue-50 text-blue-600 border-blue-200' : 'text-slate-500 hover:text-slate-900 border-transparent'"
                 >
                     <Icon name="fa6-solid:briefcase" class="mr-1.5 md:mr-2" /> Nivel
                     2
@@ -56,7 +59,7 @@ import Icon from "../components/Icon.astro";
                 <button
                     @click="window.location.hash = 'l3'"
                     class="flex-1 py-2.5 px-1 rounded-full border text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tighter sm:tracking-widest transition-all flex items-center justify-center"
-                    :class="tab === 'l3' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50 shadow-inner' : 'text-slate-400 hover:text-white border-transparent'"
+                    :class="tab === 'l3' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' : 'text-slate-500 hover:text-slate-900 border-transparent'"
                 >
                     <Icon name="fa6-solid:store" class="mr-1.5 md:mr-2" /> Nivel 3
                 </button>
@@ -67,7 +70,7 @@ import Icon from "../components/Icon.astro";
             class="flex-grow flex items-start justify-center p-4 md:p-6 relative z-10 w-full"
         >
             <div
-                class="w-full max-w-6xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] p-6 md:p-10 shadow-2xl min-h-[600px]"
+                class="w-full max-w-6xl bg-white border border-slate-100 rounded-[3rem] p-6 md:p-12 shadow-sm min-h-[600px]"
             >
                 <div class="grid w-full">
                     <!-- CONTENIDO NIVEL 1 -->
@@ -86,40 +89,40 @@ import Icon from "../components/Icon.astro";
                             class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6"
                         >
                             <div
-                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
+                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-slate-900"
                             >
                                 <Icon
                                     name="fa6-solid:rocket"
                                     class="text-orange-500"
                                 /> Nivel
                                 <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-700"
                                     >UNO</span
                                 >
                             </div>
                             <div
-                                class="border border-orange-500/50 bg-orange-500/10 text-orange-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
+                                class="border border-orange-200 bg-orange-50 text-orange-600 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
                             >
                                 <Icon name="fa6-solid:stopwatch" /> ¡Web lista en
                                 48 horas!
                             </div>
                         </header>
                         <div
-                            class="w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-8"
+                            class="w-full h-px bg-slate-200 mb-8"
                         >
                         </div>
                         <div class="mb-10">
                             <h1
-                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-slate-900"
                             >
                                 Web Identidad <br class="hidden md:block" />
                                 <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500"
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600"
                                     >Digital</span
                                 >
                             </h1>
                             <p
-                                class="text-slate-400 font-medium text-lg max-w-2xl"
+                                class="text-slate-600 font-medium text-lg max-w-2xl"
                             >
                                 Impacta a tus clientes con una imagen digital
                                 impecable.
@@ -129,11 +132,11 @@ import Icon from "../components/Icon.astro";
                             class="flex flex-col lg:grid lg:grid-cols-12 gap-8 mb-8"
                         >
                             <div
-                                class="order-2 lg:order-1 lg:col-span-7 bg-slate-950/50 border border-slate-800/80 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start"
+                                class="order-2 lg:order-1 lg:col-span-7 bg-white border border-slate-100 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start shadow-sm"
                             >
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-purple-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:user-astronaut"
@@ -142,11 +145,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Identidad Digital
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Ideal para marcas personales y
                                             perfiles profesionales.
@@ -155,7 +158,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-yellow-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-yellow-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:star"
@@ -164,11 +167,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Diseño Inteligente
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Estructura de una sola página
                                             diseñada para que tus servicios y
@@ -179,7 +182,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-pink-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:photo-film"
@@ -188,11 +191,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Tu Mejor Vitrina
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Mostramos lo que haces con una
                                             galería de hasta 15 fotos y 1 video
@@ -202,7 +205,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-amber-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:bolt"
@@ -211,11 +214,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Acceso Inmediato
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Optimizada para que cualquiera pueda
                                             verte desde su teléfono de forma
@@ -225,7 +228,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-teal-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:wand-magic-sparkles"
@@ -234,11 +237,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Toque Profesional
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Mejoramos la calidad de tu logo y
                                             fotos con tecnología avanzada para
@@ -248,7 +251,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-orange-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:gift"
@@ -257,11 +260,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Pack Base Incluido
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Dominio .com, Hosting, botón directo
                                             a WhatsApp y diseño optimizado para
@@ -274,7 +277,7 @@ import Icon from "../components/Icon.astro";
                                 class="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-6 h-full"
                             >
                                 <div
-                                    class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l1 flex items-center justify-center flex-1 w-full"
+                                    class="bg-slate-50 p-3 rounded-[2rem] border border-slate-200 shadow-sm flex items-center justify-center flex-1 w-full"
                                 >
                                     <Picture
                                         src={imgMockupL1}
@@ -284,31 +287,31 @@ import Icon from "../components/Icon.astro";
                                         sizes="(max-width: 1024px) calc(100vw - 48px), 480px"
                                         width={700}
                                         height={467}
-                                        onerror="this.src = 'https://placehold.co/600x420/0f172a/f97316?text=Mockup+L1&font=montserrat'"
-                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                        onerror="this.src = 'https://placehold.co/600x420/f1f5f9/f97316?text=Mockup+L1&font=montserrat'"
+                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-200"
                                         loading="lazy"
                                     />
                                 </div>
                                 <div
-                                    class="bg-gradient-to-b from-slate-900 to-slate-950 border border-orange-500/30 rounded-[2rem] p-8 text-center relative shadow-[0_10px_30px_rgba(249,115,22,0.1)] shrink-0"
+                                    class="bg-white border border-slate-200 rounded-[2rem] p-8 text-center relative shadow-sm shrink-0"
                                 >
                                     <div
-                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30"
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md"
                                     >
                                         OFERTA LIMITADA
                                     </div>
                                     <p
-                                        class="text-orange-400 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
+                                        class="text-slate-500 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
                                     >
                                         Inversión Única
                                     </p>
                                     <h2
-                                        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-2"
+                                        class="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter mb-2"
                                     >
                                         S/ 450
                                     </h2>
                                     <p
-                                        class="text-slate-400 text-xs font-medium"
+                                        class="text-slate-600 text-xs font-medium"
                                     >
                                         Sin mensualidades ni costos ocultos
                                     </p>
@@ -316,10 +319,10 @@ import Icon from "../components/Icon.astro";
                             </div>
                         </div>
                         <div
-                            class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
+                            class="bg-slate-50 border border-slate-200 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
                         >
                             <div
-                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-300"
+                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-600"
                             >
                                 <span class="flex items-center gap-2"
                                     ><Icon
@@ -366,7 +369,7 @@ import Icon from "../components/Icon.astro";
                             class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6"
                         >
                             <div
-                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
+                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-slate-900"
                             >
                                 <Icon
                                     name="fa6-solid:rocket"
@@ -390,7 +393,7 @@ import Icon from "../components/Icon.astro";
                         </div>
                         <div class="mb-10">
                             <h1
-                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-slate-900"
                             >
                                 Web Poder <br class="hidden md:block" />
                                 <span
@@ -399,7 +402,7 @@ import Icon from "../components/Icon.astro";
                                 >
                             </h1>
                             <p
-                                class="text-slate-400 font-medium text-lg max-w-2xl"
+                                class="text-slate-600 font-medium text-lg max-w-2xl"
                             >
                                 Tu local digital con estatus y autonomía.
                                 Proyecta solidez corporativa con una estructura
@@ -410,11 +413,11 @@ import Icon from "../components/Icon.astro";
                             class="flex flex-col lg:grid lg:grid-cols-12 gap-8 mb-8"
                         >
                             <div
-                                class="order-2 lg:order-1 lg:col-span-7 bg-slate-950/50 border border-slate-800/80 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start"
+                                class="order-2 lg:order-1 lg:col-span-7 bg-white border border-slate-100 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start shadow-sm"
                             >
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-purple-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:briefcase"
@@ -423,11 +426,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Estatus Corporativo
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Diseñado para pymes y empresas que
                                             buscan proyectar máxima solidez y
@@ -437,7 +440,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-blue-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:layer-group"
@@ -446,11 +449,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Arquitectura Robusta
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Hasta 5 páginas/secciones
                                             independientes para detallar a fondo
@@ -460,7 +463,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-pink-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:sliders"
@@ -469,11 +472,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Control Total (CMS)
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Autonomía para actualizar tus
                                             precios y galería sin depender de
@@ -483,7 +486,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-amber-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:envelope-open-text"
@@ -492,11 +495,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Confianza Oficial
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Correos corporativos para cerrar
                                             contratos y negocios grandes.
@@ -505,7 +508,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-teal-400 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-teal-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:chart-line"
@@ -514,11 +517,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Posicionamiento SEO
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Creada con tecnología de punta
                                             (Next.js) que supera a la
@@ -528,7 +531,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-purple-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:wand-magic-sparkles"
@@ -537,11 +540,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Impresión Premium
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Logos e imágenes optimizadas con
                                             tratamiento técnico para una
@@ -551,7 +554,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-orange-600 shrink-0"
                                     >
                                         <Icon
                                             name="fa6-solid:gift"
@@ -560,11 +563,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Pack Base Incluido
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Dominio .com, Hosting, botón directo
                                             a WhatsApp y diseño optimizado para
@@ -577,7 +580,7 @@ import Icon from "../components/Icon.astro";
                                 class="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-6 h-full"
                             >
                                 <div
-                                    class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l2 flex items-center justify-center flex-1 w-full"
+                                    class="bg-slate-50 p-3 rounded-[2rem] border border-slate-200 shadow-sm flex items-center justify-center flex-1 w-full"
                                 >
                                     <Picture
                                         src={imgMockupL2}
@@ -587,13 +590,13 @@ import Icon from "../components/Icon.astro";
                                         sizes="(max-width: 1024px) calc(100vw - 48px), 480px"
                                         width={700}
                                         height={467}
-                                        onerror="this.src = 'https://placehold.co/600x420/0f172a/3b82f6?text=Mockup+L2&font=montserrat'"
-                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                        onerror="this.src = 'https://placehold.co/600x420/f1f5f9/3b82f6?text=Mockup+L2&font=montserrat'"
+                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-200"
                                         loading="lazy"
                                     />
                                 </div>
                                 <div
-                                    class="bg-gradient-to-b from-slate-900 to-slate-950 border border-blue-500/30 rounded-[2rem] p-8 text-center relative shadow-[0_10px_30px_rgba(59,130,246,0.1)] shrink-0"
+                                    class="bg-white border border-blue-200 rounded-[2rem] p-8 text-center relative shadow-md shadow-blue-50 shrink-0"
                                 >
                                     <div
                                         class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30"
@@ -606,12 +609,12 @@ import Icon from "../components/Icon.astro";
                                         Inversión Única
                                     </p>
                                     <h2
-                                        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-2"
+                                        class="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter mb-2"
                                     >
                                         S/ 1,000
                                     </h2>
                                     <p
-                                        class="text-slate-400 text-xs font-medium"
+                                        class="text-slate-500 text-xs font-medium"
                                     >
                                         Sin mensualidades ni costos ocultos
                                     </p>
@@ -619,15 +622,15 @@ import Icon from "../components/Icon.astro";
                             </div>
                         </div>
                         <div
-                            class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
+                            class="bg-slate-50 border border-slate-200 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
                         >
                             <div
-                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-300"
+                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-600"
                             >
                                 <span class="flex items-center gap-2"
                                     ><Icon
                                         name="fa6-solid:shield-halved"
-                                        class="text-green-500 text-lg"
+                                        class="text-green-600 text-lg"
                                     /> PROPIEDAD TOTAL</span
                                 >
                                 <span class="hidden md:inline text-slate-700"
@@ -636,7 +639,7 @@ import Icon from "../components/Icon.astro";
                                 <span class="flex items-center gap-2"
                                     ><Icon
                                         name="fa6-solid:file-invoice-dollar"
-                                        class="text-green-500 text-lg"
+                                        class="text-green-600 text-lg"
                                     /> EMITIMOS BOLETA</span
                                 >
                             </div>
@@ -669,39 +672,39 @@ import Icon from "../components/Icon.astro";
                             class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6"
                         >
                             <div
-                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-white"
+                                class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter text-slate-900"
                             >
                                 <Icon
                                     name="fa6-solid:rocket"
                                     class="text-emerald-500"
                                 /> Nivel
                                 <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600"
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-800"
                                     >TRES</span
                                 >
                             </div>
                             <div
-                                class="border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
+                                class="border border-emerald-200 bg-emerald-50 text-emerald-600 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2"
                             >
                                 <Icon name="fa6-solid:store" /> ¡Ventas en Automático!
                             </div>
                         </header>
                         <div
-                            class="w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-8"
+                            class="w-full h-px bg-slate-200 mb-8"
                         >
                         </div>
                         <div class="mb-10">
                             <h1
-                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-white"
+                                class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-slate-900"
                             >
                                 Tienda Online <br class="hidden md:block" />
                                 <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400"
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
                                     >Automatizada</span
                                 >
                             </h1>
                             <p
-                                class="text-slate-400 font-medium text-lg max-w-2xl"
+                                class="text-slate-600 font-medium text-lg max-w-2xl"
                             >
                                 Tu sucursal digital trabajando 24/7. Recibe
                                 pagos, controla el stock y gestiona pedidos
@@ -712,11 +715,11 @@ import Icon from "../components/Icon.astro";
                             class="flex flex-col lg:grid lg:grid-cols-12 gap-8 mb-8"
                         >
                             <div
-                                class="order-2 lg:order-1 lg:col-span-7 bg-slate-950/50 border border-slate-800/80 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start"
+                                class="order-2 lg:order-1 lg:col-span-7 bg-white border border-slate-100 rounded-[2rem] p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start shadow-sm"
                             >
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-emerald-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:building"
@@ -725,11 +728,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Sucursal Escalable
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Para negocios de retail y marcas
                                             listas para vender en piloto
@@ -739,7 +742,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:robot"
@@ -748,11 +751,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Vendedor 24/7
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Tu catálogo completo y carrito
                                             intuitivo siempre disponible,
@@ -763,7 +766,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-orange-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:credit-card"
@@ -772,11 +775,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Caja Digital Multi-Pagos
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Cobra de forma fácil y segura
                                             integrando tarjetas, Yape y
@@ -786,7 +789,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-purple-400 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-purple-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:desktop"
@@ -795,11 +798,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Centro de Comando
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Administra tu stock, procesa pedidos
                                             y gestiona a tus clientes desde un
@@ -809,7 +812,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-amber-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:envelope-open-text"
@@ -818,11 +821,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Confianza Oficial
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Correos corporativos para gestionar
                                             la atención al cliente de tu tienda.
@@ -831,7 +834,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-cyan-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:chart-line"
@@ -840,11 +843,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Posicionamiento SEO
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Arquitectura Next.js optimizada para
                                             que tus productos resalten en las
@@ -854,7 +857,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-pink-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:shield-halved"
@@ -863,11 +866,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Bóveda de Seguridad
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Blindaje de datos para transacciones
                                             seguras y que tus clientes operen
@@ -877,7 +880,7 @@ import Icon from "../components/Icon.astro";
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div
-                                        class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-500 shrink-0 shadow-inner"
+                                        class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-orange-600 shrink-0 shadow-sm"
                                     >
                                         <Icon
                                             name="fa6-solid:gift"
@@ -886,11 +889,11 @@ import Icon from "../components/Icon.astro";
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-bold text-slate-200 text-sm md:text-base mb-1"
+                                            class="font-bold text-slate-900 text-sm md:text-base mb-1"
                                         >
                                             Pack Base Incluido
                                         </h3><p
-                                            class="text-slate-400 text-xs md:text-sm leading-snug"
+                                            class="text-slate-600 text-xs md:text-sm leading-snug"
                                         >
                                             Dominio .com, Hosting, botón directo
                                             a WhatsApp y diseño optimizado para
@@ -903,7 +906,7 @@ import Icon from "../components/Icon.astro";
                                 class="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-6 h-full"
                             >
                                 <div
-                                    class="bg-slate-900 p-3 rounded-[2rem] mockup-glow-l3 flex items-center justify-center flex-1 w-full"
+                                    class="bg-slate-50 p-3 rounded-[2rem] border border-slate-200 shadow-sm flex items-center justify-center flex-1 w-full"
                                 >
                                     <Picture
                                         src={imgMockupL3}
@@ -913,31 +916,31 @@ import Icon from "../components/Icon.astro";
                                         sizes="(max-width: 1024px) calc(100vw - 48px), 480px"
                                         width={700}
                                         height={467}
-                                        onerror="this.src = 'https://placehold.co/600x420/0f172a/10b981?text=Mockup+L3&font=montserrat'"
-                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-800/50"
+                                        onerror="this.src = 'https://placehold.co/600x420/f1f5f9/10b981?text=Mockup+L3&font=montserrat'"
+                                        class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-200"
                                         loading="lazy"
                                     />
                                 </div>
                                 <div
-                                    class="bg-gradient-to-b from-slate-900 to-slate-950 border border-emerald-500/30 rounded-[2rem] p-8 text-center relative shadow-[0_10px_30px_rgba(16,185,129,0.1)] shrink-0"
+                                    class="bg-white border border-slate-200 rounded-[2rem] p-8 text-center relative shadow-sm shrink-0"
                                 >
                                     <div
-                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-500/30"
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md"
                                     >
                                         OFERTA LIMITADA
                                     </div>
                                     <p
-                                        class="text-emerald-400 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
+                                        class="text-slate-500 font-bold text-xs uppercase tracking-widest mt-2 mb-1"
                                     >
                                         Inversión Única
                                     </p>
                                     <h2
-                                        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-2"
+                                        class="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter mb-2"
                                     >
                                         S/ 3,500
                                     </h2>
                                     <p
-                                        class="text-slate-400 text-xs font-medium"
+                                        class="text-slate-600 text-xs font-medium"
                                     >
                                         Sin mensualidades ni costos ocultos
                                     </p>
@@ -945,24 +948,24 @@ import Icon from "../components/Icon.astro";
                             </div>
                         </div>
                         <div
-                            class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
+                            class="bg-slate-50 border border-slate-200 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-6"
                         >
                             <div
-                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-300"
+                                class="flex flex-wrap justify-center md:justify-start gap-6 font-bold text-xs md:text-sm text-slate-600"
                             >
                                 <span class="flex items-center gap-2"
                                     ><Icon
                                         name="fa6-solid:shield-halved"
-                                        class="text-green-500 text-lg"
+                                        class="text-green-600 text-lg"
                                     /> PROPIEDAD TOTAL</span
                                 >
-                                <span class="hidden md:inline text-slate-700"
+                                <span class="hidden md:inline text-slate-300"
                                     >|</span
                                 >
                                 <span class="flex items-center gap-2"
                                     ><Icon
                                         name="fa6-solid:file-invoice-dollar"
-                                        class="text-green-500 text-lg"
+                                        class="text-green-600 text-lg"
                                     /> EMITIMOS BOLETA</span
                                 >
                             </div>
@@ -987,12 +990,12 @@ import Icon from "../components/Icon.astro";
         >
             <div class="text-center mb-10 md:mb-12">
                 <h2
-                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500 mb-4 drop-shadow-sm"
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-slate-900 mb-4"
                 >
                     Comparativa de Niveles
                 </h2>
                 <p
-                    class="text-slate-400 font-bold uppercase tracking-[0.15em] text-xs max-w-2xl mx-auto leading-relaxed"
+                    class="text-slate-600 font-bold uppercase tracking-[0.15em] text-xs max-w-2xl mx-auto leading-relaxed"
                 >
                     Descubre qué plan se adapta mejor a la etapa actual de tu
                     negocio.
@@ -1000,230 +1003,230 @@ import Icon from "../components/Icon.astro";
             </div>
 
             <div
-                class="hidden md:block w-full bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[2rem] p-8 shadow-2xl overflow-hidden"
+                class="hidden md:block w-full bg-white border border-slate-200 rounded-[2rem] p-8 shadow-sm overflow-hidden"
             >
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr>
                             <th
-                                class="p-6 border-b border-slate-800 text-slate-300 font-black uppercase tracking-widest text-sm w-1/4"
+                                class="p-6 border-b border-slate-200 text-slate-600 font-black uppercase tracking-widest text-sm w-1/4"
                                 >Características</th
                             >
                             <th
-                                class="p-6 border-b border-orange-500/30 bg-orange-500/5 text-center w-1/4 rounded-tl-2xl"
+                                class="p-6 border-b border-orange-200 bg-orange-50 text-center w-1/4 rounded-tl-2xl"
                             >
                                 <div
-                                    class="text-orange-500 font-black text-xl italic uppercase tracking-tighter mb-1"
+                                    class="text-orange-600 font-black text-xl italic uppercase tracking-tighter mb-1"
                                 >
                                     Nivel 1
                                 </div>
                                 <div
-                                    class="text-orange-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                    class="text-orange-500/80 text-[10px] uppercase tracking-widest font-bold"
                                 >
                                     Identidad
                                 </div>
                             </th>
                             <th
-                                class="p-6 border-b border-blue-500/30 bg-blue-500/5 text-center w-1/4"
+                                class="p-6 border-b border-blue-200 bg-blue-50 text-center w-1/4"
                             >
                                 <div
-                                    class="text-blue-500 font-black text-xl italic uppercase tracking-tighter mb-1"
+                                    class="text-blue-600 font-black text-xl italic uppercase tracking-tighter mb-1"
                                 >
                                     Nivel 2
                                 </div>
                                 <div
-                                    class="text-blue-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                    class="text-blue-500/80 text-[10px] uppercase tracking-widest font-bold"
                                 >
                                     Corporativa
                                 </div>
                             </th>
                             <th
-                                class="p-6 border-b border-emerald-500/30 bg-emerald-500/5 text-center w-1/4 rounded-tr-2xl"
+                                class="p-6 border-b border-emerald-200 bg-emerald-50 text-center w-1/4 rounded-tr-2xl"
                             >
                                 <div
-                                    class="text-emerald-500 font-black text-xl italic uppercase tracking-tighter mb-1"
+                                    class="text-emerald-600 font-black text-xl italic uppercase tracking-tighter mb-1"
                                 >
                                     Nivel 3
                                 </div>
                                 <div
-                                    class="text-emerald-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                    class="text-emerald-500/80 text-[10px] uppercase tracking-widest font-bold"
                                 >
                                     Tienda Online
                                 </div>
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="text-sm font-medium text-slate-400">
+                    <tbody class="text-sm font-medium text-slate-600">
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Estructura Web</td
                             >
-                            <td class="p-6 text-center bg-orange-500/5"
+                            <td class="p-6 text-center bg-orange-50/30"
                                 >1 Página (Landing)</td
                             >
-                            <td class="p-6 text-center bg-blue-500/5"
+                            <td class="p-6 text-center bg-blue-50/30"
                                 >Hasta 5 Secciones</td
                             >
-                            <td class="p-6 text-center bg-emerald-500/5"
+                            <td class="p-6 text-center bg-emerald-50/30"
                                 >Catálogo Escalable</td
                             >
                         </tr>
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Tiempo de Entrega</td
                             >
                             <td
-                                class="p-6 text-center bg-orange-500/5 font-bold text-orange-400"
+                                class="p-6 text-center bg-orange-50/30 font-bold text-orange-600"
                                 >48 Horas</td
                             >
                             <td
-                                class="p-6 text-center bg-blue-500/5 font-bold text-blue-400"
+                                class="p-6 text-center bg-blue-50/30 font-bold text-blue-600"
                                 >7 a 10 Días</td
                             >
                             <td
-                                class="p-6 text-center bg-emerald-500/5 font-bold text-emerald-400"
+                                class="p-6 text-center bg-emerald-50/30 font-bold text-emerald-600"
                                 >Según Proyecto</td
                             >
                         </tr>
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Panel Administrable (CMS)</td
                             >
-                            <td class="p-6 text-center bg-orange-500/5"
+                            <td class="p-6 text-center bg-orange-50/30"
                                 ><Icon
                                     name="fa6-solid:minus"
-                                    class="text-slate-600"
+                                    class="text-slate-300"
                                 /></td
                             >
                             <td
-                                class="p-6 text-center bg-blue-500/5 text-blue-400 font-bold"
+                                class="p-6 text-center bg-blue-50/30 text-blue-600 font-bold"
                                 ><Icon name="fa6-solid:check" class="mr-1" /> Precios
                                 / Galería</td
                             >
                             <td
-                                class="p-6 text-center bg-emerald-500/5 text-emerald-400 font-bold"
+                                class="p-6 text-center bg-emerald-50/30 text-emerald-600 font-bold"
                                 ><Icon name="fa6-solid:check" class="mr-1" /> Control
                                 Total</td
                             >
                         </tr>
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Carrito y Pagos Online</td
                             >
-                            <td class="p-6 text-center bg-orange-500/5"
+                            <td class="p-6 text-center bg-orange-50/30"
                                 ><Icon
                                     name="fa6-solid:minus"
-                                    class="text-slate-600"
+                                    class="text-slate-300"
                                 /></td
                             >
-                            <td class="p-6 text-center bg-blue-500/5"
+                            <td class="p-6 text-center bg-blue-50/30"
                                 ><Icon
                                     name="fa6-solid:minus"
-                                    class="text-slate-600"
+                                    class="text-slate-300"
                                 /></td
                             >
                             <td
-                                class="p-6 text-center bg-emerald-500/5 text-emerald-400 font-bold"
+                                class="p-6 text-center bg-emerald-50/30 text-emerald-600 font-bold"
                                 ><Icon name="fa6-solid:check" class="mr-1" /> Yape,
                                 Plin, Tarjetas</td
                             >
                         </tr>
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Correos Corporativos</td
                             >
-                            <td class="p-6 text-center bg-orange-500/5"
+                            <td class="p-6 text-center bg-orange-50/30"
                                 ><Icon
                                     name="fa6-solid:minus"
-                                    class="text-slate-600"
+                                    class="text-slate-300"
                                 /></td
                             >
-                            <td class="p-6 text-center bg-blue-500/5"
+                            <td class="p-6 text-center bg-blue-50/30"
                                 ><Icon
                                     name="fa6-solid:check"
-                                    class="text-blue-400 text-lg"
+                                    class="text-blue-600 text-lg"
                                 /></td
                             >
-                            <td class="p-6 text-center bg-emerald-500/5"
+                            <td class="p-6 text-center bg-emerald-50/30"
                                 ><Icon
                                     name="fa6-solid:check"
-                                    class="text-emerald-400 text-lg"
+                                    class="text-emerald-600 text-lg"
                                 /></td
                             >
                         </tr>
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Ajustes Post-Entrega</td
                             >
-                            <td class="p-6 text-center bg-orange-500/5"
+                            <td class="p-6 text-center bg-orange-50/30"
                                 >2 Rondas de revisión</td
                             >
-                            <td class="p-6 text-center bg-blue-500/5"
+                            <td class="p-6 text-center bg-blue-50/30"
                                 >3 Rondas de revisión</td
                             >
-                            <td class="p-6 text-center bg-emerald-500/5"
+                            <td class="p-6 text-center bg-emerald-50/30"
                                 >5 Rondas de revisión</td
                             >
                         </tr>
                         <tr
-                            class="hover:bg-slate-800/30 transition-colors border-b border-slate-800/50"
+                            class="hover:bg-slate-50 transition-colors border-b border-slate-200"
                         >
-                            <td class="p-6 text-slate-300 font-bold"
+                            <td class="p-6 text-slate-900 font-bold"
                                 >Dominio y Hosting (1 Año)</td
                             >
-                            <td class="p-6 text-center bg-orange-500/5"
+                            <td class="p-6 text-center bg-orange-50/30"
                                 ><Icon
                                     name="fa6-solid:check"
-                                    class="text-green-500 text-lg"
+                                    class="text-green-600 text-lg"
                                 /></td
                             >
-                            <td class="p-6 text-center bg-blue-500/5"
+                            <td class="p-6 text-center bg-blue-50/30"
                                 ><Icon
                                     name="fa6-solid:check"
-                                    class="text-green-500 text-lg"
+                                    class="text-green-600 text-lg"
                                 /></td
                             >
-                            <td class="p-6 text-center bg-emerald-500/5"
+                            <td class="p-6 text-center bg-emerald-50/30"
                                 ><Icon
                                     name="fa6-solid:check"
-                                    class="text-green-500 text-lg"
+                                    class="text-green-600 text-lg"
                                 /></td
                             >
                         </tr>
                         <tr class="transition-colors">
                             <td
-                                class="p-6 text-white font-black text-base uppercase tracking-widest"
+                                class="p-6 text-slate-900 font-black text-base uppercase tracking-widest"
                                 >Inversión Única</td
                             >
                             <td
-                                class="p-6 text-center bg-orange-500/10 rounded-bl-2xl border-t-2 border-orange-500/50"
+                                class="p-6 text-center bg-orange-100/50 rounded-bl-2xl border-t-2 border-orange-200"
                                 ><span
-                                    class="text-3xl font-black text-orange-400"
+                                    class="text-3xl font-black text-orange-600"
                                     >S/ 450</span
                                 ></td
                             >
                             <td
-                                class="p-6 text-center bg-blue-500/10 border-t-2 border-blue-500/50"
-                                ><span class="text-3xl font-black text-blue-400"
+                                class="p-6 text-center bg-blue-100/50 border-t-2 border-blue-200"
+                                ><span class="text-3xl font-black text-blue-600"
                                     >S/ 1,000</span
                                 ></td
                             >
                             <td
-                                class="p-6 text-center bg-emerald-500/10 rounded-br-2xl border-t-2 border-emerald-500/50"
+                                class="p-6 text-center bg-emerald-100/50 rounded-br-2xl border-t-2 border-emerald-200"
                                 ><span
-                                    class="text-3xl font-black text-emerald-400"
+                                    class="text-3xl font-black text-emerald-600"
                                     >S/ 3,500</span
                                 ></td
                             >
@@ -1235,19 +1238,19 @@ import Icon from "../components/Icon.astro";
             <div class="md:hidden flex flex-col gap-6">
                 <!-- Mobile Nivel 1 -->
                 <div
-                    class="bg-slate-900/80 border border-orange-500/30 rounded-[2rem] p-6 relative shadow-lg shadow-orange-500/5"
+                    class="bg-white border border-slate-200 rounded-[2rem] p-6 relative shadow-sm"
                 >
                     <div
-                        class="flex justify-between items-end mb-6 border-b border-slate-800 pb-4"
+                        class="flex justify-between items-end mb-6 border-b border-slate-100 pb-4"
                     >
                         <div>
                             <div
-                                class="text-orange-500 font-black text-2xl italic uppercase tracking-tighter"
+                                class="text-orange-600 font-black text-2xl italic uppercase tracking-tighter"
                             >
                                 Nivel 1
                             </div>
                             <div
-                                class="text-orange-400/80 text-[10px] uppercase tracking-widest font-bold"
+                                class="text-orange-500/80 text-[10px] uppercase tracking-widest font-bold"
                             >
                                 Identidad Digital
                             </div>
@@ -1258,53 +1261,53 @@ import Icon from "../components/Icon.astro";
                             >
                                 Inversión
                             </div>
-                            <div class="text-3xl font-black text-white">
+                            <div class="text-3xl font-black text-slate-900">
                                 S/ 450
                             </div>
                         </div>
                     </div>
-                    <ul class="space-y-4 text-sm text-slate-300">
+                    <ul class="space-y-4 text-sm text-slate-600">
                         <li
-                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                            class="flex justify-between border-b border-slate-50 pb-2"
                         >
-                            <span class="text-slate-500">Estructura</span><span
+                            <span class="text-slate-400">Estructura</span><span
                                 >1 Página (Landing)</span
                             >
                         </li>
                         <li
-                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                            class="flex justify-between border-b border-slate-50 pb-2"
                         >
-                            <span class="text-slate-500">Entrega</span><span
-                                class="font-bold text-orange-400">48 Horas</span
+                            <span class="text-slate-400">Entrega</span><span
+                                class="font-bold text-orange-600">48 Horas</span
                             >
                         </li>
                         <li
-                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                            class="flex justify-between border-b border-slate-50 pb-2"
                         >
-                            <span class="text-slate-500">CMS / Panel</span><span
-                                class="text-slate-600">-</span
+                            <span class="text-slate-400">CMS / Panel</span><span
+                                class="text-slate-300">-</span
                             >
                         </li>
                         <li
-                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                            class="flex justify-between border-b border-slate-50 pb-2"
                         >
-                            <span class="text-slate-500">Pagos Online</span
-                            ><span class="text-slate-600">-</span>
+                            <span class="text-slate-400">Pagos Online</span
+                            ><span class="text-slate-300">-</span>
                         </li>
                         <li
-                            class="flex justify-between border-b border-slate-800/50 pb-2"
+                            class="flex justify-between border-b border-slate-50 pb-2"
                         >
-                            <span class="text-slate-500">Ajustes</span><span
+                            <span class="text-slate-400">Ajustes</span><span
                                 >2 Rondas</span
                             >
                         </li>
                         <li class="flex justify-between items-center pt-2">
                             <span
-                                class="text-slate-500 font-bold text-xs uppercase"
+                                class="text-slate-400 font-bold text-xs uppercase"
                                 >Dominio y Hosting</span
                             ><Icon
                                 name="fa6-solid:check"
-                                class="text-green-500 text-lg"
+                                class="text-green-600 text-lg"
                             />
                         </li>
                     </ul>
@@ -1313,19 +1316,19 @@ import Icon from "../components/Icon.astro";
 
             <!-- Mobile Nivel 2 -->
             <div
-                class="bg-slate-900/80 border border-blue-500/30 rounded-[2rem] p-6 relative shadow-lg shadow-blue-500/5"
+                class="bg-white border border-slate-200 rounded-[2rem] p-6 relative shadow-sm"
             >
                 <div
-                    class="flex justify-between items-end mb-6 border-b border-slate-800 pb-4"
+                    class="flex justify-between items-end mb-6 border-b border-slate-100 pb-4"
                 >
                     <div>
                         <div
-                            class="text-blue-500 font-black text-2xl italic uppercase tracking-tighter"
+                            class="text-blue-600 font-black text-2xl italic uppercase tracking-tighter"
                         >
                             Nivel 2
                         </div>
                         <div
-                            class="text-blue-400/80 text-[10px] uppercase tracking-widest font-bold"
+                            class="text-blue-500/80 text-[10px] uppercase tracking-widest font-bold"
                         >
                             Poder Corporativo
                         </div>
@@ -1336,54 +1339,56 @@ import Icon from "../components/Icon.astro";
                         >
                             Inversión
                         </div>
-                        <div class="text-3xl font-black text-white">
+                        <div class="text-3xl font-black text-slate-900">
                             S/ 1,000
                         </div>
                     </div>
                 </div>
-                <ul class="space-y-4 text-sm text-slate-300">
+                <ul class="space-y-4 text-sm text-slate-600">
                     <li
-                        class="flex justify-between border-b border-slate-800/50 pb-2"
+                        class="flex justify-between border-b border-slate-50 pb-2"
                     >
-                        <span class="text-slate-500">Estructura</span><span
+                        <span class="text-slate-400">Estructura</span><span
                             >Hasta 5 Secciones</span
                         >
                     </li>
                     <li
-                        class="flex justify-between border-b border-slate-800/50 pb-2"
+                        class="flex justify-between border-b border-slate-50 pb-2"
                     >
-                        <span class="text-slate-500">Entrega</span><span
-                            class="font-bold text-blue-400">7 a 10 Días</span
+                        <span class="text-slate-400">Entrega</span><span
+                            class="font-bold text-blue-600">7 a 10 Días</span
                         >
                     </li>
                     <li
-                        class="flex justify-between border-b border-slate-800/50 pb-2"
+                        class="flex justify-between border-b border-slate-50 pb-2"
                     >
-                        <span class="text-slate-500">CMS / Panel</span><span
-                            class="text-blue-400 font-bold"
+                        <span class="text-slate-400">CMS / Panel</span><span
+                            class="text-blue-600 font-bold"
                             ><Icon name="fa6-solid:check" class="mr-1" /> Precios
                             / Galería</span
                         >
                     </li>
                     <li
-                        class="flex justify-between border-b border-slate-800/50 pb-2"
+                        class="flex justify-between border-b border-slate-50 pb-2"
                     >
-                        <span class="text-slate-500">Correos Corp.</span><i
-                            class="fas fa-check text-blue-400 text-base"></i>
+                        <span class="text-slate-400">Correos Corp.</span><Icon
+                            name="fa6-solid:check"
+                            class="text-blue-600 text-lg"
+                        />
                     </li>
                     <li
-                        class="flex justify-between border-b border-slate-800/50 pb-2"
+                        class="flex justify-between border-b border-slate-50 pb-2"
                     >
-                        <span class="text-slate-500">Ajustes</span><span
+                        <span class="text-slate-400">Ajustes</span><span
                             >3 Rondas</span
                         >
                     </li>
                     <li class="flex justify-between items-center pt-2">
-                        <span class="text-slate-500 font-bold text-xs uppercase"
+                        <span class="text-slate-400 font-bold text-xs uppercase"
                             >Dominio y Hosting</span
                         ><Icon
                             name="fa6-solid:check"
-                            class="text-green-500 text-lg"
+                            class="text-green-600 text-lg"
                         />
                     </li>
                 </ul>
@@ -1392,19 +1397,19 @@ import Icon from "../components/Icon.astro";
 
         <!-- Mobile Nivel 3 -->
         <div
-            class="bg-slate-900/80 border border-emerald-500/30 rounded-[2rem] p-6 relative shadow-lg shadow-emerald-500/5"
+            class="bg-white border border-slate-200 rounded-[2rem] p-6 relative shadow-sm"
         >
             <div
-                class="flex justify-between items-end mb-6 border-b border-slate-800 pb-4"
+                class="flex justify-between items-end mb-6 border-b border-slate-100 pb-4"
             >
                 <div>
                     <div
-                        class="text-emerald-500 font-black text-2xl italic uppercase tracking-tighter"
+                        class="text-emerald-600 font-black text-2xl italic uppercase tracking-tighter"
                     >
                         Nivel 3
                     </div>
                     <div
-                        class="text-emerald-400/80 text-[10px] uppercase tracking-widest font-bold"
+                        class="text-emerald-500/80 text-[10px] uppercase tracking-widest font-bold"
                     >
                         Tienda Online
                     </div>
@@ -1415,53 +1420,53 @@ import Icon from "../components/Icon.astro";
                     >
                         Inversión
                     </div>
-                    <div class="text-3xl font-black text-white">S/ 3,500</div>
+                    <div class="text-3xl font-black text-slate-900">S/ 3,500</div>
                 </div>
             </div>
-            <ul class="space-y-4 text-sm text-slate-300">
+            <ul class="space-y-4 text-sm text-slate-600">
                 <li
-                    class="flex justify-between border-b border-slate-800/50 pb-2"
+                    class="flex justify-between border-b border-slate-50 pb-2"
                 >
-                    <span class="text-slate-500">Estructura</span><span
+                    <span class="text-slate-400">Estructura</span><span
                         >Catálogo Escalable</span
                     >
                 </li>
                 <li
-                    class="flex justify-between border-b border-slate-800/50 pb-2"
+                    class="flex justify-between border-b border-slate-50 pb-2"
                 >
-                    <span class="text-slate-500">Entrega</span><span
-                        class="font-bold text-emerald-400">Según Proyecto</span
+                    <span class="text-slate-400">Entrega</span><span
+                        class="font-bold text-emerald-600">Según Proyecto</span
                     >
                 </li>
                 <li
-                    class="flex justify-between border-b border-slate-800/50 pb-2"
+                    class="flex justify-between border-b border-slate-50 pb-2"
                 >
-                    <span class="text-slate-500">CMS / Panel</span><span
-                        class="text-emerald-400 font-bold"
+                    <span class="text-slate-400">CMS / Panel</span><span
+                        class="text-emerald-600 font-bold"
                         ><Icon name="fa6-solid:check" class="mr-1" /> Control Total</span
                     >
                 </li>
                 <li
-                    class="flex justify-between border-b border-slate-800/50 pb-2"
+                    class="flex justify-between border-b border-slate-50 pb-2"
                 >
-                    <span class="text-slate-500">Pagos Online</span><span
-                        class="text-emerald-400 font-bold"
+                    <span class="text-slate-400">Pagos Online</span><span
+                        class="text-emerald-600 font-bold"
                         ><Icon name="fa6-solid:check" class="mr-1" /> Yape/Tarjetas</span
                     >
                 </li>
                 <li
-                    class="flex justify-between border-b border-slate-800/50 pb-2"
+                    class="flex justify-between border-b border-slate-50 pb-2"
                 >
-                    <span class="text-slate-500">Ajustes</span><span
+                    <span class="text-slate-400">Ajustes</span><span
                         >5 Rondas</span
                     >
                 </li>
                 <li class="flex justify-between items-center pt-2">
-                    <span class="text-slate-500 font-bold text-xs uppercase"
+                    <span class="text-slate-400 font-bold text-xs uppercase"
                         >Dominio y Hosting</span
                     ><Icon
                         name="fa6-solid:check"
-                        class="text-green-500 text-lg"
+                        class="text-green-600 text-lg"
                     />
                 </li>
             </ul>
@@ -1471,7 +1476,7 @@ import Icon from "../components/Icon.astro";
             <a
                 href="https://wa.me/51963896469?text=Hola,%20tengo%20una%20duda%20sobre%20cuál%20nivel%20elegir."
                 target="_blank"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-slate-950 hover:bg-slate-800 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all border border-slate-800 hover:border-slate-600 shadow-lg text-center"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all border border-slate-800 shadow-sm text-center"
             >
                 <Icon name="fa6-brands:whatsapp" class="text-green-400 text-xl" /> ¿Necesitas
                 asesoría para elegir?
@@ -1485,23 +1490,8 @@ import Icon from "../components/Icon.astro";
 </Layout>
 
 <style>
-    /* Efecto Glow para los Mockups específico de esta página */
-    .mockup-glow-l1 {
-        box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-            0 0 0 1px rgba(0, 0, 0, 0.5),
-            0 20px 50px rgba(249, 115, 22, 0.15);
-    }
-    .mockup-glow-l2 {
-        box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-            0 0 0 1px rgba(0, 0, 0, 0.5),
-            0 20px 50px rgba(59, 130, 246, 0.15);
-    }
-    .mockup-glow-l3 {
-        box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-            0 0 0 1px rgba(0, 0, 0, 0.5),
-            0 20px 50px rgba(16, 185, 129, 0.15);
+    /* Efecto para los Mockups específico de esta página */
+    .mockup-glow-l1, .mockup-glow-l2, .mockup-glow-l3 {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     }
 </style>

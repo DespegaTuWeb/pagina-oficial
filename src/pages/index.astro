@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
-import { Image, Picture, getImage } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import Icon from "../components/Icon.astro";
 import imgDoctor from "../assets/agencia-digital-diseno-web-doctor.webp";
 import imgGym from "../assets/marketing-digital-gamarra-paginas-web.webp";
@@ -11,282 +11,353 @@ import imgMagnus from "../assets/servicio-pagina-web-peru-barato.webp";
 import imgMockupL1 from "../assets/diseno-landing-page-profesional-doctor-lima.webp";
 import imgMockupL2 from "../assets/pagina-web-corporativa-empresa-negocios.webp";
 import imgMockupL3 from "../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp";
-import imgHeroFallback from "../assets/hero-fallback.webp";
-import imgHeroFallbackLarge from "../assets/hero-fallback-large.webp";
-
-// Optimiza hero-fallback a 640px para el poster del video (móvil) y OG image
-const optimizedPoster = await getImage({
-    src: imgHeroFallback,
-    width: 640,
-    format: "webp",
-    quality: 82,
-});
+import imgHero1 from "../assets/diseno-web-clinicas-centros-medicos-lima.webp";
+import imgHero2 from "../assets/pagina-web-portafolio-fotografos-profesionales.webp";
+import imgHero3 from "../assets/sistema-gestion-ventas-tiktok-live-peru.webp";
+import imgHero4 from "../assets/creacion-web-gimnasios-fitness-peru.webp";
+import imgHero5 from "../assets/diseno-web-empresas-construccion-ingenieria.webp";
+import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
 ---
 
 <Layout
-    title="Despega Tu Web | Páginas Web desde S/ 450"
-    description="Creamos tu página web en de 48 horas. Páginas seguras, modernas  y profesionales para todo tipo de negocios y marcas personales."
-    image={optimizedPoster.src}
-    heroPosterSrc={optimizedPoster.src}
+    title="Despega Tu Web | Tu negocio en Google esta semana"
+    description="Creamos tu página web profesional en 48 horas. Rápida, segura y optimizada para convertir visitas en clientes reales."
 >
+    <style>
+        .hero-mesh {
+            background-color: #ffffff;
+            background-image:
+                radial-gradient(
+                    at 0% 0%,
+                    rgba(37, 99, 235, 0.08) 0px,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    at 100% 0%,
+                    rgba(99, 102, 241, 0.05) 0px,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    at 100% 100%,
+                    rgba(37, 99, 235, 0.08) 0px,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    at 0% 100%,
+                    rgba(99, 102, 241, 0.05) 0px,
+                    transparent 50%
+                );
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            shadow: 0 25px 50px -12px rgba(30, 58, 138, 0.12);
+        }
+
+        /* Hero Carousel */
+        .hero-carousel-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition:
+                opacity 0.9s ease-in-out,
+                transform 1s ease-in-out;
+            transform: scale(1);
+        }
+        .hero-carousel-img.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hero-carousel-img:hover {
+            transform: scale(1);
+        }
+        .hero-bar-title {
+            transition: opacity 0.4s ease;
+        }
+    </style>
     <Navbar />
 
+    <!-- HERO SECTION: CRO PURO -->
     <section
-        class="relative w-full min-h-[600px] md:min-h-[100svh] overflow-x-hidden overflow-y-auto md:overflow-hidden bg-slate-950 border-b border-slate-800"
-        x-data="{ showWelcome: false, showExtra: false, isUp: false, activeCard: 0 }"
-        x-init="setTimeout(() => showWelcome = true, 50); setTimeout(() => isUp = true, 700); setTimeout(() => showExtra = true, 1125);"
+        class="hero-mesh relative w-full pt-32 pb-4 sm:pt-24 sm:pb-8 overflow-hidden border-b border-slate-100"
     >
-        <div
-            class="absolute left-0 w-full z-0 overflow-hidden pointer-events-none top-16 aspect-video md:top-0 md:aspect-auto md:h-full"
+        <main
+            class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10"
         >
-            <video
-                id="hero-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-                poster={optimizedPoster.src}
-                class="md:hidden w-full h-full object-cover opacity-100 transition-opacity"
-                style="contain: strict"
-                aria-hidden="true"
-            >
-                <source src="/imgs/hero.mp4" type="video/mp4" />
-            </video>
-
-            <!-- Imagen para desktop (reemplaza al video) -->
-            <Image
-                src={imgHeroFallbackLarge}
-                alt="Hero Background"
-                class="hidden md:block w-full h-full object-cover"
-                loading="eager"
-                fetchpriority="high"
-            />
-        </div>
-
-        <div
-            class="relative z-10 w-full md:min-h-[100svh] max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center pt-20 pb-8 md:pt-28 md:pb-12 gap-6 md:gap-0 md:justify-center"
-        >
-            <div
-                class="w-full z-20 flex flex-col items-center justify-center aspect-video md:aspect-auto md:h-auto"
-            >
+            <!-- Bloque de Texto -->
+            <div class="animate-in fade-in slide-in-from-left duration-1000">
                 <div
-                    class="w-full h-full flex md:hidden flex-col items-center justify-start pt-6 sm:pt-8 px-1"
-                    x-data="{ baseText: '¡HOLA! BIENVENIDO A LA AGENCIA #1 DE LIMA', baseTyped: '', baseChar: 0, phrases:['EN DESARROLLO WEB', 'EN LANDING PAGES', 'EN PÁGINAS CORPORATIVAS', 'EN TIENDAS ONLINE'], phraseIdx: 0, loopTyped: '', loopChar: 0, isDeleting: false, startLoop() { let current = this.phrases[this.phraseIdx]; if(this.isDeleting) { this.loopTyped = current.substring(0, this.loopChar - 1); this.loopChar--; } else { this.loopTyped = current.substring(0, this.loopChar + 1); this.loopChar++; } let speed = this.isDeleting ? 15 : 30; if(!this.isDeleting && this.loopChar === current.length) { speed = 1000; this.isDeleting = true; } else if(this.isDeleting && this.loopChar === 0) { this.isDeleting = false; this.phraseIdx = (this.phraseIdx + 1) % this.phrases.length; speed = 250; } setTimeout(() => { this.startLoop() }, speed); }, typeBase() { if(this.baseChar < this.baseText.length) { this.baseTyped += this.baseText.charAt(this.baseChar); this.baseChar++; setTimeout(() => { this.typeBase() }, 18); } else { setTimeout(() => { this.startLoop() }, 250); } } }"
-                    x-init="setTimeout(() => { typeBase() }, 400)"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4 sm:mb-8 shadow-sm"
                 >
-                    <h2
-                        class="font-black uppercase italic tracking-wide text-[9px] min-[380px]:text-[10px] sm:text-xs text-center leading-relaxed"
-                    >
+                    <span class="relative flex h-2 w-2">
                         <span
-                            class="text-white drop-shadow-lg"
-                            x-text="baseTyped"></span>
-                        <br />
-                        <div class="mt-1 h-4 flex items-center justify-center">
-                            <span
-                                class="text-blue-500 drop-shadow-lg"
-                                x-show="baseChar >= baseText.length"
-                            >
-                                <span x-text="loopTyped"></span><span
-                                    class="animate-pulse text-white">|</span
-                                >
-                            </span>
-                        </div>
-                    </h2>
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+                        ></span>
+                        <span
+                            class="relative inline-flex rounded-full h-2 w-2 bg-green-500"
+                        ></span>
+                    </span>
+                    Agencia de Desarrollo Web
                 </div>
 
-                <div
-                    class="hidden md:block w-full text-center origin-center px-4"
-                    style="transform: translateY(15vh); transition: transform 750ms ease-in-out;"
-                    :style="{ transform: isUp ? 'scale(0.80) translateY(0)' : 'translateY(15vh)' }"
+                <h1
+                    class="text-5xl md:text-8xl font-black leading-[0.95] mb-4 sm:mb-8 text-slate-950 tracking-tight"
                 >
-                    <h2
-                        class="font-black uppercase italic tracking-tighter drop-shadow-2xl leading-none transition-all duration-[750ms]"
-                        x-data="{ glow: false }"
-                        x-init="setTimeout(() => glow = true, 450);"
+                    Tu negocio <br />
+                    <span class="text-blue-600">en Google</span>
+                    <br />
+                    esta semana
+                </h1>
+
+                <p
+                    class="text-xl text-slate-700 leading-relaxed mb-6 sm:mb-10 max-w-lg font-medium"
+                >
+                    Creamos tu página web profesional. Rápida, segura y
+                    optimizada para conseguir más clientes y contactos reales.
+                </p>
+
+                <div
+                    class="flex flex-col sm:flex-row gap-5 items-start sm:items-center"
+                >
+                    <a
+                        href="https://wa.me/51963896469"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full sm:w-auto px-8 py-5 bg-blue-600 text-white rounded-2xl font-black text-sm md:text-base uppercase tracking-widest shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:-translate-y-1 transition-all text-center flex items-center justify-center gap-2"
                     >
-                        <span
-                            class="block transition-all duration-[750ms] text-lg md:text-2xl text-white opacity-80 mb-2"
-                            :class="isUp ? 'opacity-50 mb-1' : 'opacity-80 mb-2'"
+                        <Icon name="fa6-brands:whatsapp" class="text-xl" />
+                        Quiero mi Web — S/ 450
+                    </a>
+
+                    <div class="flex items-center gap-3 px-2 py-2">
+                        <div class="flex gap-0.5 text-yellow-400 text-lg">
+                            ★<span class="hidden sm:inline">★</span>★<span
+                                class="hidden sm:inline">★</span
+                            >★
+                        </div>
+                        <p
+                            class="text-[11px] font-bold text-slate-500 leading-tight uppercase tracking-tighter border-l border-slate-300 pl-3"
                         >
-                            ¡Hola! Bienvenido a
-                        </span>
-                        <span
-                            class="relative inline-block my-2 transition-all duration-[750ms] ease-in-out text-3xl sm:text-5xl md:text-7xl"
-                        >
-                            <span
-                                class="relative inline-block transition-all duration-[300ms]"
-                                :class="glow ? 'drop-shadow-[0_0_35px_rgba(59,130,246,1)] brightness-125' : ''"
-                            >
-                                <span class="text-blue-500">
-                                    la agencia #1 de Lima
-                                </span>
-                            </span>
-                        </span>
-                        <span
-                            class="block transition-all duration-[750ms] text-lg md:text-2xl text-white opacity-80 mt-2"
-                            :class="isUp ? 'opacity-50 mt-1' : 'opacity-80 mt-2'"
-                        >
-                            en desarrollo web
-                        </span>
-                    </h2>
+                            Respaldado por <br />
+                            negocios locales.
+                        </p>
+                    </div>
                 </div>
             </div>
 
+            <!-- Bloque Visual -->
             <div
-                class="w-full flex flex-col items-center gap-3 md:gap-12 z-10 mt-2 md:mt-0"
+                class="relative animate-in fade-in slide-in-from-right duration-1000 delay-200"
             >
                 <div
-                    class="w-full flex justify-center md:opacity-0 md:translate-y-8 md:transition-all md:ease-out md:duration-[250ms] md:delay-[50ms]"
-                    :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-8'"
+                    class="glass-card p-4 rounded-[2.5rem] shadow-2xl float-anim"
                 >
                     <div
-                        x-data="{ x: 0, y: 0 }"
-                        @mousemove="x = $event.offsetX; y = $event.offsetY"
-                        class="relative backdrop-blur-xl bg-white/5 border border-white/20 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2.5rem] shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] max-w-2xl w-full text-left md:text-center group overflow-hidden"
+                        class="bg-white rounded-[1.8rem] overflow-hidden flex flex-col group border border-slate-200 shadow-2xl shadow-blue-900/10"
                     >
+                        <!-- Barra de Título Superior -->
                         <div
-                            class="absolute -top-24 -left-24 w-48 md:w-64 h-48 md:h-64 bg-blue-600/20 rounded-full blur-[60px] md:blur-[80px] animate-pulse pointer-events-none"
+                            class="bg-white p-3 px-5 flex items-center justify-between border-b border-slate-100 relative z-20"
                         >
-                        </div>
-                        <div
-                            class="absolute -bottom-24 -right-24 w-48 md:w-64 h-48 md:h-64 bg-purple-600/15 rounded-full blur-[60px] md:blur-[80px] animate-pulse delay-700 pointer-events-none"
-                        >
-                        </div>
-
-                        <div
-                            class="absolute inset-0 opacity-[0.04] pointer-events-none"
-                            style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E&quot;); background-size: 200px 200px;"
-                        >
-                        </div>
-                        <div
-                            class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-                            :style="`background: radial-gradient(600px circle at ${x}px ${y}px, rgba(59,130,246,0.12), transparent 40%);`"
-                        >
-                        </div>
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"
-                        >
-                        </div>
-
-                        <div
-                            class="relative z-10 flex flex-col md:items-center"
-                        >
-                            <div
-                                class="bg-blue-600 text-white text-[9px] md:text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-2 md:mb-4 inline-block shadow-lg shadow-blue-900/50 w-max"
-                            >
-                                Tu marca en todo el mundo
+                            <div class="flex items-center gap-3">
+                                <div class="flex gap-1.5">
+                                    <div
+                                        class="w-2.5 h-2.5 rounded-full bg-blue-600 shadow-sm shadow-blue-200"
+                                    >
+                                    </div>
+                                    <div
+                                        class="w-2.5 h-2.5 rounded-full bg-blue-200"
+                                    >
+                                    </div>
+                                </div>
+                                <div
+                                    id="hero-bar-title"
+                                    class="text-slate-900 font-black uppercase text-[10px] tracking-widest border-l border-slate-100 pl-3 hero-bar-title"
+                                >
+                                    CENTRO MÉDICO
+                                </div>
                             </div>
-                            <h3
-                                class="text-white text-lg md:text-3xl font-black italic uppercase leading-tight mb-1 md:mb-3 drop-shadow-md"
-                            >
-                                Tu negocio siempre activo
-                            </h3>
-                            <p
-                                class="text-white text-xs md:text-base font-medium leading-relaxed max-w-lg md:mx-auto"
-                            >
-                                Desarrollamos páginas web para marcas
-                                personales, negocios, empresas y comercios
-                            </p>
+                            <!-- Dots indicator -->
+                            <div class="flex gap-1.5" id="hero-dots">
+                                <button
+                                    data-idx="0"
+                                    class="hero-dot w-1.5 h-1.5 rounded-full bg-blue-600 transition-all"
+                                ></button>
+                                <button
+                                    data-idx="1"
+                                    class="hero-dot w-1.5 h-1.5 rounded-full bg-slate-300 transition-all"
+                                ></button>
+                                <button
+                                    data-idx="2"
+                                    class="hero-dot w-1.5 h-1.5 rounded-full bg-slate-300 transition-all"
+                                ></button>
+                                <button
+                                    data-idx="3"
+                                    class="hero-dot w-1.5 h-1.5 rounded-full bg-slate-300 transition-all"
+                                ></button>
+                            </div>
+                        </div>
+
+                        <!-- Contenedor de Carrusel -->
+                        <div
+                            class="relative w-full aspect-[4/3] overflow-hidden bg-slate-50"
+                        >
+                            <Picture
+                                src={imgHero2}
+                                alt="Landing page tipo portafolio optimizada para fotógrafos y creativos."
+                                widths={[400, 800]}
+                                width={800}
+                                height={600}
+                                formats={["avif", "webp"]}
+                                class="hero-carousel-img active"
+                                loading="eager"
+                            />
+                            <Picture
+                                src={imgHero5}
+                                alt="Página web corporativa para empresas de construcción, proyectos e ingeniería."
+                                widths={[400, 800]}
+                                width={800}
+                                height={600}
+                                formats={["avif", "webp"]}
+                                class="hero-carousel-img"
+                                loading="lazy"
+                            />
+                            <Picture
+                                src={imgHero1}
+                                alt="Diseño de página web profesional para clínicas y centros médicos con reserva de citas."
+                                widths={[400, 800]}
+                                width={800}
+                                height={600}
+                                formats={["avif", "webp"]}
+                                class="hero-carousel-img"
+                                loading="lazy"
+                            />
+                            <Picture
+                                src={imgHero6}
+                                alt="E-commerce profesional para marcas de ropa con pasarela de pagos integrada."
+                                widths={[400, 800]}
+                                width={800}
+                                height={600}
+                                formats={["avif", "webp"]}
+                                class="hero-carousel-img"
+                                loading="lazy"
+                            />
                         </div>
                     </div>
+                    <script>
+                        const images =
+                            document.querySelectorAll(".hero-carousel-img");
+                        const dots = document.querySelectorAll(".hero-dot");
+                        const titleEl =
+                            document.getElementById("hero-bar-title");
+                        const titles = [
+                            "SOL & ALMA",
+                            "CONSTRUCCIONES VANGUARDIA",
+                            "MEDICLINICAS",
+                            "VELVET & THREAD",
+                        ];
+                        let idx = 0;
+                        const rotate = () => {
+                            images.forEach((img, i) => {
+                                img.classList.toggle("active", i === idx);
+                            });
+                            dots.forEach((dot, i) => {
+                                dot.classList.toggle("bg-blue-600", i === idx);
+                                dot.classList.toggle("bg-slate-300", i !== idx);
+                            });
+                            if (titleEl) titleEl.textContent = titles[idx];
+                            idx = (idx + 1) % images.length;
+                        };
+                        // Initial state
+                        rotate();
+                        setInterval(rotate, 4000);
+                    </script>
                 </div>
 
                 <div
-                    class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 w-full max-w-4xl px-2"
+                    class="absolute -bottom-6 -left-6 glass-card px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-100"
                 >
-                    <div
-                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-[175ms] md:delay-[150ms]"
-                        :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-6'"
-                    >
-                        <div
-                            @click="activeCard = 1"
-                            class="flex flex-row md:flex-col items-center md:justify-center text-left md:text-center gap-3 md:gap-4 backdrop-blur-md bg-black/40 border p-3 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 cursor-pointer h-auto md:h-[210px] group border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.15)] w-full"
-                            :class="activeCard === 1 ? 'border-purple-400 shadow-[0_0_40px_rgba(168,85,247,0.5)] brightness-125 scale-[1.02]' : ''"
-                        >
-                            <div
-                                class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-indigo-500/30 shadow-inner"
-                            >
-                                <Icon
-                                    name="fa6-solid:file-signature"
-                                    class="text-base md:text-2xl"
-                                />
-                            </div>
-                            <div class="flex flex-col mt-0 md:mt-2">
-                                <span
-                                    class="text-white text-sm md:text-base font-black uppercase tracking-wider mb-0 md:mb-2"
-                                    >Emitimos Boleta</span
-                                >
-                                <span
-                                    class="text-white text-[10px] md:text-xs leading-snug md:px-2"
-                                    >Formalidad legal garantizada para tu
-                                    inversión</span
-                                >
-                            </div>
-                        </div>
+                    <div class="p-2 bg-green-100 rounded-lg text-green-600">
+                        <Icon name="fa6-solid:check" class="text-lg" />
                     </div>
+                    <div
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-700"
+                    >
+                        99.9% Speed Score
+                    </div>
+                </div>
+            </div>
+        </main>
 
-                    <div
-                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-[175ms] md:delay-[200ms]"
-                        :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-6'"
-                    >
-                        <div
-                            @click="activeCard = 2"
-                            class="flex flex-row md:flex-col items-center md:justify-center text-left md:text-center gap-3 md:gap-4 backdrop-blur-md bg-blue-600/20 border p-3 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 cursor-pointer h-auto md:h-[210px] group border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.2)] w-full"
-                            :class="activeCard === 2 ? 'border-blue-400 shadow-[0_0_40px_rgba(59,130,246,0.6)] brightness-125 scale-[1.02]' : ''"
-                        >
-                            <div
-                                class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-blue-600 flex items-center justify-center text-white shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-                            >
-                                <Icon
-                                    name="fa6-solid:bolt-lightning"
-                                    class="text-base md:text-2xl"
-                                />
-                            </div>
-                            <div class="flex flex-col mt-0 md:mt-2">
-                                <span
-                                    class="text-white text-sm md:text-base font-black uppercase tracking-wider mb-0 md:mb-2"
-                                    >Desde S/ 450</span
-                                >
-                                <span
-                                    class="text-white text-[10px] md:text-xs leading-snug md:px-2"
-                                    >Tu marca profesional al mejor precio del
-                                    mercado</span
-                                >
-                            </div>
-                        </div>
-                    </div>
+        <!-- Footer de ROI integrado -->
+        <div
+            class="max-w-7xl mx-auto px-6 border-t border-slate-200 py-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-8 relative z-10"
+        >
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                    <Icon name="fa6-solid:hand-holding-dollar" class="text-xl" />
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-0.5">
+                        Un Solo Pago
+                    </p>
+                    <p class="text-lg font-bold text-slate-800 leading-tight">Desde S/ 450</p>
+                </div>
+            </div>
 
-                    <div
-                        class="h-full md:opacity-0 md:translate-y-6 md:transition-all md:ease-out md:duration-[175ms] md:delay-[250ms]"
-                        :class="showExtra ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-6'"
-                    >
-                        <div
-                            @click="activeCard = 3"
-                            class="flex flex-row md:flex-col items-center md:justify-center text-left md:text-center gap-3 md:gap-4 backdrop-blur-md bg-black/40 border p-3 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 cursor-pointer h-auto md:h-[210px] group border-emerald-500/40 shadow-[0_0_20px_rgba(16,185,129,0.15)] w-full"
-                            :class="activeCard === 3 ? 'border-emerald-400 shadow-[0_0_40px_rgba(16,185,129,0.5)] brightness-125 scale-[1.02]' : ''"
-                        >
-                            <div
-                                class="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-emerald-500/30 shadow-inner"
-                            >
-                                <Icon
-                                    name="fa6-solid:check-double"
-                                    class="text-base md:text-2xl"
-                                />
-                            </div>
-                            <div class="flex flex-col mt-0 md:mt-2">
-                                <span
-                                    class="text-white text-sm md:text-base font-black uppercase tracking-wider mb-0 md:mb-2"
-                                    >Cero Costos</span
-                                >
-                                <span
-                                    class="text-white text-[10px] md:text-xs leading-snug md:px-2"
-                                    >Sin mensualidades trampa. La web es 100%
-                                    tuya</span
-                                >
-                            </div>
-                        </div>
-                    </div>
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                    <Icon name="fa6-solid:bolt" class="text-xl" />
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-0.5">
+                        Entrega Rápida
+                    </p>
+                    <p class="text-lg font-bold text-slate-800 leading-tight">48 Horas</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                    <Icon name="fa6-solid:location-dot" class="text-xl" />
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-0.5">
+                        Soporte en Perú
+                    </p>
+                    <p class="text-lg font-bold text-slate-800 leading-tight">Lima, Perú</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                    <Icon name="fa6-solid:mobile-screen-button" class="text-xl" />
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-0.5">
+                        Tu Web en el Celular
+                    </p>
+                    <p class="text-lg font-bold text-slate-800 leading-tight">Perfecto en Celulares</p>
                 </div>
             </div>
         </div>
@@ -295,18 +366,24 @@ const optimizedPoster = await getImage({
     <!-- TIPOS DE WEB -->
     <section
         id="tipos-de-web"
-        class="py-10 md:py-24 px-6 bg-slate-950 border-b border-slate-800"
+        class="relative py-10 md:py-24 px-6 bg-slate-50 border-b border-slate-200"
     >
+        <!-- Soft Radial Glow -->
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10"
+        >
+        </div>
+
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-8 md:mb-16">
                 <h2
-                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-white mb-6"
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-slate-900 mb-6"
                 >
                     Encuentra tu nivel de
-                    <span class="text-blue-500">despegue</span>
+                    <span class="text-blue-600">despegue</span>
                 </h2>
                 <p
-                    class="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs"
+                    class="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs"
                 >
                     Selecciona la etapa actual de tu negocio en el mercado
                     digital
@@ -316,21 +393,21 @@ const optimizedPoster = await getImage({
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- Nivel 1 -->
                 <div
-                    class="flex flex-col h-full bg-slate-900/50 rounded-[2.5rem] p-6 border border-slate-800 hover:border-blue-500/50 transition-all group"
+                    class="flex flex-col h-full bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all group"
                 >
                     <div class="mb-6 px-2">
                         <span
-                            class="text-blue-500 font-black text-xs uppercase tracking-[0.2em]"
+                            class="text-blue-600 font-black text-xs uppercase tracking-[0.2em]"
                             >Nivel 1</span
                         >
                         <h3
-                            class="text-xl font-black text-white uppercase italic mt-1"
+                            class="text-xl font-black text-slate-900 uppercase italic mt-1"
                         >
                             Identidad Digital
                         </h3>
                     </div>
                     <div
-                        class="w-full h-44 bg-slate-800 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-white/5"
+                        class="w-full h-44 bg-slate-100 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-slate-100"
                     >
                         <Picture
                             src={imgMockupL1}
@@ -346,47 +423,47 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="space-y-4 mb-4 grow flex flex-col px-2">
                         <div
-                            class="bg-slate-800/40 p-4 rounded-2xl border border-slate-700/50 min-h-[115px]"
+                            class="bg-slate-50 p-4 rounded-2xl border border-slate-200 min-h-[115px]"
                         >
                             <p
-                                class="text-[10px] font-black text-blue-400 uppercase mb-2"
+                                class="text-[10px] font-black text-blue-600 uppercase mb-2"
                             >
                                 ¿Es para mí?
                             </p>
-                            <p class="text-sm text-slate-300 leading-snug">
-                                Si eres un <strong
+                            <p class="text-sm text-slate-600 leading-snug">
+                                Si eres un <strong class="text-slate-900"
                                     >profesional independiente o emprendedor</strong
-                                > que desea una <strong
+                                > que desea una <strong class="text-slate-900"
                                     >presencia oficial</strong
                                 > para que sus clientes potenciales lo encuentren
                                 rápido en Google.
                             </p>
                         </div>
                         <div
-                            class="bg-slate-800/20 p-4 rounded-2xl border border-dashed border-slate-700/50"
+                            class="bg-white p-4 rounded-2xl border border-dashed border-slate-300"
                         >
                             <p
                                 class="text-[10px] font-black text-slate-500 uppercase mb-2"
                             >
                                 ¿Qué ofrece?
                             </p>
-                            <ul class="text-xs text-slate-400 space-y-2">
+                            <ul class="text-xs text-slate-600 space-y-2">
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-blue-500 mr-2"
+                                        class="text-blue-600 mr-2"
                                     />1 Sección (Landing Page)
                                 </li>
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-blue-500 mr-2"
+                                        class="text-blue-600 mr-2"
                                     />Entrega en 48 Horas
                                 </li>
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-blue-500 mr-2"
+                                        class="text-blue-600 mr-2"
                                     />Botón Directo WhatsApp
                                 </li>
                             </ul>
@@ -394,19 +471,20 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="mt-auto shrink-0 flex flex-col gap-4">
                         <div
-                            class="flex justify-between items-center bg-slate-950 px-5 py-4 rounded-2xl border border-slate-800"
+                            class="flex justify-between items-center bg-slate-50 px-5 py-4 rounded-2xl border border-slate-200"
                         >
                             <span
-                                class="text-slate-400 font-bold text-[10px] uppercase tracking-widest"
+                                class="text-slate-500 font-bold text-[10px] uppercase tracking-widest"
                                 >Plan 1</span
                             >
-                            <span class="text-white font-black text-xl italic"
+                            <span
+                                class="text-slate-900 font-black text-xl italic"
                                 >S/ 450</span
                             >
                         </div>
                         <a
                             href="/planes#l1"
-                            class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-blue-500 transition-all"
+                            class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-blue-700 transition-all shadow-md shadow-blue-200"
                         >
                             Ver detalles del Nivel 1
                         </a>
@@ -415,7 +493,7 @@ const optimizedPoster = await getImage({
 
                 <!-- Nivel 2 -->
                 <div
-                    class="flex flex-col h-full bg-slate-900/50 rounded-[2.5rem] p-6 border border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.1)] hover:border-blue-500/50 transition-all group relative"
+                    class="flex flex-col h-full bg-white rounded-[2.5rem] p-6 border border-blue-100 shadow-md hover:shadow-lg transition-all group relative"
                 >
                     <div
                         class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-black uppercase px-4 py-1 rounded-full tracking-widest"
@@ -424,17 +502,17 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="mb-6 px-2">
                         <span
-                            class="text-blue-500 font-black text-xs uppercase tracking-[0.2em]"
+                            class="text-blue-600 font-black text-xs uppercase tracking-[0.2em]"
                             >Nivel 2</span
                         >
                         <h3
-                            class="text-xl font-black text-white uppercase italic mt-1"
+                            class="text-xl font-black text-slate-900 uppercase italic mt-1"
                         >
                             Poder Corporativo
                         </h3>
                     </div>
                     <div
-                        class="w-full h-44 bg-slate-800 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-white/5"
+                        class="w-full h-44 bg-slate-100 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-slate-100"
                     >
                         <Picture
                             src={imgMockupL2}
@@ -450,47 +528,48 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="space-y-4 mb-4 grow flex flex-col px-2">
                         <div
-                            class="bg-blue-900/20 p-4 rounded-2xl border border-blue-500/20 min-h-[115px]"
+                            class="bg-blue-50 p-4 rounded-2xl border border-blue-100 min-h-[115px]"
                         >
                             <p
-                                class="text-[10px] font-black text-blue-400 uppercase mb-2"
+                                class="text-[10px] font-black text-blue-600 uppercase mb-2"
                             >
                                 ¿Es para mí?
                             </p>
-                            <p class="text-sm text-slate-300 leading-snug">
-                                Si tienes una <strong
+                            <p class="text-sm text-slate-600 leading-snug">
+                                Si tienes una <strong class="text-slate-900"
                                     >empresa de servicios</strong
                                 > que busca proyectar <strong
+                                    class="text-slate-900"
                                     >estatus de élite</strong
                                 > y necesitas autonomía para gestionar tus propios
                                 contenidos.
                             </p>
                         </div>
                         <div
-                            class="bg-slate-800/20 p-4 rounded-2xl border border-dashed border-slate-700/50"
+                            class="bg-white p-4 rounded-2xl border border-dashed border-slate-300"
                         >
                             <p
                                 class="text-[10px] font-black text-slate-500 uppercase mb-2"
                             >
                                 ¿Qué ofrece?
                             </p>
-                            <ul class="text-xs text-slate-400 space-y-2">
+                            <ul class="text-xs text-slate-600 space-y-2">
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-blue-400 mr-2"
+                                        class="text-blue-600 mr-2"
                                     />Hasta 5 Secciones Pro
                                 </li>
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-blue-400 mr-2"
+                                        class="text-blue-600 mr-2"
                                     />Panel de Control (CMS)
                                 </li>
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-blue-400 mr-2"
+                                        class="text-blue-600 mr-2"
                                     />Correos Corporativos
                                 </li>
                             </ul>
@@ -498,19 +577,20 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="mt-auto shrink-0 flex flex-col gap-4">
                         <div
-                            class="flex justify-between items-center bg-slate-950 px-5 py-4 rounded-2xl border border-slate-800"
+                            class="flex justify-between items-center bg-slate-50 px-5 py-4 rounded-2xl border border-slate-200"
                         >
                             <span
-                                class="text-slate-400 font-bold text-[10px] uppercase tracking-widest"
+                                class="text-slate-500 font-bold text-[10px] uppercase tracking-widest"
                                 >Plan 2</span
                             >
-                            <span class="text-white font-black text-xl italic"
+                            <span
+                                class="text-slate-900 font-black text-xl italic"
                                 >S/ 1,000</span
                             >
                         </div>
                         <a
                             href="/planes#l2"
-                            class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-blue-500 transition-all"
+                            class="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-blue-700 transition-all shadow-md shadow-blue-200"
                         >
                             Ver detalles del Nivel 2
                         </a>
@@ -519,21 +599,21 @@ const optimizedPoster = await getImage({
 
                 <!-- Nivel 3 -->
                 <div
-                    class="flex flex-col h-full bg-slate-900/50 rounded-[2.5rem] p-6 border border-slate-800 hover:border-emerald-500/50 transition-all group"
+                    class="flex flex-col h-full bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all group"
                 >
                     <div class="mb-6 px-2">
                         <span
-                            class="text-emerald-500 font-black text-xs uppercase tracking-[0.2em]"
+                            class="text-emerald-600 font-black text-xs uppercase tracking-[0.2em]"
                             >Nivel 3</span
                         >
                         <h3
-                            class="text-xl font-black text-white uppercase italic mt-1"
+                            class="text-xl font-black text-slate-900 uppercase italic mt-1"
                         >
                             Ventas 24/7
                         </h3>
                     </div>
                     <div
-                        class="w-full h-44 bg-slate-800 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-white/5"
+                        class="w-full h-44 bg-slate-100 rounded-[1.8rem] mb-6 overflow-hidden relative shrink-0 border border-slate-100"
                     >
                         <Picture
                             src={imgMockupL3}
@@ -549,44 +629,47 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="space-y-4 mb-4 grow flex flex-col px-2">
                         <div
-                            class="bg-emerald-900/20 p-4 rounded-2xl border border-emerald-500/20 min-h-[115px]"
+                            class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 min-h-[115px]"
                         >
                             <p
-                                class="text-[10px] font-black text-emerald-400 uppercase mb-2"
+                                class="text-[10px] font-black text-emerald-600 uppercase mb-2"
                             >
                                 ¿Es para mí?
                             </p>
-                            <p class="text-sm text-slate-300 leading-snug">
-                                Si vendes <strong>productos físicos</strong> y quieres
-                                una <strong>tienda profesional</strong> que reciba
-                                pagos y gestione inventario de forma automática siempre.
+                            <p class="text-sm text-slate-600 leading-snug">
+                                Si vendes <strong class="text-slate-900"
+                                    >productos físicos</strong
+                                > y quieres una <strong class="text-slate-900"
+                                    >tienda profesional</strong
+                                > que reciba pagos y gestione inventario de forma
+                                automática siempre.
                             </p>
                         </div>
                         <div
-                            class="bg-slate-800/20 p-4 rounded-2xl border border-dashed border-slate-700/50"
+                            class="bg-white p-4 rounded-2xl border border-dashed border-slate-300"
                         >
                             <p
                                 class="text-[10px] font-black text-slate-500 uppercase mb-2"
                             >
                                 ¿Qué ofrece?
                             </p>
-                            <ul class="text-xs text-slate-400 space-y-2">
+                            <ul class="text-xs text-slate-600 space-y-2">
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-emerald-500 mr-2"
+                                        class="text-emerald-600 mr-2"
                                     />Tienda Online Completa
                                 </li>
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-emerald-500 mr-2"
+                                        class="text-emerald-600 mr-2"
                                     />Pagos (Yape/Visa/Plin)
                                 </li>
                                 <li class="flex items-center">
                                     <Icon
                                         name="fa6-solid:check"
-                                        class="text-emerald-500 mr-2"
+                                        class="text-emerald-600 mr-2"
                                     />Control de Stock Real
                                 </li>
                             </ul>
@@ -594,19 +677,20 @@ const optimizedPoster = await getImage({
                     </div>
                     <div class="mt-auto shrink-0 flex flex-col gap-4">
                         <div
-                            class="flex justify-between items-center bg-slate-950 px-5 py-4 rounded-2xl border border-slate-800"
+                            class="flex justify-between items-center bg-slate-50 px-5 py-4 rounded-2xl border border-slate-200"
                         >
                             <span
-                                class="text-slate-400 font-bold text-[10px] uppercase tracking-widest"
+                                class="text-slate-500 font-bold text-[10px] uppercase tracking-widest"
                                 >Plan 3</span
                             >
-                            <span class="text-white font-black text-xl italic"
+                            <span
+                                class="text-slate-900 font-black text-xl italic"
                                 >S/ 3,500</span
                             >
                         </div>
                         <a
                             href="/planes#l3"
-                            class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-emerald-500 transition-all"
+                            class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-emerald-700 transition-all shadow-md shadow-emerald-200"
                         >
                             Ver detalles del Nivel 3
                         </a>
@@ -615,13 +699,13 @@ const optimizedPoster = await getImage({
             </div>
 
             <div
-                class="max-w-4xl mx-auto text-center border-t border-slate-800 pt-10"
+                class="max-w-4xl mx-auto text-center border-t border-slate-200 pt-10"
             >
                 <p
-                    class="text-slate-400 font-black uppercase tracking-[0.15em] text-[10px] leading-relaxed"
+                    class="text-slate-500 font-black uppercase tracking-[0.15em] text-[10px] leading-relaxed"
                 >
                     🚀 Todos los planes incluyen:
-                    <span class="text-slate-200"
+                    <span class="text-slate-800"
                         >Dominio, Hosting, Optimización de Logo y Fotos, Botón
                         de WhatsApp y Mapa Interactivo.</span
                     >
@@ -633,130 +717,142 @@ const optimizedPoster = await getImage({
     <!-- PORTAFOLIO MINI -->
     <section
         id="portafolio"
-        class="py-10 md:py-24 px-6 bg-slate-950 border-b border-slate-800"
+        class="py-10 md:py-24 px-6 bg-slate-50 border-b border-slate-200"
     >
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 space-y-4">
-                <h2
-                    class="text-4xl font-black tracking-tighter uppercase italic text-white tracking-wider"
-                >
-                    Proyectos Entregados
-                </h2>
-                <p class="text-slate-400 font-medium max-w-2xl mx-auto">
-                    No prometemos velocidad, la demostramos. Proyectos
-                    entregados, optimizados al máximo y vendiendo en automático.
-                </p>
-                <div class="h-1.5 w-16 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div
-                    class="bg-slate-900/50 rounded-3xl overflow-hidden shadow-sm border border-slate-800 group flex flex-col relative hover:border-blue-500/50 transition-colors"
-                >
-                    <div
-                        class="h-64 sm:h-72 bg-slate-800 overflow-hidden shrink-0"
+            <div
+                class="bg-white p-8 md:p-12 rounded-[3rem] border border-slate-100 shadow-sm"
+            >
+                <div class="text-center mb-16 space-y-4">
+                    <h2
+                        class="text-4xl font-black tracking-tighter uppercase italic text-slate-900 tracking-wider"
                     >
-                        <Picture
-                            src={imgDoctor}
-                            alt="Proyecto 1"
-                            widths={[400, 700]}
-                            formats={["avif", "webp"]}
-                            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
-                            width={700}
-                            height={467}
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div class="p-6 grow flex justify-between items-end">
-                        <div>
-                            <h3 class="font-bold text-white uppercase text-sm">
-                                Clínica Dra. Selene
-                            </h3>
-                            <p
-                                class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1"
-                            >
-                                Sector Salud
-                            </p>
-                        </div>
-                        <div
-                            class="text-emerald-400 font-bold text-xs flex items-center gap-1"
-                        >
-                            <Icon name="fa6-solid:bolt" /> 100/100
-                        </div>
+                        Proyectos Entregados
+                    </h2>
+                    <p class="text-slate-600 font-medium max-w-2xl mx-auto">
+                        No prometemos velocidad, la demostramos. Proyectos
+                        entregados, optimizados al máximo y vendiendo en
+                        automático.
+                    </p>
+                    <div class="h-1.5 w-16 bg-blue-600 mx-auto rounded-full">
                     </div>
                 </div>
 
-                <div
-                    class="bg-slate-900/50 rounded-3xl overflow-hidden shadow-sm border border-slate-800 group flex flex-col relative hover:border-blue-500/50 transition-colors"
-                >
+                <div class="grid md:grid-cols-3 gap-8">
                     <div
-                        class="h-64 sm:h-72 bg-slate-800 overflow-hidden shrink-0"
+                        class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow group flex flex-col relative"
                     >
-                        <Picture
-                            src={imgGym}
-                            alt="Proyecto 2"
-                            widths={[400, 700]}
-                            formats={["avif", "webp"]}
-                            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
-                            width={700}
-                            height={467}
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div class="p-6 grow flex justify-between items-end">
-                        <div>
-                            <h3 class="font-bold text-white uppercase text-sm">
-                                Puro Fierro Gym
-                            </h3>
-                            <p
-                                class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1"
-                            >
-                                Sector Fitness
-                            </p>
-                        </div>
                         <div
-                            class="text-emerald-400 font-bold text-xs flex items-center gap-1"
+                            class="h-64 sm:h-72 bg-slate-50 overflow-hidden shrink-0"
                         >
-                            <Icon name="fa6-solid:bolt" /> 100/100
+                            <Picture
+                                src={imgDoctor}
+                                alt="Proyecto 1"
+                                widths={[400, 700]}
+                                formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
+                                width={700}
+                                height={467}
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="p-6 grow flex justify-between items-end">
+                            <div>
+                                <h3
+                                    class="font-bold text-slate-900 uppercase text-sm"
+                                >
+                                    Clínica Dra. Selene
+                                </h3>
+                                <p
+                                    class="text-[10px] text-blue-600 font-black uppercase tracking-widest mt-1"
+                                >
+                                    Sector Salud
+                                </p>
+                            </div>
+                            <div
+                                class="text-emerald-600 font-bold text-xs flex items-center gap-1"
+                            >
+                                <Icon name="fa6-solid:bolt" /> 100/100
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div
-                    class="bg-slate-900/50 rounded-3xl overflow-hidden shadow-sm border border-slate-800 group flex flex-col relative hover:border-blue-500/50 transition-colors"
-                >
                     <div
-                        class="h-64 sm:h-72 bg-slate-800 overflow-hidden shrink-0"
+                        class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow group flex flex-col relative"
                     >
-                        <Picture
-                            src={imgMagnus}
-                            alt="Proyecto 3"
-                            widths={[400, 700]}
-                            formats={["avif", "webp"]}
-                            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
-                            width={700}
-                            height={467}
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div class="p-6 grow flex justify-between items-end">
-                        <div>
-                            <h3 class="font-bold text-white uppercase text-sm">
-                                Perforaciones Magnus
-                            </h3>
-                            <p
-                                class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1"
-                            >
-                                Ingeniería
-                            </p>
-                        </div>
                         <div
-                            class="text-emerald-400 font-bold text-xs flex items-center gap-1"
+                            class="h-64 sm:h-72 bg-slate-50 overflow-hidden shrink-0"
                         >
-                            <Icon name="fa6-solid:bolt" /> 100/100
+                            <Picture
+                                src={imgGym}
+                                alt="Proyecto 2"
+                                widths={[400, 700]}
+                                formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
+                                width={700}
+                                height={467}
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="p-6 grow flex justify-between items-end">
+                            <div>
+                                <h3
+                                    class="font-bold text-slate-900 uppercase text-sm"
+                                >
+                                    Puro Fierro Gym
+                                </h3>
+                                <p
+                                    class="text-[10px] text-blue-600 font-black uppercase tracking-widest mt-1"
+                                >
+                                    Sector Fitness
+                                </p>
+                            </div>
+                            <div
+                                class="text-emerald-600 font-bold text-xs flex items-center gap-1"
+                            >
+                                <Icon name="fa6-solid:bolt" /> 100/100
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow group flex flex-col relative"
+                    >
+                        <div
+                            class="h-64 sm:h-72 bg-slate-50 overflow-hidden shrink-0"
+                        >
+                            <Picture
+                                src={imgMagnus}
+                                alt="Proyecto 3"
+                                widths={[400, 700]}
+                                formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) 33vw, 400px"
+                                width={700}
+                                height={467}
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="p-6 grow flex justify-between items-end">
+                            <div>
+                                <h3
+                                    class="font-bold text-slate-900 uppercase text-sm"
+                                >
+                                    Perforaciones Magnus
+                                </h3>
+                                <p
+                                    class="text-[10px] text-blue-600 font-black uppercase tracking-widest mt-1"
+                                >
+                                    Ingeniería
+                                </p>
+                            </div>
+                            <div
+                                class="text-emerald-600 font-bold text-xs flex items-center gap-1"
+                            >
+                                <Icon name="fa6-solid:bolt" /> 100/100
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -767,21 +863,21 @@ const optimizedPoster = await getImage({
     <!-- POR QUÉ ELEGIRNOS -->
     <section
         id="por-que-elegirnos"
-        class="scroll-mt-12 md:scroll-mt-6 pt-12 pb-10 md:pt-24 md:pb-24 px-6 bg-slate-950 border-b border-slate-800"
+        class="scroll-mt-12 md:scroll-mt-6 pt-12 pb-10 md:pt-24 md:pb-24 px-6 bg-slate-50 border-b border-slate-200"
     >
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-14">
                 <h2
-                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-white mb-6"
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-slate-900 mb-6"
                 >
                     ¿Por qué elegirnos?
                 </h2>
                 <p
-                    class="text-slate-400 max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed"
+                    class="text-slate-600 max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed"
                 >
                     Construimos tu activo digital con tecnología 2026
                     entregándote sitios web
-                    <strong class="text-white"
+                    <strong class="text-slate-900"
                         >premium, seguros y 100% de tu propiedad</strong
                     >. A diferencia de otras agencias que te ofrecen plantillas
                     defectuosas de WordPress y código genérico.
@@ -789,13 +885,13 @@ const optimizedPoster = await getImage({
             </div>
 
             <div
-                class="max-w-4xl mx-auto bg-slate-900/50 rounded-3xl border border-slate-800 overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] mb-14 md:mb-20"
+                class="max-w-4xl mx-auto bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm mb-14 md:mb-20"
             >
                 <div
-                    class="grid grid-cols-3 bg-slate-950 text-white font-black max-[415px]:text-[8px] text-[10px] md:text-sm uppercase tracking-widest border-b border-slate-800"
+                    class="grid grid-cols-3 bg-slate-50 text-slate-900 font-black max-[415px]:text-[8px] text-[10px] md:text-sm uppercase tracking-widest border-b border-slate-200"
                 >
                     <div
-                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center flex items-center justify-center text-slate-300"
+                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center flex items-center justify-center text-slate-500"
                     >
                         Características
                     </div>
@@ -809,7 +905,7 @@ const optimizedPoster = await getImage({
                         />
                     </div>
                     <div
-                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center bg-slate-900 flex items-center justify-center relative text-slate-300"
+                        class="h-20 max-[415px]:px-0.5 px-1 md:px-6 text-center bg-slate-100 flex items-center justify-center relative text-slate-600"
                     >
                         <span>Otras agencias</span>
                         <span
@@ -820,15 +916,15 @@ const optimizedPoster = await getImage({
                 </div>
 
                 <div
-                    class="grid grid-cols-3 border-b border-slate-800 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                    class="grid grid-cols-3 border-b border-slate-200 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-50 transition-colors"
                 >
                     <div
-                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                        class="p-4 font-bold text-slate-600 text-center flex flex-col justify-center items-center"
                     >
                         Velocidad
                     </div>
                     <div
-                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col md:flex-row items-center justify-center gap-1"
+                        class="p-4 text-blue-600 font-bold text-center bg-blue-50 flex flex-col md:flex-row items-center justify-center gap-1"
                     >
                         <span>Carga Instantánea</span><Icon
                             name="fa6-solid:bolt"
@@ -836,64 +932,64 @@ const optimizedPoster = await getImage({
                         />
                     </div>
                     <div
-                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                        class="p-4 text-slate-500 text-center bg-slate-50 flex flex-col justify-center items-center"
                     >
                         Lenta (Plantillas pesadas)
                     </div>
                 </div>
                 <div
-                    class="grid grid-cols-3 border-b border-slate-800 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                    class="grid grid-cols-3 border-b border-slate-200 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-50 transition-colors"
                 >
                     <div
-                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                        class="p-4 font-bold text-slate-600 text-center flex flex-col justify-center items-center"
                     >
                         Seguridad
                     </div>
                     <div
-                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col justify-center items-center"
+                        class="p-4 text-blue-600 font-bold text-center bg-blue-50 flex flex-col justify-center items-center"
                     >
                         Blindaje Cloudflare
                     </div>
                     <div
-                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                        class="p-4 text-slate-500 text-center bg-slate-50 flex flex-col justify-center items-center"
                     >
                         Vulnerable a hackeos
                     </div>
                 </div>
                 <div
-                    class="grid grid-cols-3 border-b border-slate-800 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                    class="grid grid-cols-3 border-b border-slate-200 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-50 transition-colors"
                 >
                     <div
-                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                        class="p-4 font-bold text-slate-600 text-center flex flex-col justify-center items-center"
                     >
                         Costos Ocultos
                     </div>
                     <div
-                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col justify-center items-center"
+                        class="p-4 text-blue-600 font-bold text-center bg-blue-50 flex flex-col justify-center items-center"
                     >
                         Cero (Pago único)
                     </div>
                     <div
-                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                        class="p-4 text-slate-500 text-center bg-slate-50 flex flex-col justify-center items-center"
                     >
                         Mensualidades constantes
                     </div>
                 </div>
                 <div
-                    class="grid grid-cols-3 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-800/50 transition-colors"
+                    class="grid grid-cols-3 max-[415px]:text-[10px] text-xs md:text-base items-stretch hover:bg-slate-50 transition-colors"
                 >
                     <div
-                        class="p-4 font-bold text-slate-300 text-center flex flex-col justify-center items-center"
+                        class="p-4 font-bold text-slate-600 text-center flex flex-col justify-center items-center"
                     >
                         Propiedad
                     </div>
                     <div
-                        class="p-4 text-blue-400 font-bold text-center bg-blue-900/20 flex flex-col justify-center items-center"
+                        class="p-4 text-blue-600 font-bold text-center bg-blue-50 flex flex-col justify-center items-center"
                     >
                         100% Tuya + Boleta oficial
                     </div>
                     <div
-                        class="p-4 text-slate-400 text-center bg-slate-900/30 flex flex-col justify-center items-center"
+                        class="p-4 text-slate-500 text-center bg-slate-50 flex flex-col justify-center items-center"
                     >
                         Te "alquilan" el sitio
                     </div>
@@ -907,12 +1003,12 @@ const optimizedPoster = await getImage({
                     class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
                 >
                     <div
-                        class="w-12 h-12 md:w-20 md:h-20 bg-orange-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-orange-400 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-orange-900/50"
+                        class="w-12 h-12 md:w-20 md:h-20 bg-orange-50 rounded-2xl md:rounded-3xl flex items-center justify-center text-orange-600 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-orange-100"
                     >
                         <Icon name="fa6-solid:rocket" />
                     </div>
                     <span
-                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        class="font-black text-[8px] md:text-xs text-slate-600 tracking-wider md:tracking-widest uppercase leading-tight"
                         >Astro & Next.js</span
                     >
                 </div>
@@ -920,12 +1016,12 @@ const optimizedPoster = await getImage({
                     class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
                 >
                     <div
-                        class="w-12 h-12 md:w-20 md:h-20 bg-cyan-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-cyan-400 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-cyan-900/50"
+                        class="w-12 h-12 md:w-20 md:h-20 bg-cyan-50 rounded-2xl md:rounded-3xl flex items-center justify-center text-cyan-600 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-cyan-100"
                     >
                         <Icon name="fa6-brands:css3-alt" />
                     </div>
                     <span
-                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        class="font-black text-[8px] md:text-xs text-slate-600 tracking-wider md:tracking-widest uppercase leading-tight"
                         >Tailwind CSS</span
                     >
                 </div>
@@ -933,12 +1029,12 @@ const optimizedPoster = await getImage({
                     class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
                 >
                     <div
-                        class="w-12 h-12 md:w-20 md:h-20 bg-emerald-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-emerald-400 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-emerald-900/50"
+                        class="w-12 h-12 md:w-20 md:h-20 bg-emerald-50 rounded-2xl md:rounded-3xl flex items-center justify-center text-emerald-600 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-emerald-100"
                     >
                         <Icon name="fa6-solid:database" />
                     </div>
                     <span
-                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        class="font-black text-[8px] md:text-xs text-slate-600 tracking-wider md:tracking-widest uppercase leading-tight"
                         >Supabase CMS</span
                     >
                 </div>
@@ -946,12 +1042,12 @@ const optimizedPoster = await getImage({
                     class="flex flex-col items-center gap-2 md:gap-4 group cursor-default"
                 >
                     <div
-                        class="w-12 h-12 md:w-20 md:h-20 bg-blue-900/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-blue-500 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-md border border-blue-900/50"
+                        class="w-12 h-12 md:w-20 md:h-20 bg-blue-50 rounded-2xl md:rounded-3xl flex items-center justify-center text-blue-600 text-xl md:text-4xl group-hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-blue-100"
                     >
                         <Icon name="fa6-solid:bolt" />
                     </div>
                     <span
-                        class="font-black text-[8px] md:text-xs text-slate-300 tracking-wider md:tracking-widest uppercase leading-tight"
+                        class="font-black text-[8px] md:text-xs text-slate-600 tracking-wider md:tracking-widest uppercase leading-tight"
                         >Edge Computing</span
                     >
                 </div>
@@ -962,26 +1058,23 @@ const optimizedPoster = await getImage({
     <!-- BENEFICIOS -->
     <section
         id="beneficios-comunes"
-        class="relative py-12 md:py-24 px-4 md:px-6 bg-slate-950 border-y border-slate-800/50 overflow-hidden"
+        class="relative py-12 md:py-24 px-4 md:px-6 bg-slate-50 border-y border-slate-200 overflow-hidden"
     >
         <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full bg-blue-900/10 blur-[120px] rounded-full pointer-events-none"
+            class="max-w-7xl mx-auto relative z-10 bg-white p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-sm"
         >
-        </div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-10 md:mb-20">
                 <h2
-                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic mb-4 tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500 drop-shadow-sm"
+                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic mb-4 tracking-wider text-slate-900"
                 >
                     Beneficios de trabajar con nosotros
                 </h2>
                 <p
-                    class="text-slate-400 max-w-2xl mx-auto text-sm md:text-lg font-medium leading-relaxed px-2"
+                    class="text-slate-600 max-w-2xl mx-auto text-sm md:text-lg font-medium leading-relaxed px-2"
                 >
                     Sin importar el nivel que elijas, tu ecosistema digital
                     incluye todas las herramientas de <span
-                        class="text-white font-bold">élite</span
+                        class="text-slate-900 font-bold">élite</span
                     > para operar con seguridad y estatus.
                 </p>
             </div>
@@ -991,50 +1084,49 @@ const optimizedPoster = await getImage({
             >
                 <!-- Beneficios (1 a 6) -->
                 <div
-                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-indigo-500 hover:to-slate-800 transition-all duration-500"
+                    class="group relative rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                     <div
-                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                        class="relative h-full p-5 md:p-8 rounded-3xl flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
                     >
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300"
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-all duration-300"
                         >
                             <Icon name="fa6-solid:globe" />
                         </div>
                         <div>
                             <h3
-                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-indigo-300 transition-colors"
+                                class="font-black text-slate-900 text-sm md:text-lg uppercase italic tracking-tight mb-1.5 transition-colors"
                             >
                                 Dominio y Hosting
                             </h3><p
-                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                                class="text-slate-600 text-xs md:text-sm leading-relaxed"
                             >
                                 Incluimos tu dirección <strong
-                                    class="text-indigo-400 group-hover:text-indigo-300"
-                                    >.com</strong
+                                    class="text-indigo-600">.com</strong
                                 > y alojamiento profesional por el primer año.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-emerald-500 hover:to-slate-800 transition-all duration-500"
+                    class="group relative rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                     <div
-                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                        class="relative h-full p-5 md:p-8 rounded-3xl flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
                     >
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-300"
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-all duration-300"
                         >
                             <Icon name="fa6-solid:shield-halved" />
                         </div>
                         <div>
                             <h3
-                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-emerald-300 transition-colors"
+                                class="font-black text-slate-900 text-sm md:text-lg uppercase italic tracking-tight mb-1.5 transition-colors"
                             >
                                 Blindaje Antihackeos
                             </h3><p
-                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                                class="text-slate-600 text-xs md:text-sm leading-relaxed"
                             >
                                 Protegemos tu sitio con tecnología 2026 para que
                                 nunca se caiga y evada ataques cibernéticos
@@ -1044,23 +1136,23 @@ const optimizedPoster = await getImage({
                     </div>
                 </div>
                 <div
-                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-amber-500 hover:to-slate-800 transition-all duration-500"
+                    class="group relative rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                     <div
-                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                        class="relative h-full p-5 md:p-8 rounded-3xl flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
                     >
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-all duration-300"
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-all duration-300"
                         >
                             <Icon name="fa6-solid:key" />
                         </div>
                         <div>
                             <h3
-                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-amber-300 transition-colors"
+                                class="font-black text-slate-900 text-sm md:text-lg uppercase italic tracking-tight mb-1.5 transition-colors"
                             >
                                 Propiedad 100% Tuya
                             </h3><p
-                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                                class="text-slate-600 text-xs md:text-sm leading-relaxed"
                             >
                                 No te "alquilamos" el sitio. Eres el dueño
                                 absoluto de todo el código y activos desde el
@@ -1070,23 +1162,23 @@ const optimizedPoster = await getImage({
                     </div>
                 </div>
                 <div
-                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-rose-500 hover:to-slate-800 transition-all duration-500"
+                    class="group relative rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                     <div
-                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                        class="relative h-full p-5 md:p-8 rounded-3xl flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
                     >
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-rose-500/10 text-rose-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(244,63,94,0.4)] transition-all duration-300"
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-all duration-300"
                         >
                             <Icon name="fa6-solid:file-invoice-dollar" />
                         </div>
                         <div>
                             <h3
-                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-rose-300 transition-colors"
+                                class="font-black text-slate-900 text-sm md:text-lg uppercase italic tracking-tight mb-1.5 transition-colors"
                             >
                                 Boleta de Venta
                             </h3><p
-                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                                class="text-slate-600 text-xs md:text-sm leading-relaxed"
                             >
                                 Somos una empresa formal. Emitimos comprobante
                                 legal para sustentar tu inversión y darte
@@ -1096,23 +1188,23 @@ const optimizedPoster = await getImage({
                     </div>
                 </div>
                 <div
-                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-cyan-500 hover:to-slate-800 transition-all duration-500"
+                    class="group relative rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                     <div
-                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                        class="relative h-full p-5 md:p-8 rounded-3xl flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
                     >
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300"
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-all duration-300"
                         >
                             <Icon name="fa6-solid:mobile-screen-button" />
                         </div>
                         <div>
                             <h3
-                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-cyan-300 transition-colors"
+                                class="font-black text-slate-900 text-sm md:text-lg uppercase italic tracking-tight mb-1.5 transition-colors"
                             >
                                 Diseño Inteligente
                             </h3><p
-                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                                class="text-slate-600 text-xs md:text-sm leading-relaxed"
                             >
                                 Tu web cargará instantáneamente en celulares.
                                 Optimizamos cada imagen para no perder ni un
@@ -1122,23 +1214,23 @@ const optimizedPoster = await getImage({
                     </div>
                 </div>
                 <div
-                    class="group relative rounded-3xl p-[1px] bg-slate-800/50 hover:bg-gradient-to-br hover:from-green-500 hover:to-slate-800 transition-all duration-500"
+                    class="group relative rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                     <div
-                        class="relative h-full bg-slate-950/90 backdrop-blur-xl p-5 md:p-8 rounded-[calc(1.5rem-1px)] flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
+                        class="relative h-full p-5 md:p-8 rounded-3xl flex flex-row md:flex-col items-center md:items-start text-left gap-4 md:gap-6"
                     >
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-green-500/10 text-green-400 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:bg-green-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all duration-300"
+                            class="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-all duration-300"
                         >
                             <Icon name="fa6-brands:whatsapp" />
                         </div>
                         <div>
                             <h3
-                                class="font-black text-white text-sm md:text-lg uppercase italic tracking-tight mb-1.5 group-hover:text-green-300 transition-colors"
+                                class="font-black text-slate-900 text-sm md:text-lg uppercase italic tracking-tight mb-1.5 transition-colors"
                             >
                                 Contacto Directo
                             </h3><p
-                                class="text-slate-400 text-xs md:text-sm leading-relaxed"
+                                class="text-slate-600 text-xs md:text-sm leading-relaxed"
                             >
                                 Integramos botones inteligentes que llevan al
                                 cliente a tu WhatsApp. Convertimos visitas en
@@ -1149,281 +1241,280 @@ const optimizedPoster = await getImage({
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- FAQ -->
-    <section
-        class="py-16 md:py-32 px-4 md:px-6 bg-slate-950 relative overflow-hidden"
-    >
-        <div
-            class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-blue-900/10 blur-[150px] rounded-full pointer-events-none"
+        <!-- FAQ -->
+        <section
+            class="py-16 md:py-32 px-4 md:px-6 bg-slate-50 relative overflow-hidden"
         >
-        </div>
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-12 md:mb-20">
+                    <h2
+                        class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-slate-900 mb-4"
+                    >
+                        Despejemos tus dudas
+                    </h2>
+                    <p
+                        class="text-slate-500 font-bold uppercase tracking-[0.15em] text-xs max-w-2xl mx-auto leading-relaxed"
+                    >
+                        Transparencia total. Conoce por qué somos la inversión
+                        más inteligente para el futuro de tu negocio.
+                    </p>
+                </div>
 
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-12 md:mb-20">
-                <h2
-                    class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500 mb-4 drop-shadow-sm"
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start"
                 >
-                    Despejemos tus dudas
-                </h2>
-                <p
-                    class="text-slate-400 font-bold uppercase tracking-[0.15em] text-xs max-w-2xl mx-auto leading-relaxed"
-                >
-                    Transparencia total. Conoce por qué somos la inversión más
-                    inteligente para el futuro de tu negocio.
-                </p>
+                    <details
+                        class="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                    >
+                        <summary
+                            class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                        >
+                            <div
+                                class="w-12 h-12 shrink-0 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl group-open:bg-blue-600 group-open:text-white transition-colors duration-300"
+                            >
+                                <Icon name="fa6-solid:coins" />
+                            </div>
+                            <h3
+                                class="font-black text-slate-900 text-sm md:text-base uppercase tracking-tight flex-1"
+                            >
+                                ¿Hay mensualidades o costos ocultos?
+                            </h3>
+                            <div
+                                class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform duration-300"
+                            >
+                                <Icon name="fa6-solid:chevron-down" />
+                            </div>
+                        </summary>
+                        <div
+                            class="px-5 md:px-6 pb-6 pt-2 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-100 mt-2"
+                        >
+                            <p>
+                                <strong>Cero sorpresas.</strong> El pago por el desarrollo
+                                de tu web es único, este incluye el primer año de
+                                Hosting y Dominio (.com).
+                            </p>
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                    >
+                        <summary
+                            class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                        >
+                            <div
+                                class="w-12 h-12 shrink-0 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl group-open:bg-emerald-500 group-open:text-white transition-colors duration-300"
+                            >
+                                <Icon name="fa6-solid:jet-fighter" />
+                            </div>
+                            <h3
+                                class="font-black text-slate-900 text-sm md:text-base uppercase tracking-tight flex-1"
+                            >
+                                He visto webs de S/ 100, ¿por qué elegirnos?
+                            </h3>
+                            <div
+                                class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform duration-300"
+                            >
+                                <Icon name="fa6-solid:chevron-down" />
+                            </div>
+                        </summary>
+                        <div
+                            class="px-5 md:px-6 pb-6 pt-2 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-100 mt-2"
+                        >
+                            <p>
+                                Porque lo barato en digital sale carísimo y se
+                                asocia a plantillas defectuosas de WordPress y
+                                miedos a estafas. Nosotros construimos "Webs
+                                Inteligentes" con carga instantánea y
+                                optimización total. Utilizamos un stack moderno
+                                con Astro y Next.js que supera a la competencia
+                                en rendimiento y SEO.
+                            </p>
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                    >
+                        <summary
+                            class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                        >
+                            <div
+                                class="w-12 h-12 shrink-0 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-xl group-open:bg-orange-500 group-open:text-white transition-colors duration-300"
+                            >
+                                <Icon name="fa6-solid:stopwatch" />
+                            </div>
+                            <h3
+                                class="font-black text-slate-900 text-sm md:text-base uppercase tracking-tight flex-1"
+                            >
+                                ¿Realmente me entregan la web en 48 horas?
+                            </h3>
+                            <div
+                                class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform duration-300"
+                            >
+                                <Icon name="fa6-solid:chevron-down" />
+                            </div>
+                        </summary>
+                        <div
+                            class="px-5 md:px-6 pb-6 pt-2 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-100 mt-2"
+                        >
+                            <p>
+                                ¡Sí, el tiempo es oro! Para nuestro Nivel 1 (Web
+                                Identidad Digital), garantizamos la entrega en
+                                48 horas (2 días hábiles). El reloj inicia su
+                                cuenta regresiva en el momento exacto en que el
+                                cliente completa la carga de sus 15 fotos y logo
+                                en la nube.
+                            </p>
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                    >
+                        <summary
+                            class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                        >
+                            <div
+                                class="w-12 h-12 shrink-0 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-xl group-open:bg-cyan-500 group-open:text-white transition-colors duration-300"
+                            >
+                                <Icon name="fa6-solid:file-signature" />
+                            </div>
+                            <h3
+                                class="font-black text-slate-900 text-sm md:text-base uppercase tracking-tight flex-1"
+                            >
+                                ¿Cómo aseguro mi inversión? ¿Entregan boleta?
+                            </h3>
+                            <div
+                                class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform duration-300"
+                            >
+                                <Icon name="fa6-solid:chevron-down" />
+                            </div>
+                        </summary>
+                        <div
+                            class="px-5 md:px-6 pb-6 pt-2 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-100 mt-2"
+                        >
+                            <p>
+                                Tu tranquilidad es nuestra priority. Operamos
+                                con total formalidad y emitimos boletas de venta
+                                para generar confianza. Además, contamos con un
+                                Acuerdo de Servicio que detalla las pautas, como
+                                el máximo de 2 rondas de ajustes tras la entrega
+                                inicial, garantizando que el proceso sea
+                                transparente.
+                            </p>
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                    >
+                        <summary
+                            class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                        >
+                            <div
+                                class="w-12 h-12 shrink-0 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl group-open:bg-purple-500 group-open:text-white transition-colors duration-300"
+                            >
+                                <Icon name="fa6-solid:layer-group" />
+                            </div>
+                            <h3
+                                class="font-black text-slate-900 text-sm md:text-base uppercase tracking-tight flex-1"
+                            >
+                                Si inicio con el Nivel 1, ¿puedo escalarlo
+                                después?
+                            </h3>
+                            <div
+                                class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform duration-300"
+                            >
+                                <Icon name="fa6-solid:chevron-down" />
+                            </div>
+                        </summary>
+                        <div
+                            class="px-5 md:px-6 pb-6 pt-2 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-100 mt-2"
+                        >
+                            <p>
+                                Totalmente. Si hoy requieres identidad digital
+                                rápida, mañana puedes escalar al Nivel 2, el
+                                cual cuenta con un panel administrativo para
+                                actualizar precios y galería sin depender de
+                                terceros. O saltar al Nivel 3, una tienda online
+                                automatizada que funciona como un vendedor 24/7
+                                con carrito intuitivo y pasarela de pagos.
+                            </p>
+                        </div>
+                    </details>
+                    <details
+                        class="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+                    >
+                        <summary
+                            class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
+                        >
+                            <div
+                                class="w-12 h-12 shrink-0 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-xl group-open:bg-rose-500 group-open:text-white transition-colors duration-300"
+                            >
+                                <Icon name="fa6-solid:wand-magic-sparkles" />
+                            </div>
+                            <h3
+                                class="font-black text-slate-900 text-sm md:text-base uppercase tracking-tight flex-1"
+                            >
+                                No sé nada de tecnología, ¿es complicado para
+                                mí?
+                            </h3>
+                            <div
+                                class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-400 group-open:rotate-180 transition-transform duration-300"
+                            >
+                                <Icon name="fa6-solid:chevron-down" />
+                            </div>
+                        </summary>
+                        <div
+                            class="px-5 md:px-6 pb-6 pt-2 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-100 mt-2"
+                        >
+                            <p>
+                                ¡Cero estrés! Nosotros nos encargamos de todo.
+                                Nuestro servicio incluye la optimización de tu
+                                logo y la conversión de imágenes al formato
+                                ultra rápido WebP. Además, en planes como el L1,
+                                integramos un botón directo a WhatsApp para
+                                facilitar el contacto con tus clientes.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="mt-12 md:mt-20 text-center">
+                    <p class="text-slate-500 font-medium text-sm mb-6">
+                        ¿Aún tienes alguna duda específica sobre tu proyecto?
+                    </p>
+                    <a
+                        href="https://wa.me/51963896469?text=Hola%20DespegaTuWeb,%20tengo%20una%20duda%20específica%20sobre%20mi%20proyecto%20web."
+                        target="_blank"
+                        class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-sm"
+                    >
+                        <Icon
+                            name="fa6-brands:whatsapp"
+                            class="text-green-400 text-lg"
+                        /> Hablemos por WhatsApp
+                    </a>
+                </div>
             </div>
+        </section>
 
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start"
-            >
-                <details
-                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 shadow-lg[&_summary::-webkit-details-marker]:hidden"
-                >
-                    <summary
-                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
-                    >
-                        <div
-                            class="w-12 h-12 shrink-0 bg-blue-900/30 text-blue-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-blue-600 group-open:text-white transition-colors duration-300"
-                        >
-                            <Icon name="fa6-solid:coins" />
-                        </div>
-                        <h3
-                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
-                        >
-                            ¿Hay mensualidades o costos ocultos?
-                        </h3>
-                        <div
-                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
-                        >
-                            <Icon name="fa6-solid:chevron-down" />
-                        </div>
-                    </summary>
-                    <div
-                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
-                    >
-                        <p>
-                            <strong>Cero sorpresas.</strong> El pago por el desarrollo
-                            de tu web es único, este incluye el primer año de Hosting
-                            y Dominio (.com).
-                        </p>
-                    </div>
-                </details>
-                <details
-                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
-                >
-                    <summary
-                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
-                    >
-                        <div
-                            class="w-12 h-12 shrink-0 bg-emerald-900/30 text-emerald-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-emerald-500 group-open:text-white transition-colors duration-300"
-                        >
-                            <Icon name="fa6-solid:jet-fighter" />
-                        </div>
-                        <h3
-                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
-                        >
-                            He visto webs de S/ 100, ¿por qué elegirnos?
-                        </h3>
-                        <div
-                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
-                        >
-                            <Icon name="fa6-solid:chevron-down" />
-                        </div>
-                    </summary>
-                    <div
-                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
-                    >
-                        <p>
-                            Porque lo barato en digital sale carísimo y se
-                            asocia a plantillas defectuosas de WordPress y
-                            miedos a estafas. Nosotros construimos "Webs
-                            Inteligentes" con carga instantánea y optimización
-                            total. Utilizamos un stack moderno con Astro y
-                            Next.js que supera a la competencia en rendimiento y
-                            SEO.
-                        </p>
-                    </div>
-                </details>
-                <details
-                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
-                >
-                    <summary
-                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
-                    >
-                        <div
-                            class="w-12 h-12 shrink-0 bg-orange-900/30 text-orange-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-orange-500 group-open:text-white transition-colors duration-300"
-                        >
-                            <Icon name="fa6-solid:stopwatch" />
-                        </div>
-                        <h3
-                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
-                        >
-                            ¿Realmente me entregan la web en 48 horas?
-                        </h3>
-                        <div
-                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
-                        >
-                            <Icon name="fa6-solid:chevron-down" />
-                        </div>
-                    </summary>
-                    <div
-                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
-                    >
-                        <p>
-                            ¡Sí, el tiempo es oro! Para nuestro Nivel 1 (Web
-                            Identidad Digital), garantizamos la entrega en 48
-                            horas (2 días hábiles). El reloj inicia su cuenta
-                            regresiva en el momento exacto en que el cliente
-                            completa la carga de sus 15 fotos y logo en la nube.
-                        </p>
-                    </div>
-                </details>
-                <details
-                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
-                >
-                    <summary
-                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
-                    >
-                        <div
-                            class="w-12 h-12 shrink-0 bg-cyan-900/30 text-cyan-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-cyan-500 group-open:text-white transition-colors duration-300"
-                        >
-                            <Icon name="fa6-solid:file-signature" />
-                        </div>
-                        <h3
-                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
-                        >
-                            ¿Cómo aseguro mi inversión? ¿Entregan boleta?
-                        </h3>
-                        <div
-                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
-                        >
-                            <Icon name="fa6-solid:chevron-down" />
-                        </div>
-                    </summary>
-                    <div
-                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
-                    >
-                        <p>
-                            Tu tranquilidad es nuestra prioridad. Operamos con
-                            total formalidad y emitimos boletas de venta para
-                            generar confianza. Además, contamos con un Acuerdo
-                            de Servicio que detalla las pautas, como el máximo
-                            de 2 rondas de ajustes tras la entrega inicial,
-                            garantizando que el proceso sea transparente.
-                        </p>
-                    </div>
-                </details>
-                <details
-                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 shadow-lg [&_summary::-webkit-details-marker]:hidden"
-                >
-                    <summary
-                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
-                    >
-                        <div
-                            class="w-12 h-12 shrink-0 bg-purple-900/30 text-purple-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-purple-500 group-open:text-white transition-colors duration-300"
-                        >
-                            <Icon name="fa6-solid:layer-group" />
-                        </div>
-                        <h3
-                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
-                        >
-                            Si inicio con el Nivel 1, ¿puedo escalarlo después?
-                        </h3>
-                        <div
-                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
-                        >
-                            <Icon name="fa6-solid:chevron-down" />
-                        </div>
-                    </summary>
-                    <div
-                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
-                    >
-                        <p>
-                            Totalmente. Si hoy requieres identidad digital
-                            rápida, mañana puedes escalar al Nivel 2, el cual
-                            cuenta con un panel administrativo para actualizar
-                            precios y galería sin depender de terceros. O saltar
-                            al Nivel 3, una tienda online automatizada que
-                            funciona como un vendedor 24/7 con carrito intuitivo
-                            y pasarela de pagos.
-                        </p>
-                    </div>
-                </details>
-                <details
-                    class="group bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-rose-500/30 transition-all duration-300 shadow-lg[&_summary::-webkit-details-marker]:hidden"
-                >
-                    <summary
-                        class="flex items-center gap-4 p-5 md:p-6 cursor-pointer list-none select-none outline-none"
-                    >
-                        <div
-                            class="w-12 h-12 shrink-0 bg-rose-900/30 text-rose-400 rounded-2xl flex items-center justify-center text-xl group-open:bg-rose-500 group-open:text-white transition-colors duration-300"
-                        >
-                            <Icon name="fa6-solid:wand-magic-sparkles" />
-                        </div>
-                        <h3
-                            class="font-black text-slate-200 text-sm md:text-base uppercase tracking-tight flex-1"
-                        >
-                            No sé nada de tecnología, ¿es complicado para mí?
-                        </h3>
-                        <div
-                            class="w-8 h-8 shrink-0 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-300"
-                        >
-                            <Icon name="fa6-solid:chevron-down" />
-                        </div>
-                    </summary>
-                    <div
-                        class="px-5 md:px-6 pb-6 pt-2 text-slate-400 text-xs md:text-sm leading-relaxed border-t border-slate-800/50 mt-2"
-                    >
-                        <p>
-                            ¡Cero estrés! Nosotros nos encargamos de todo.
-                            Nuestro servicio incluye la optimización de tu logo
-                            y la conversión de imágenes al formato ultra rápido
-                            WebP. Además, en planes como el L1, integramos un
-                            botón directo a WhatsApp para facilitar el contacto
-                            con tus clientes.
-                        </p>
-                    </div>
-                </details>
-            </div>
+        <Footer />
+        <FloatingWhatsApp />
 
-            <div class="mt-12 md:mt-20 text-center">
-                <p class="text-slate-500 font-medium text-sm mb-6">
-                    ¿Aún tienes alguna duda específica sobre tu proyecto?
-                </p>
-                <a
-                    href="https://wa.me/51963896469?text=Hola%20DespegaTuWeb,%20tengo%20una%20duda%20específica%20sobre%20mi%20proyecto%20web."
-                    target="_blank"
-                    class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all border border-slate-700 hover:border-slate-500 shadow-lg"
-                >
-                    <Icon
-                        name="fa6-brands:whatsapp"
-                        class="text-green-400 text-lg"
-                    /> Hablemos por WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <Footer />
-    <FloatingWhatsApp />
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var video = document.getElementById(
-                "hero-video",
-            ) as HTMLVideoElement;
-            if (video) {
-                var playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(function (error) {
-                        console.log(
-                            "El ahorro de batería bloqueó el video. Mostrando imagen poster.",
-                        );
-                    });
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var video = document.getElementById(
+                    "hero-video",
+                ) as HTMLVideoElement;
+                if (video) {
+                    var playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(function (error) {
+                            console.log(
+                                "El ahorro de batería bloqueó el video. Mostrando imagen poster.",
+                            );
+                        });
+                    }
                 }
-            }
-        });
-    </script>
+            });
+        </script>
+    </section>
 </Layout>

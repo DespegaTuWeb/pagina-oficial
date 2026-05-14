@@ -5,13 +5,13 @@ import Icon from "./Icon.astro";
 <nav
     x-data="{ mobileMenuOpen: false, scrolled: false }"
     @scroll.window="scrolled = (window.pageYOffset > 50)"
-    class="fixed top-0 left-0 w-full z-[999] transition-all duration-500 border-b bg-slate-950 border-slate-800 py-4"
-    :class="scrolled ? '!py-2 md:!py-3 shadow-lg shadow-black/50' : ''"
+    class="fixed top-0 left-0 w-full z-[999] transition-all duration-500 border-b bg-white/80 backdrop-blur-lg border-slate-200 py-4"
+    :class="scrolled ? '!py-2 md:!py-3 shadow-sm' : ''"
 >
     <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a
             href="/"
-            class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter shrink-0 transition-colors duration-300 text-white"
+            class="font-black text-2xl md:text-3xl flex items-center gap-2 italic tracking-tighter shrink-0 transition-colors duration-300 text-slate-900"
         >
             <img
                 src="/logo.svg"
@@ -23,13 +23,13 @@ import Icon from "./Icon.astro";
                 loading="eager"
                 fetchpriority="high"
             />
-            <span class="text-blue-500 uppercase">Despega</span><span
-                class="uppercase text-white">TuWeb</span
+            <span class="text-blue-600 uppercase">Despega</span><span
+                class="uppercase text-slate-900">TuWeb</span
             >
         </a>
 
         <div
-            class="hidden md:flex gap-12 items-center font-bold text-xs transition-colors duration-300 text-white/90"
+            class="hidden md:flex gap-12 items-center font-bold text-xs transition-colors duration-300 text-slate-600"
         >
             <div
                 class="relative py-2"
@@ -38,7 +38,7 @@ import Icon from "./Icon.astro";
             >
                 <button
                     @click="dropdownOpen = !dropdownOpen"
-                    class="hover:text-blue-400 transition flex items-center gap-2 tracking-widest uppercase px-2 outline-none"
+                    class="hover:text-blue-600 transition flex items-center gap-2 tracking-widest uppercase px-2 outline-none"
                 >
                     TIPOS DE WEB
                     <Icon
@@ -57,10 +57,10 @@ import Icon from "./Icon.astro";
                     style="display: none"
                 >
                     <div
-                        class="bg-slate-900 border border-slate-700 shadow-2xl rounded-[2rem] overflow-hidden"
+                        class="bg-white border border-slate-200 shadow-xl rounded-[2rem] overflow-hidden"
                     >
                         <div
-                            class="px-6 py-3 bg-slate-800/50 border-b border-slate-700/50"
+                            class="px-6 py-3 bg-slate-50 border-b border-slate-200"
                         >
                             <span
                                 class="text-[10px] text-slate-400 font-black uppercase tracking-widest"
@@ -70,10 +70,10 @@ import Icon from "./Icon.astro";
 
                         <a
                             href="/planes#l1"
-                            class="flex items-center gap-4 px-6 py-5 hover:bg-slate-800 transition border-b border-slate-800 group text-slate-200"
+                            class="flex items-center gap-4 px-6 py-5 hover:bg-slate-50 transition border-b border-slate-100 group text-slate-600"
                         >
                             <div
-                                class="w-11 h-11 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
+                                class="w-11 h-11 bg-orange-50 text-orange-600 border border-orange-100 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
                             >
                                 <Icon name="fa6-solid:bolt" class="w-5 h-5" />
                             </div>
@@ -82,16 +82,16 @@ import Icon from "./Icon.astro";
                                     class="flex justify-between items-center gap-4"
                                 >
                                     <span
-                                        class="font-black text-sm uppercase italic text-white"
+                                        class="font-black text-sm uppercase italic text-slate-900"
                                         >IDENTIDAD DIGITAL</span
                                     >
                                     <span
-                                        class="bg-slate-800 text-white border border-slate-600 text-[10px] font-black px-3 py-2 rounded-lg min-w-[70px] inline-flex justify-center items-center leading-none"
+                                        class="bg-slate-50 text-slate-900 border border-slate-200 text-[10px] font-black px-3 py-2 rounded-lg min-w-[70px] inline-flex justify-center items-center leading-none"
                                         >S/ 450</span
                                     >
                                 </div>
                                 <p
-                                    class="text-[10px] text-slate-400 font-medium leading-tight mt-1"
+                                    class="text-[10px] text-slate-500 font-medium leading-tight mt-1"
                                 >
                                     Tu marca en internet en solo 48 horas.
                                 </p>
@@ -100,10 +100,10 @@ import Icon from "./Icon.astro";
 
                         <a
                             href="/planes#l2"
-                            class="flex items-center gap-4 px-6 py-5 hover:bg-slate-800 transition border-b border-slate-800 group text-slate-200"
+                            class="flex items-center gap-4 px-6 py-5 hover:bg-slate-50 transition border-b border-slate-100 group text-slate-600"
                         >
                             <div
-                                class="w-11 h-11 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
+                                class="w-11 h-11 bg-blue-50 text-blue-600 border border-blue-100 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
                             >
                                 <Icon
                                     name="fa6-solid:building"
@@ -115,7 +115,7 @@ import Icon from "./Icon.astro";
                                     class="flex justify-between items-center gap-4"
                                 >
                                     <span
-                                        class="font-black text-sm uppercase italic text-nowrap text-white"
+                                        class="font-black text-sm uppercase italic text-nowrap text-slate-900"
                                         >PODER CORPORATIVO</span
                                     >
                                     <span
@@ -124,7 +124,7 @@ import Icon from "./Icon.astro";
                                     >
                                 </div>
                                 <p
-                                    class="text-[10px] text-slate-400 font-medium leading-tight mt-1"
+                                    class="text-[10px] text-slate-500 font-medium leading-tight mt-1"
                                 >
                                     Estatus corporativo con control total (CMS).
                                 </p>
@@ -133,10 +133,10 @@ import Icon from "./Icon.astro";
 
                         <a
                             href="/planes#l3"
-                            class="flex items-center gap-4 px-6 py-5 hover:bg-slate-800 transition group text-slate-200"
+                            class="flex items-center gap-4 px-6 py-5 hover:bg-slate-50 transition group text-slate-600"
                         >
                             <div
-                                class="w-11 h-11 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
+                                class="w-11 h-11 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform"
                             >
                                 <Icon
                                     name="fa6-solid:cart-shopping"
@@ -148,7 +148,7 @@ import Icon from "./Icon.astro";
                                     class="flex justify-between items-center gap-4"
                                 >
                                     <span
-                                        class="font-black text-sm uppercase italic text-white"
+                                        class="font-black text-sm uppercase italic text-slate-900"
                                         >VENTAS 24/7</span
                                     >
                                     <span
@@ -157,7 +157,7 @@ import Icon from "./Icon.astro";
                                     >
                                 </div>
                                 <p
-                                    class="text-[10px] text-slate-400 font-medium leading-tight mt-1"
+                                    class="text-[10px] text-slate-500 font-medium leading-tight mt-1"
                                 >
                                     Tu sucursal 24/7 con pagos y stock.
                                 </p>
@@ -169,12 +169,12 @@ import Icon from "./Icon.astro";
 
             <a
                 href="/portafolio"
-                class="hover:text-blue-400 transition py-2 uppercase tracking-wider px-2"
+                class="hover:text-blue-600 transition py-2 uppercase tracking-wider px-2"
                 >Nuestros Trabajos</a
             >
             <a
                 href="/#por-que-elegirnos"
-                class="hover:text-blue-400 transition py-2 uppercase tracking-wider px-2"
+                class="hover:text-blue-600 transition py-2 uppercase tracking-wider px-2"
                 >¿Por qué elegirnos?</a
             >
         </div>
@@ -182,7 +182,7 @@ import Icon from "./Icon.astro";
         <div class="md:hidden">
             <button
                 @click="mobileMenuOpen = !mobileMenuOpen"
-                class="text-white p-2 transition-colors hover:text-blue-400 outline-none relative z-[1001]"
+                class="text-slate-900 p-2 transition-colors hover:text-blue-600 outline-none relative z-[1001]"
                 aria-label="Abrir menú"
             >
                 <span x-show="!mobileMenuOpen">
@@ -209,78 +209,78 @@ import Icon from "./Icon.astro";
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-full"
-        class="absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 shadow-2xl md:hidden overflow-hidden z-[1000]"
+        class="absolute top-full left-0 w-full bg-white backdrop-blur-xl border-b border-slate-200 shadow-xl md:hidden overflow-hidden z-[1000]"
         style="display: none"
     >
         <div
-            class="flex flex-col px-6 py-6 gap-4 font-bold text-sm tracking-widest uppercase text-white/90"
+            class="flex flex-col px-6 py-6 gap-4 font-bold text-sm tracking-widest uppercase text-slate-900"
         >
             <div x-data="{ mobileDropdownOpen: false }" class="w-full">
                 <button
                     @click="mobileDropdownOpen = !mobileDropdownOpen"
-                    class="w-full flex justify-between items-center py-3 text-left hover:text-blue-400 transition-colors outline-none"
+                    class="w-full flex justify-between items-center py-3 text-left hover:text-blue-600 transition-colors outline-none"
                 >
                     TIPOS DE WEB
                     <Icon
                         name="fa6-solid:chevron-down"
                         class="w-4 h-4 transition-transform duration-300"
-                        :class="mobileDropdownOpen ? 'rotate-180 text-blue-500' : ''"
+                        :class="mobileDropdownOpen ? 'rotate-180 text-blue-600' : ''"
                     />
                 </button>
 
                 <div
                     x-show="mobileDropdownOpen"
                     x-transition
-                    class="flex flex-col gap-4 pl-4 pt-3 pb-3 border-l-2 border-slate-800 ml-2"
+                    class="flex flex-col gap-4 pl-4 pt-3 pb-3 border-l-2 border-slate-100 ml-2"
                 >
                     <a
                         @click="mobileMenuOpen = false"
                         href="/planes#l1"
-                        class="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
+                        class="flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors"
                     >
                         <Icon
                             name="fa6-solid:bolt"
-                            class="text-orange-400 w-5 h-5"
+                            class="text-orange-600 w-5 h-5"
                         />
                         IDENTIDAD DIGITAL
                     </a>
                     <a
                         @click="mobileMenuOpen = false"
                         href="/planes#l2"
-                        class="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
+                        class="flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors"
                     >
                         <Icon
                             name="fa6-solid:building"
-                            class="text-blue-400 w-5 h-5"
+                            class="text-blue-600 w-5 h-5"
                         />
                         PODER CORPORATIVO
                     </a>
                     <a
                         @click="mobileMenuOpen = false"
                         href="/planes#l3"
-                        class="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
+                        class="flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors"
                     >
                         <Icon
                             name="fa6-solid:cart-shopping"
-                            class="text-emerald-400 w-5 h-5"
+                            class="text-emerald-600 w-5 h-5"
                         />
                         VENTAS 24/7
                     </a>
                 </div>
             </div>
 
-            <div class="w-full h-px bg-slate-800/50"></div>
+            <div class="w-full h-px bg-slate-100"></div>
             <a
                 @click="mobileMenuOpen = false"
                 href="/portafolio"
-                class="py-3 hover:text-blue-400 transition-colors"
+                class="py-3 hover:text-blue-600 transition-colors"
                 >Nuestros Trabajos</a
             >
-            <div class="w-full h-px bg-slate-800/50"></div>
+            <div class="w-full h-px bg-slate-100"></div>
             <a
                 @click="mobileMenuOpen = false"
                 href="/#por-que-elegirnos"
-                class="py-3 hover:text-blue-400 transition-colors"
+                class="py-3 hover:text-blue-600 transition-colors"
                 >¿Por qué elegirnos?</a
             >
         </div>
