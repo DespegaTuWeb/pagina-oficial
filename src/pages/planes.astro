@@ -13,6 +13,7 @@ import Icon from "../components/Icon.astro";
 <Layout
     title="Precios y Planes de Páginas Web en Perú | Desde S/ 450"
     description="Elige el nivel ideal para tu negocio: desde una tarjeta digital profesional hasta una tienda online que recibe pagos sola. Sin pagos mensuales."
+    heroPosterSrc={imgMockupL1.src}
 >
     <Navbar />
 
@@ -69,6 +70,7 @@ import Icon from "../components/Icon.astro";
         <main
             class="flex-grow flex items-start justify-center p-4 md:p-6 relative z-10 w-full"
         >
+            <h1 class="sr-only">Nuestros Planes y Precios de Páginas Web y Tiendas Online</h1>
             <div
                 class="w-full max-w-6xl bg-white border border-slate-100 rounded-[3rem] p-6 md:p-12 shadow-sm min-h-[600px]"
             >
@@ -112,7 +114,7 @@ import Icon from "../components/Icon.astro";
                         >
                         </div>
                         <div class="mb-10">
-                            <h1
+                            <h2
                                 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-slate-900"
                             >
                                 Web Identidad <br class="hidden md:block" />
@@ -120,7 +122,7 @@ import Icon from "../components/Icon.astro";
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600"
                                     >Digital</span
                                 >
-                            </h1>
+                            </h2>
                             <p
                                 class="text-slate-600 font-medium text-lg max-w-2xl"
                             >
@@ -392,7 +394,7 @@ import Icon from "../components/Icon.astro";
                         >
                         </div>
                         <div class="mb-10">
-                            <h1
+                            <h2
                                 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-slate-900"
                             >
                                 Web Poder <br class="hidden md:block" />
@@ -400,7 +402,7 @@ import Icon from "../components/Icon.astro";
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-500"
                                     >Corporativo</span
                                 >
-                            </h1>
+                            </h2>
                             <p
                                 class="text-slate-600 font-medium text-lg max-w-2xl"
                             >
@@ -694,7 +696,7 @@ import Icon from "../components/Icon.astro";
                         >
                         </div>
                         <div class="mb-10">
-                            <h1
+                            <h2
                                 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight text-slate-900"
                             >
                                 Tienda Online <br class="hidden md:block" />
@@ -702,7 +704,7 @@ import Icon from "../components/Icon.astro";
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
                                     >Automatizada</span
                                 >
-                            </h1>
+                            </h2>
                             <p
                                 class="text-slate-600 font-medium text-lg max-w-2xl"
                             >
@@ -1487,6 +1489,69 @@ import Icon from "../components/Icon.astro";
 
 <Footer />
 <FloatingWhatsApp />
+
+    <!-- Marcado de Datos Estructurados (Service/Product Offers) para SEO Élite -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Product",
+                    "@id": "https://despegatuweb.com/planes/#plan-l1",
+                    "name": "Nivel 1: Web Identidad Digital",
+                    "description": "Tu tarjeta de presentación digital en 48 horas. Estructura de una sola página diseñada para marcas personales y perfiles profesionales.",
+                    "image": "https://despegatuweb.com/logo.svg",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "DespegaTuWeb"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "450",
+                        "priceCurrency": "PEN",
+                        "availability": "https://schema.org/InStock",
+                        "priceValidUntil": "2027-12-31"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "@id": "https://despegatuweb.com/planes/#plan-l2",
+                    "name": "Nivel 2: Web Poder Corporativo",
+                    "description": "Tu local digital con estatus y autonomía. Proyecta solidez corporativa con una estructura robusta y un panel administrativo propio (CMS) en 7 a 10 días.",
+                    "image": "https://despegatuweb.com/logo.svg",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "DespegaTuWeb"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "1000",
+                        "priceCurrency": "PEN",
+                        "availability": "https://schema.org/InStock",
+                        "priceValidUntil": "2027-12-31"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "@id": "https://despegatuweb.com/planes/#plan-l3",
+                    "name": "Nivel 3: Tienda Online Automatizada",
+                    "description": "Tu sucursal digital trabajando 24/7. Recibe pagos con tarjeta, controla el stock y gestiona pedidos automáticamente.",
+                    "image": "https://despegatuweb.com/logo.svg",
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "DespegaTuWeb"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "3500",
+                        "priceCurrency": "PEN",
+                        "availability": "https://schema.org/InStock",
+                        "priceValidUntil": "2027-12-31"
+                    }
+                }
+            ]
+        }
+    </script>
 </Layout>
 
 <style>

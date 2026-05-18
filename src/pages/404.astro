@@ -1,9 +1,52 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import Icon from "../components/Icon.astro";
 ---
 
-<!doctype html>
-<html>
-    <head><title>404 - Página no encontrada</title></head>
-    <body><h1>404 - Página no encontrada</h1></body>
-</html>
+<Layout
+    title="404 - Página no encontrada | DespegaTuWeb"
+    description="La página que buscas no existe o ha sido movida. Regresa al inicio para conocer nuestros planes de diseño y desarrollo web profesional."
+>
+    <Navbar />
+
+    <!-- Efecto de gradiente de fondo coherente con el estilo premium del sitio -->
+    <div
+        class="fixed top-0 right-0 w-[600px] h-[600px] bg-slate-100/50 blur-[150px] rounded-full pointer-events-none z-0"
+    >
+    </div>
+
+    <main class="flex-grow flex items-center justify-center pt-32 pb-24 px-6 relative z-10 text-center min-h-[60vh]">
+        <div class="max-w-xl mx-auto flex flex-col items-center">
+            <!-- Icono de advertencia premium -->
+            <div
+                class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-600 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-8"
+            >
+                <Icon name="fa6-solid:triangle-exclamation" /> Error 404
+            </div>
+            
+            <h1
+                class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-6 leading-tight text-slate-900"
+            >
+                Página <br class="sm:hidden" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">no encontrada</span>
+            </h1>
+            
+            <p class="text-slate-600 font-medium text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed">
+                Lo sentimos, la página que estás buscando no existe, ha sido movida o nunca existió. ¿Despegamos de regreso al inicio?
+            </p>
+            
+            <a
+                href="/"
+                class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-md shadow-blue-200 hover:-translate-y-0.5"
+            >
+                Ir a la Página de Inicio <Icon name="fa6-solid:arrow-right" />
+            </a>
+        </div>
+    </main>
+
+    <Footer />
+    <FloatingWhatsApp />
+</Layout>

@@ -66,6 +66,42 @@ const {
             document.addEventListener("DOMContentLoaded", () => Alpine.start());
         </script>
 
+        <!-- Marcado de Datos Estructurados (JSON-LD) para SEO Élite -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "ProfessionalService",
+                        "@id": "https://despegatuweb.com/#agency",
+                        "name": "DespegaTuWeb",
+                        "image": "https://despegatuweb.com/logo.svg",
+                        "url": "https://despegatuweb.com",
+                        "telephone": "+51963896469",
+                        "priceRange": "PEN",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Lima",
+                            "addressCountry": "PE"
+                        },
+                        "sameAs": [
+                            "https://wa.me/51963896469"
+                        ]
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://despegatuweb.com/#website",
+                        "url": "https://despegatuweb.com",
+                        "name": "DespegaTuWeb",
+                        "description": "Diseño y desarrollo de páginas web de carga instantánea en 48 horas.",
+                        "publisher": {
+                            "@id": "https://despegatuweb.com/#agency"
+                        }
+                    }
+                ]
+            }
+        </script>
+
         <style is:global>
             /* Estilos globales y estandarización */
             body {

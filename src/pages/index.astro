@@ -13,7 +13,6 @@ import imgMockupL2 from "../assets/pagina-web-corporativa-empresa-negocios.webp"
 import imgMockupL3 from "../assets/tienda-online-virtual-ecommerce-carrito-de-compras-pagos.webp";
 import imgHero1 from "../assets/diseno-web-clinicas-centros-medicos-lima.webp";
 import imgHero2 from "../assets/pagina-web-portafolio-fotografos-profesionales.webp";
-import imgHero3 from "../assets/sistema-gestion-ventas-tiktok-live-peru.webp";
 import imgHero4 from "../assets/creacion-web-gimnasios-fitness-peru.webp";
 import imgHero5 from "../assets/diseno-web-empresas-construccion-ingenieria.webp";
 import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
@@ -22,6 +21,7 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
 <Layout
     title="Despega Tu Web | Tu negocio en Google esta semana"
     description="Creamos tu página web profesional en 48 horas. Rápida, segura y optimizada para convertir visitas en clientes reales."
+    heroPosterSrc={imgHero2.src}
 >
     <style>
         .hero-mesh {
@@ -1561,5 +1561,63 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                 }
             }
         });
+    </script>
+
+    <!-- Marcado de Datos Estructurados (FAQPage) para SEO y Google Rich Snippets -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "¿Hay mensualidades o costos ocultos?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Cero sorpresas. El pago por el desarrollo de tu web es único, este incluye el primer año de Hosting y Dominio (.com)."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "He visto webs de S/ 100, ¿por qué elegirnos?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Porque lo barato en digital sale carísimo y se asocia a plantillas defectuosas de WordPress y miedos a estafas. Nosotros construimos 'Webs Inteligentes' con carga instantánea y optimización total. Utilizamos un stack moderno con Astro y Next.js que supera a la competencia en rendimiento y SEO."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Realmente me entregan la web en 48 horas?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "¡Sí, el tiempo es oro! Para nuestro Nivel 1 (Web Identidad Digital), garantizamos la entrega en 48 horas (2 días hábiles). El reloj inicia su cuenta regresiva en el momento exacto en que el cliente completa la carga de sus 15 fotos y logo en la nube."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cómo aseguro mi inversión? ¿Entregan boleta?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Tu tranquilidad es nuestra prioridad. Operamos con total formalidad y emitimos boletas de venta para generar confianza. Además, contamos con un Acuerdo de Servicio que detalla las pautas, como el máximo de 2 rondas de ajustes tras la entrega inicial, garantizando que el proceso sea transparente."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Si inicio con el Nivel 1, ¿puedo escalarlo después?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Totalmente. Si hoy requieres identidad digital rápida, mañana puedes escalar al Nivel 2, el cual cuenta con un panel administrativo para actualizar precios y galería sin depender de terceros. O saltar al Nivel 3, una tienda online automatizada que funciona como un vendedor 24/7 con carrito intuitivo y pasarela de pagos."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "No sé nada de tecnología, ¿es complicado para mí?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "¡Cero estrés! Nosotros nos encargamos de todo. Nuestro servicio incluye la optimización de tu logo y la conversión de imágenes al formato ultra rápido WebP. Además, en planes como el L1, integramos un botón directo a WhatsApp para facilitar el contacto con tus clientes."
+                    }
+                }
+            ]
+        }
     </script>
 </Layout>

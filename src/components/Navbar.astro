@@ -38,6 +38,8 @@ import Icon from "./Icon.astro";
             >
                 <button
                     @click="dropdownOpen = !dropdownOpen"
+                    aria-haspopup="true"
+                    :aria-expanded="dropdownOpen.toString()"
                     class="hover:text-blue-600 transition flex items-center gap-2 tracking-widest uppercase px-2 outline-none"
                 >
                     TIPOS DE WEB
