@@ -5,14 +5,12 @@ interface Props {
     title: string;
     description: string;
     image?: string;
-    heroPosterSrc?: string;
 }
 
 const {
     title,
     description,
     image = "/imgs/hero-fallback.webp",
-    heroPosterSrc,
 } = Astro.props;
 ---
 
@@ -45,17 +43,7 @@ const {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="alternate icon" href="/favicon.ico" />
 
-        <!-- Hero poster preload — máxima prioridad para el LCP -->
-        {
-            heroPosterSrc && (
-                <link
-                    rel="preload"
-                    as="image"
-                    href={heroPosterSrc}
-                    fetchpriority="high"
-                />
-            )
-        }
+
 
         <!-- Fuentes autoalojadas via @fontsource en global.css -->
 
@@ -107,9 +95,7 @@ const {
             body {
                 font-family: "Inter", sans-serif;
             }
-            .font-mono {
-                font-family: "JetBrains Mono", monospace;
-            }
+
             /* Autoridad y Respiro */
             h1,
             h2,

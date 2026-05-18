@@ -13,7 +13,6 @@ import Icon from "../components/Icon.astro";
 <Layout
     title="Precios y Planes de Páginas Web en Perú | Desde S/ 450"
     description="Elige el nivel ideal para tu negocio: desde una tarjeta digital profesional hasta una tienda online que recibe pagos sola. Sin pagos mensuales."
-    heroPosterSrc={imgMockupL1.src}
 >
     <Navbar />
 
@@ -291,7 +290,8 @@ import Icon from "../components/Icon.astro";
                                         height={467}
                                         onerror="this.src = 'https://placehold.co/600x420/f1f5f9/f97316?text=Mockup+L1&font=montserrat'"
                                         class="w-full h-full min-h-[250px] object-cover rounded-2xl border border-slate-200"
-                                        loading="lazy"
+                                        loading="eager"
+                                        fetchpriority="high"
                                     />
                                 </div>
                                 <div

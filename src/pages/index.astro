@@ -21,7 +21,6 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
 <Layout
     title="Despega Tu Web | Tu negocio en Google esta semana"
     description="Creamos tu página web profesional en 48 horas. Rápida, segura y optimizada para convertir visitas en clientes reales."
-    heroPosterSrc={imgHero2.src}
 >
     <style>
         .hero-mesh {
@@ -217,8 +216,10 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                                 width={800}
                                 height={600}
                                 formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), 600px"
                                 class="hero-carousel-img active"
                                 loading="eager"
+                                fetchpriority="high"
                             />
                             <Picture
                                 src={imgHero5}
@@ -227,6 +228,7 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                                 width={800}
                                 height={600}
                                 formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), 600px"
                                 class="hero-carousel-img"
                                 loading="lazy"
                             />
@@ -237,6 +239,7 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                                 width={800}
                                 height={600}
                                 formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), 600px"
                                 class="hero-carousel-img"
                                 loading="lazy"
                             />
@@ -247,6 +250,7 @@ import imgHero6 from "../assets/tienda-online-ecommerce-ropa-moda.webp";
                                 width={800}
                                 height={600}
                                 formats={["avif", "webp"]}
+                                sizes="(max-width: 768px) calc(100vw - 48px), 600px"
                                 class="hero-carousel-img"
                                 loading="lazy"
                             />

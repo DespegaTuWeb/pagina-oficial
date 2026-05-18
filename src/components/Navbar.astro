@@ -4,7 +4,7 @@ import Icon from "./Icon.astro";
 
 <nav
     x-data="{ mobileMenuOpen: false, scrolled: false }"
-    @scroll.window="scrolled = (window.pageYOffset > 50)"
+    @scroll.window.throttle.50ms="scrolled = (window.scrollY > 50)"
     class="fixed top-0 left-0 w-full z-[999] transition-all duration-500 border-b bg-white/80 backdrop-blur-lg border-slate-200 py-4"
     :class="scrolled ? '!py-2 md:!py-3 shadow-sm' : ''"
 >
